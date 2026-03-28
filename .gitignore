@@ -1,0 +1,28 @@
+# Claude Code assistant memory (local only)
+.claude/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data files (large)
+*.zarr/
+*.h5ad
+*.loom
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

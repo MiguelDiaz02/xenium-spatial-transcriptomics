@@ -1,0 +1,27 @@
+[submodule "xenium_code_knowledge/Xenium_5k_analysis_pipeline"]
+	path = xenium_code_knowledge/Xenium_5k_analysis_pipeline
+	url = https://github.com/spatts14/Xenium_5k_analysis_pipeline.git
+[submodule "xenium_code_knowledge/sopa"]
+	path = xenium_code_knowledge/sopa
+	url = https://github.com/gustaveroussy/sopa.git
+[submodule "xenium_code_knowledge/spatialdata_xenium_explorer"]
+	path = xenium_code_knowledge/spatialdata_xenium_explorer
+	url = https://github.com/quentinblampey/spatialdata_xenium_explorer.git
+[submodule "xenium_code_knowledge/Xenium_benchmarking"]
+	path = xenium_code_knowledge/Xenium_benchmarking
+	url = https://github.com/Moldia/Xenium_benchmarking.git
+[submodule "xenium_code_knowledge/XeniumIO"]
+	path = xenium_code_knowledge/XeniumIO
+	url = https://github.com/waldronlab/XeniumIO.git
+[submodule "xenium_code_knowledge/XeniumSpatialAnalysis"]
+	path = xenium_code_knowledge/XeniumSpatialAnalysis
+	url = https://github.com/MargoKapustina/XeniumSpatialAnalysis.git
+[submodule "xenium_code_knowledge/liver_ped_map"]
+	path = xenium_code_knowledge/liver_ped_map
+	url = https://github.com/redgar598/liver_ped_map.git
+[submodule "xenium_code_knowledge/analysis_guides"]
+	path = xenium_code_knowledge/analysis_guides
+	url = https://github.com/10XGenomics/analysis_guides.git
+[submodule "xenium_code_knowledge/spatialdata-notebooks"]
+	path = xenium_code_knowledge/spatialdata-notebooks
+	url = https://github.com/scverse/spatialdata-notebooks.git
