@@ -1,0 +1,106 @@
+# ─── Project ──────────────────────────────────────────────────────────────────
+project:
+  name: human_lung_cancer
+  output_dir: ../human_lung_cancer/results
+
+# ─── Data paths (relative to pipeline/) ──────────────────────────────────────
+data:
+  xenium_zip: ../human_lung_cancer/output_files/Xenium_V1_Human_Lung_Cancer_FFPE_outs.zip
+  xenium_extracted_dir: ../human_lung_cancer/output_files/extracted
+  he_image: ../human_lung_cancer/supplemental_files/Xenium_V1_Human_Lung_Cancer_FFPE_he_image.ome.tif
+  he_alignment: ../human_lung_cancer/supplemental_files/Xenium_V1_Human_Lung_Cancer_FFPE_he_imagealignment.csv
+
+# ─── Module switches ──────────────────────────────────────────────────────────
+run:
+  denoising_resolvi: true     # false → skip ResolVI, use raw counts downstream
+  integration: false           # true → run Harmony/scVI (multi-sample only)
+  downstream: true             # pseudobulk + doublet detection
+  muspan: false                # requires separate MuSpAn install
+
+# ─── Segmentation ─────────────────────────────────────────────────────────────
+segmentation:
+  method: auto                 # "auto" | "xoa" | "cellpose" | "baysor"
+  run_comparison: true         # generate HTML report comparing all methods
+  auto_thresholds:
+    min_transcripts_for_baysor: 100   # median tx/cell required for Baysor
+    min_genes_for_baysor: 500         # panel size required for Baysor
+  cellpose:
+    model: nuclei              # "nuclei" | "cyto2" | "cyto3" | path to custom
+    diameter: null             # null → auto-estimate
+    flow_threshold: 0.4
+    cellprob_threshold: 0.0
+    use_he: true               # use H&E instead of DAPI if available
+    gpu: true
+  baysor:
+    # REQUIRES Julia + Baysor installed (see envs/xenium_pipeline.yaml)
+    min_molecules_per_cell: 10
+    scale: 30                  # expected cell radius in µm
+    prior_segmentation_confidence: 0.5   # 0=ignore XOA masks, 1=trust fully
+    n_clusters: 4              # expression clusters for initialization
+
+# ─── QC ───────────────────────────────────────────────────────────────────────
+qc:
+  min_transcripts: 10
+  max_transcripts: 2000        # removes doublets / segmentation errors
+  min_genes: 5
+  max_pct_neg_ctrl: 5.0        # % of negative control transcripts per cell
+
+# ─── Preprocessing ────────────────────────────────────────────────────────────
+preprocess:
+  normalization_target_sum: 100     # scran-style for targeted panels
+  log1p: true
+  select_hvg: false                 # false for panels <500 genes (use all)
+  n_hvg: 289                        # only used if select_hvg: true
+
+# ─── Dimensionality reduction ─────────────────────────────────────────────────
+reduction:
+  n_pcs: 30
+  n_neighbors: 15
+  umap_min_dist: 0.3
+  leiden_resolution: 0.5
+
+# ─── Annotation ───────────────────────────────────────────────────────────────
+annotation:
+  method: celltypist            # "celltypist" | "manual" | "scanvi"
+  celltypist_model: Lung_Human_PIP   # swap for Liver_Human_PIP for liver
+  majority_voting: true
+  # manual marker scoring (used if method: manual or for validation)
+  markers:
+    Epithelial: [EPCAM, KRT8, KRT18, KRT19]
+    T_cell: [CD3D, CD3E, CD8A, CD4]
+    B_cell: [CD79A, MS4A1, CD19]
+    Macrophage: [CD68, CD163, MRC1]
+    NK_cell: [GNLY, NKG7, KLRD1]
+    Fibroblast: [COL1A1, COL1A2, DCN, FAP]
+    Endothelial: [PECAM1, VWF, CDH5]
+    Mast_cell: [TPSAB1, CPA3]
+    Tumor: [TP63, MKI67, TOP2A]
+
+# ─── ResolVI denoising ────────────────────────────────────────────────────────
+denoising:
+  max_epochs: 100
+  batch_size: 1024
+  accelerator: gpu              # "gpu" | "cpu"
+
+# ─── Integration (multi-sample) ───────────────────────────────────────────────
+integration:
+  method: harmony               # "harmony" | "scvi"
+  batch_key: sample             # column in adata.obs
+
+# ─── Spatial analysis ─────────────────────────────────────────────────────────
+spatial:
+  n_neighs: 10
+  coord_type: generic           # "generic" (centroids) | "grid"
+  cluster_key: cell_type        # column used for enrichment / co-occurrence
+  n_perms_enrichment: 1000
+  spatial_autocorr:
+    mode: moran
+    n_perms: 100
+    n_jobs: 4
+
+# ─── Downstream ───────────────────────────────────────────────────────────────
+downstream:
+  doublet_detection: true
+  pseudobulk: false             # requires ≥3 samples; set true for multi-sample
+  pseudobulk_group_key: cell_type
+  pseudobulk_sample_key: sample

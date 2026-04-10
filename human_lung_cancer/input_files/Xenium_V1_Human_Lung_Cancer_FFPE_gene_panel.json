@@ -1,0 +1,7196 @@
+{
+  "metadata": {
+    "sha256_checksum": "295a79b9adcc558a2241ebef3a59f97f5e8f80147f93b287579e3397b0ea6530",
+    "ui_props": {
+      "visible": true
+    }
+  },
+  "payload": {
+    "chemistry": {
+      "decoder": "xenium_decoding_v1",
+      "version": "v1"
+    },
+    "customer": {
+      "email": null,
+      "name": null
+    },
+    "designer": {
+      "date_created": "2023-10-11T00:00:00",
+      "designed_by": {
+        "email": null,
+        "name": "10x Genomics"
+      },
+      "version": "1.0.0"
+    },
+    "panel": {
+      "description": "Xenium Human Lung Gene Expression Panel",
+      "identity": {
+        "design_id": "hLung_v1.1",
+        "name": "Xenium Human Lung Gene Expression",
+        "version": "1.1.0"
+      },
+      "num_gene_targets": 289,
+      "species": "Human",
+      "tissue": "Lung",
+      "type": {
+        "descriptor": "predesigned"
+      }
+    },
+    "spec_version": "0.1.0",
+    "targets": [
+      {
+        "codewords": [
+          295
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000159640",
+            "name": "ACE"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          386
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000130234",
+            "name": "ACE2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          53
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000213088",
+            "name": "ACKR1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          304
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000151694",
+            "name": "ADAM17"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          340
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000042980",
+            "name": "ADAM28"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          101
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000154734",
+            "name": "ADAMTS1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          189
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000162618",
+            "name": "ADGRL4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          334
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000204305",
+            "name": "AGER"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          77
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000173467",
+            "name": "AGR3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          325
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000204472",
+            "name": "AIF1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          351
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000166825",
+            "name": "ANPEP"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          396
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000189058",
+            "name": "APOD"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          353
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000178878",
+            "name": "APOLD1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          290
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000103569",
+            "name": "AQP9"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          224
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000109321",
+            "name": "AREG"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          293
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000179674",
+            "name": "ARL14"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          4
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000139352",
+            "name": "ASCL1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          298
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000183734",
+            "name": "ASCL2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          312
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000176009",
+            "name": "ASCL3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          222
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000143153",
+            "name": "ATP1B1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          57
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000006453",
+            "name": "BAIAP2L1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          296
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000153064",
+            "name": "BANK1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          106
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000064787",
+            "name": "BCAS1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          376
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000102010",
+            "name": "BMX"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          275
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000167434",
+            "name": "CA4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          12
+        ],
+        "info": {
+          "gene_coverage": 3
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000162004",
+            "name": "CCDC78"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          326
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133101",
+            "name": "CCNA1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          25
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000157456",
+            "name": "CCNB2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          214
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000126353",
+            "name": "CCR7"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          188
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000170458",
+            "name": "CD14"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          383
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000177575",
+            "name": "CD163"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          359
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000177455",
+            "name": "CD19"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          151
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000158477",
+            "name": "CD1A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          46
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000158481",
+            "name": "CD1C"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          123
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000116824",
+            "name": "CD2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          47
+        ],
+        "info": {
+          "gene_coverage": 3
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000272398",
+            "name": "CD24"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          212
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000198821",
+            "name": "CD247"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          271
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000139193",
+            "name": "CD27"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          322
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000120217",
+            "name": "CD274"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          243
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000178562",
+            "name": "CD28"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          331
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000186407",
+            "name": "CD300E"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          170
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000174059",
+            "name": "CD34"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          314
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000004468",
+            "name": "CD38"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          43
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000167286",
+            "name": "CD3D"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          201
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000198851",
+            "name": "CD3E"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          283
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000010610",
+            "name": "CD4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          181
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000101017",
+            "name": "CD40"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          382
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000102245",
+            "name": "CD40LG"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          143
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000129226",
+            "name": "CD68"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          251
+        ],
+        "info": {
+          "gene_coverage": 2
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000125726",
+            "name": "CD70"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          366
+        ],
+        "info": {
+          "gene_coverage": 3
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000105369",
+            "name": "CD79A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          310
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000121594",
+            "name": "CD80"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          171
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000114013",
+            "name": "CD86"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          365
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000153563",
+            "name": "CD8A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          103
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000172116",
+            "name": "CD8B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          8
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000039068",
+            "name": "CDH1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          379
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000170312",
+            "name": "CDK1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          329
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000117724",
+            "name": "CENPF"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          184
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000243649",
+            "name": "CFB"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          150
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000001626",
+            "name": "CFTR"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          145
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133063",
+            "name": "CHIT1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          387
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000184113",
+            "name": "CLDN5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          112
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000132514",
+            "name": "CLEC10A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          92
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000172322",
+            "name": "CLEC12A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          299
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000166523",
+            "name": "CLEC4E"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          104
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000130176",
+            "name": "CNN1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          355
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000204262",
+            "name": "COL5A2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          107
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000144810",
+            "name": "COL8A1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          41
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000047457",
+            "name": "CP"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          341
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000173546",
+            "name": "CSPG4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          279
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000121552",
+            "name": "CSTA"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          265
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163599",
+            "name": "CTLA4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          354
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000135047",
+            "name": "CTSL"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          163
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000085733",
+            "name": "CTTN"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          245
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000169245",
+            "name": "CXCL10"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          263
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000156234",
+            "name": "CXCL13"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          155
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163735",
+            "name": "CXCL5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          323
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000124875",
+            "name": "CXCL6"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          83
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000138755",
+            "name": "CXCL9"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          292
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000160683",
+            "name": "CXCR5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          232
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000172215",
+            "name": "CXCR6"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          242
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000197446",
+            "name": "CYP2F1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          138
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000035664",
+            "name": "DAPK2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          213
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133083",
+            "name": "DCLK1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          23
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000175084",
+            "name": "DES"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          315
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000058866",
+            "name": "DGKG"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          193
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000162595",
+            "name": "DIRAS3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          153
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000187908",
+            "name": "DMBT1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          141
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000128590",
+            "name": "DNAJB9"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          327
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000130226",
+            "name": "DPP6"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          190
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000137857",
+            "name": "DUOX1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          262
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000249751",
+            "name": "ECSCR"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          81
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000146648",
+            "name": "EGFR"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          342
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000135373",
+            "name": "EHF"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          122
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163435",
+            "name": "ELF3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          282
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000154380",
+            "name": "ENAH"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          389
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000119888",
+            "name": "EPCAM"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          313
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000244405",
+            "name": "ETV5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          35
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000117525",
+            "name": "F3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          255
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000121769",
+            "name": "FABP3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          161
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000111879",
+            "name": "FAM184A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          364
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000026103",
+            "name": "FAS"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          349
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000117560",
+            "name": "FASLG"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          335
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000169710",
+            "name": "FASN"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          36
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000166147",
+            "name": "FBN1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          80
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000179639",
+            "name": "FCER1A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          270
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000150337",
+            "name": "FCGR1A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          187
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000203747",
+            "name": "FCGR3A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          371
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000162894",
+            "name": "FCMR"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          248
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000085265",
+            "name": "FCN1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          305
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000142748",
+            "name": "FCN3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          131
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000137441",
+            "name": "FGFBP2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          360
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000160867",
+            "name": "FGFR4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          318
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000134285",
+            "name": "FKBP11"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          227
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000168269",
+            "name": "FOXI1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          148
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000129654",
+            "name": "FOXJ1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          395
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000049768",
+            "name": "FOXP3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          317
+        ],
+        "info": {
+          "gene_coverage": 3
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000075618",
+            "name": "FSCN1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          356
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000265107",
+            "name": "GJA5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          133
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000183607",
+            "name": "GKN2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          369
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000106415",
+            "name": "GLCCI1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          372
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000122694",
+            "name": "GLIPR2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          358
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000127920",
+            "name": "GNG11"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          205
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000105220",
+            "name": "GPI"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          119
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000174946",
+            "name": "GPR171"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          332
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000169508",
+            "name": "GPR183"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          137
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000171659",
+            "name": "GPR34"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          196
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000176153",
+            "name": "GPX2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          197
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000145649",
+            "name": "GZMA"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          398
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000100453",
+            "name": "GZMB"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          206
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000113088",
+            "name": "GZMK"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          203
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000135077",
+            "name": "HAVCR2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          377
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000100644",
+            "name": "HIF1A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          385
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000131097",
+            "name": "HIGD1B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          225
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000112972",
+            "name": "HMGCS1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          194
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000257017",
+            "name": "HP"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          1
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163106",
+            "name": "HPGDS"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          236
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000003147",
+            "name": "ICA1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          381
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000017427",
+            "name": "IGF1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          63
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000146674",
+            "name": "IGFBP3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          132
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000115602",
+            "name": "IL1RL1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          88
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000168685",
+            "name": "IL7R"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          228
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000145703",
+            "name": "IQGAP2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          90
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000140968",
+            "name": "IRF8"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          338
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000169896",
+            "name": "ITGAM"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          33
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000132470",
+            "name": "ITGB4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          179
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000171303",
+            "name": "KCNK3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          178
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000128052",
+            "name": "KDR"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          2
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000157404",
+            "name": "KIT"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          390
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000102554",
+            "name": "KLF5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          324
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000167757",
+            "name": "KLK11"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          59
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000111796",
+            "name": "KLRB1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          165
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000134545",
+            "name": "KLRC1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          250
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000134539",
+            "name": "KLRD1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          13
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000171346",
+            "name": "KRT15"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          259
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000135480",
+            "name": "KRT7"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          121
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000089692",
+            "name": "LAG3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          166
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000050555",
+            "name": "LAMC3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          149
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000182866",
+            "name": "LCK"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          29
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000108679",
+            "name": "LGALS3BP"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          339
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000139292",
+            "name": "LGR5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          311
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133067",
+            "name": "LGR6"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          216
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000239961",
+            "name": "LILRA4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          94
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000187116",
+            "name": "LILRA5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          91
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000131042",
+            "name": "LILRB2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          175
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000186818",
+            "name": "LILRB4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          11
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163431",
+            "name": "LMOD1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          343
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000119681",
+            "name": "LTBP2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          399
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000012223",
+            "name": "LTF"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          244
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133800",
+            "name": "LYVE1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          73
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000144063",
+            "name": "MALL"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          15
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000135525",
+            "name": "MAP7"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          19
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000019169",
+            "name": "MARCO"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          268
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000183019",
+            "name": "MCEMP1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          40
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000102802",
+            "name": "MEDAG"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          24
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000105976",
+            "name": "MET"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          95
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000197614",
+            "name": "MFAP5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          302
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000129534",
+            "name": "MIS18BP1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          281
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000148773",
+            "name": "MKI67"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          230
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000262406",
+            "name": "MMP12"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          284
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000100985",
+            "name": "MMP9"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          49
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000138722",
+            "name": "MMRN1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          177
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000197629",
+            "name": "MPEG1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          289
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000156738",
+            "name": "MS4A1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          286
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000149534",
+            "name": "MS4A2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          204
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000110079",
+            "name": "MS4A4A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          393
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000129422",
+            "name": "MTUS1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          74
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000185499",
+            "name": "MUC1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          348
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000117983",
+            "name": "MUC5B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          160
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000136997",
+            "name": "MYC"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          158
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133392",
+            "name": "MYH11"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          350
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000196586",
+            "name": "MYO6"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          394
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000170476",
+            "name": "MZB1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          301
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000144959",
+            "name": "NCEH1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          21
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000109320",
+            "name": "NFKB1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          370
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000116962",
+            "name": "NID1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          126
+        ],
+        "info": {
+          "gene_coverage": 2
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000105374",
+            "name": "NKG7"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          28
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000074527",
+            "name": "NTN4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          135
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000148053",
+            "name": "NTRK2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          288
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000264522",
+            "name": "OTUD7B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          116
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000108405",
+            "name": "P2RX1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          16
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000149090",
+            "name": "PAMR1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          76
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000132646",
+            "name": "PCNA"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          199
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163710",
+            "name": "PCOLCE2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          97
+        ],
+        "info": {
+          "gene_coverage": 2
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000188389",
+            "name": "PDCD1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          111
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000197646",
+            "name": "PDCD1LG2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          71
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000134853",
+            "name": "PDGFRA"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          128
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000113721",
+            "name": "PDGFRB"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          336
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000162493",
+            "name": "PDPN"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          84
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000134020",
+            "name": "PEBP4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          277
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000124102",
+            "name": "PI3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          172
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000137193",
+            "name": "PIM1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          51
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000102096",
+            "name": "PIM2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          231
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000188257",
+            "name": "PLA2G2A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          367
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000168907",
+            "name": "PLA2G4F"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          374
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000146070",
+            "name": "PLA2G7"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          162
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000198523",
+            "name": "PLN"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          208
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000130300",
+            "name": "PLVAP"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          18
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000110777",
+            "name": "POU2AF1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          124
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000117707",
+            "name": "PROX1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          260
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000095303",
+            "name": "PTGS1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          307
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000131477",
+            "name": "RAMP2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          200
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000118849",
+            "name": "RARRES1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          261
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000138207",
+            "name": "RBP4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          156
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000111404",
+            "name": "RERGL"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          168
+        ],
+        "info": {
+          "gene_coverage": 1
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000104918",
+            "name": "RETN"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          388
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000143248",
+            "name": "RGS5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          38
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000172602",
+            "name": "RND1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          266
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000020633",
+            "name": "RUNX3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          316
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163221",
+            "name": "S100A12"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          62
+        ],
+        "info": {
+          "gene_coverage": 3
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000143556",
+            "name": "S100A7"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          234
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000160307",
+            "name": "S100B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          252
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000164483",
+            "name": "SAMD3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          333
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000136155",
+            "name": "SCEL"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          280
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000166562",
+            "name": "SEC11C"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          239
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000007908",
+            "name": "SELE"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          102
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000188404",
+            "name": "SELL"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          100
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000174175",
+            "name": "SELP"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          32
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000012171",
+            "name": "SEMA3B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          215
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000075223",
+            "name": "SEMA3C"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          34
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000196136",
+            "name": "SERPINA3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          276
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000145423",
+            "name": "SFRP2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          117
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000196260",
+            "name": "SFTA2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          320
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000133661",
+            "name": "SFTPD"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          309
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000251322",
+            "name": "SHANK3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          48
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163406",
+            "name": "SLC15A2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          391
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000165646",
+            "name": "SLC18A2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          192
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000079215",
+            "name": "SLC1A3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          78
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000117394",
+            "name": "SLC2A1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          56
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000151012",
+            "name": "SLC7A11"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          344
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000184347",
+            "name": "SLIT3"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          226
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000095932",
+            "name": "SMIM24"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          86
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000181449",
+            "name": "SOX2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          256
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000125398",
+            "name": "SOX9"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          39
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000124664",
+            "name": "SPDEF"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          10
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000269404",
+            "name": "SPIB"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          378
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000138378",
+            "name": "STAT4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          235
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000159167",
+            "name": "STC1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          140
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000127954",
+            "name": "STEAP4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          30
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000165124",
+            "name": "SVEP1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          50
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000165025",
+            "name": "SYK"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          269
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000184292",
+            "name": "TACSTD2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          93
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000165929",
+            "name": "TC2N"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          328
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000100721",
+            "name": "TCL1A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          306
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000186340",
+            "name": "THBS2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          300
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000154096",
+            "name": "THY1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          361
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000163762",
+            "name": "TM4SF18"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          375
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000169903",
+            "name": "TM4SF4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          75
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000103534",
+            "name": "TMC5"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          273
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000166292",
+            "name": "TMEM100"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          146
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000184012",
+            "name": "TMPRSS2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          380
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000240505",
+            "name": "TNFRSF13B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          308
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000159958",
+            "name": "TNFRSF13C"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          9
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000048462",
+            "name": "TNFRSF17"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          157
+        ],
+        "info": {
+          "gene_coverage": 1
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000186891",
+            "name": "TNFRSF18"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          66
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000131747",
+            "name": "TOP2A"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          118
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000073282",
+            "name": "TP63"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          61
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000078900",
+            "name": "TP73"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          173
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000095970",
+            "name": "TREM2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          345
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000137672",
+            "name": "TRPC6"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          58
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000127324",
+            "name": "TSPAN8"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          264
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000175063",
+            "name": "UBE2C"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          0
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000114638",
+            "name": "UPK1B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          134
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000243566",
+            "name": "UPK3B"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          229
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000155659",
+            "name": "VSIG4"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          55
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000110799",
+            "name": "VWF"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          384
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000109501",
+            "name": "WFS1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          373
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000105989",
+            "name": "WNT2"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          258
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "id": "ENSG00000184937",
+            "name": "WT1"
+          },
+          "descriptor": "gene"
+        }
+      },
+      {
+        "codewords": [
+          392
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00002"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          368
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00003"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          363
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00004"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          362
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00009"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          352
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00012"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          347
+        ],
+        "info": {
+          "gene_coverage": 7
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00013"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          330
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00014"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          303
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00016"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          297
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00017"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          294
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00019"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          287
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00022"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          285
+        ],
+        "info": {
+          "gene_coverage": 4
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00024"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          274
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00025"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          267
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00031"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          257
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00033"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          254
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00034"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          253
+        ],
+        "info": {
+          "gene_coverage": 5
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00035"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          249
+        ],
+        "info": {
+          "gene_coverage": 6
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00039"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          247
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00041"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          246
+        ],
+        "info": {
+          "gene_coverage": 8
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "NegControlProbe_00042"
+          },
+          "descriptor": "negative_control"
+        }
+      },
+      {
+        "codewords": [
+          397
+        ],
+        "info": {
+          "gene_coverage": 0
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "DeprecatedCodeword_0397"
+          },
+          "descriptor": "deprecated_codeword"
+        }
+      },
+      {
+        "codewords": [
+          174
+        ],
+        "info": {
+          "gene_coverage": 0
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "DeprecatedCodeword_0174"
+          },
+          "descriptor": "deprecated_codeword"
+        }
+      },
+      {
+        "codewords": [
+          105
+        ],
+        "info": {
+          "gene_coverage": 0
+        },
+        "source": {
+          "category": "current",
+          "identity": {
+            "design_id": "hLung_v1.1",
+            "name": "Xenium Human Lung Gene Expression",
+            "version": "1.1.0"
+          }
+        },
+        "type": {
+          "data": {
+            "name": "DeprecatedCodeword_0105"
+          },
+          "descriptor": "deprecated_codeword"
+        }
+      }
+    ]
+  }
+}

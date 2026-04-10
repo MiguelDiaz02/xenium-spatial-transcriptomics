@@ -1,0 +1,84 @@
+"""
+Xenium Spatial Transcriptomics Pipeline
+========================================
+Modular Snakemake pipeline for end-to-end analysis of 10x Genomics Xenium data.
+Designed to work with lung (v1 panel) and scale to liver (5K panel) via config swap.
+
+Usage:
+    # Dry run (check DAG without executing)
+    snakemake --snakefile Snakefile --configfile config/config_lung.yaml -n
+
+    # Run full pipeline (8 cores, GPU enabled)
+    snakemake --snakefile Snakefile --configfile config/config_lung.yaml --cores 8
+
+    # Run a specific step
+    snakemake --snakefile Snakefile --configfile config/config_lung.yaml results/03_qc.done
+
+    # Generate DAG diagram
+    snakemake --snakefile Snakefile --configfile config/config_lung.yaml --dag | dot -Tpdf > dag.pdf
+"""
+
+import json
+import zipfile
+from pathlib import Path
+
+# ─── Config ───────────────────────────────────────────────────────────────────
+configfile: "config/config_lung.yaml"
+
+OUTDIR  = Path(config["project"]["output_dir"])
+SDATA   = str(OUTDIR / "sdata.zarr")
+
+# ─── Auto-select segmentation method ─────────────────────────────────────────
+# Reads experiment.xenium directly from inside the ZIP at DAG-build time.
+# Cellpose: median tx/cell < 100 OR panel genes < 500
+# Baysor:   median tx/cell >= 100 AND panel genes >= 500
+_zip = Path(config["data"]["xenium_zip"])
+
+if config["segmentation"]["method"] == "auto":
+    if _zip.exists():
+        with zipfile.ZipFile(_zip) as _zf:
+            with _zf.open("experiment.xenium") as _fh:
+                _meta = json.load(_fh)
+        _median_tx  = _meta.get("transcripts_per_cell", 0)
+        _n_genes    = (_meta.get("panel_num_targets_predesigned", 0) +
+                       _meta.get("panel_num_targets_custom", 0))
+        _t          = config["segmentation"]["auto_thresholds"]
+        _baysor_ok  = (_median_tx >= _t["min_transcripts_for_baysor"] and
+                       _n_genes   >= _t["min_genes_for_baysor"])
+        SEG_METHOD  = "baysor" if _baysor_ok else "cellpose"
+        print(
+            f"\n[xenium-pipeline] Segmentation auto-select:\n"
+            f"  Panel:  {_n_genes} genes\n"
+            f"  Median: {_median_tx:.1f} tx/cell\n"
+            f"  Method: {SEG_METHOD.upper()}\n"
+        )
+    else:
+        SEG_METHOD = "cellpose"
+        print("[xenium-pipeline] ZIP not found — defaulting to CELLPOSE")
+else:
+    SEG_METHOD = config["segmentation"]["method"]
+
+config["segmentation"]["_resolved_method"] = SEG_METHOD
+
+# ─── Include rule modules ─────────────────────────────────────────────────────
+include: "rules/01_ingest.smk"
+include: "rules/02_segmentation.smk"
+include: "rules/03_qc.smk"
+include: "rules/04_preprocess.smk"
+include: "rules/05_reduction.smk"
+include: "rules/06_annotation.smk"
+include: "rules/07_denoising.smk"
+include: "rules/08_spatial.smk"
+include: "rules/09_downstream.smk"
+
+# ─── Final targets ────────────────────────────────────────────────────────────
+def final_targets(wildcards):
+    targets = [str(OUTDIR / "08_spatial.done")]
+    if config["run"]["downstream"]:
+        targets.append(str(OUTDIR / "09_downstream.done"))
+    if config["segmentation"]["run_comparison"]:
+        targets.append(str(OUTDIR / "02_segmentation_comparison.html"))
+    return targets
+
+rule all:
+    input: final_targets

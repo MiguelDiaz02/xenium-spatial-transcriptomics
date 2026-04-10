@@ -1,0 +1,32 @@
+# ─── Data (never commit raw or extracted data) ────────────────────────────────
+human_lung_cancer/output_files/extracted/
+human_lung_cancer/output_files/*.zip
+human_lung_cancer/supplemental_files/*.tif
+human_lung_cancer/supplemental_files/*.ome.tif
+
+# ─── Pipeline results (reproducible from data + code) ─────────────────────────
+human_lung_cancer/results/
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ─── Conda / venv ─────────────────────────────────────────────────────────────
+xenium_pipeline/
+.env
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Snakemake ────────────────────────────────────────────────────────────────
+.snakemake/
+pipeline/logs/
