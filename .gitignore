@@ -29,4 +29,6 @@ Thumbs.db
 
 # ─── Snakemake ────────────────────────────────────────────────────────────────
 .snakemake/
-pipeline/logs/
+# Keep summaries but ignore verbose per-run logs
+human_lung_cancer/results/logs/pipeline_*.log
+human_lung_cancer/results/logs/pipeline_stats_*.json
