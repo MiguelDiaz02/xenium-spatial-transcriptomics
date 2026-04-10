@@ -273,7 +273,7 @@ def build_summary(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--logs-dir",   required=True)
-    parser.add_argument("--stats-json", required=False, default="")
+    parser.add_argument("--stats-json", required=False, default="", help="Unused; kept for compatibility")
     parser.add_argument("--main-log",   required=True)
     parser.add_argument("--output",     required=True)
     parser.add_argument("--exit-code",  type=int, default=0)

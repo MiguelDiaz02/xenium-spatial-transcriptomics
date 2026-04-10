@@ -36,7 +36,6 @@ LOGS_DIR="${RESULTS_DIR}/logs"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 MAIN_LOG="${LOGS_DIR}/pipeline_${TIMESTAMP}.log"
 SUMMARY="${RESULTS_DIR}/pipeline_summary.txt"
-STATS_JSON="${LOGS_DIR}/pipeline_stats_${TIMESTAMP}.json"
 
 mkdir -p "$LOGS_DIR"
 
@@ -54,7 +53,6 @@ START_TIME=$(date +%s)
 snakemake \
     --configfile "$CONFIGFILE" \
     --cores "$CORES" \
-    --stats "$STATS_JSON" \
     --printshellcmds \
     --show-failed-logs \
     --rerun-incomplete \
@@ -68,7 +66,6 @@ ELAPSED=$(( END_TIME - START_TIME ))
 # ─── Generate summary ─────────────────────────────────────────────────────────
 python3 scripts/utils/summarize_run.py \
     --logs-dir      "$LOGS_DIR" \
-    --stats-json    "$STATS_JSON" \
     --main-log      "$MAIN_LOG" \
     --output        "$SUMMARY" \
     --exit-code     "$EXIT_CODE" \
