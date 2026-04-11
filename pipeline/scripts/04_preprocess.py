@@ -11,7 +11,6 @@ After this step:
   adata.layers["counts"] → raw integer counts (used by scVI, ResolVI, DESeq2)
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

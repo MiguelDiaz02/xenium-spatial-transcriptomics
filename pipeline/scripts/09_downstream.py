@@ -18,7 +18,6 @@ Two independent sub-modules (each can be toggled in config):
    - DISABLED for single-sample demos (pseudobulk: false in config)
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

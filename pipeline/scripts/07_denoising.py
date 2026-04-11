@@ -20,7 +20,6 @@ ResolVI needs:
   - GPU strongly recommended (RTX 4500 Ada: ~20-40 min for 278k cells)
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

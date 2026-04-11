@@ -9,7 +9,6 @@ Method is resolved at DAG-build time in the Snakefile based on:
   - Baysor:   median tx/cell >= 100 AND panel genes >= 500
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

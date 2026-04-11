@@ -14,7 +14,6 @@ Cells failing any threshold are removed from sdata.table.
 The filtered table is written back to the zarr store.
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

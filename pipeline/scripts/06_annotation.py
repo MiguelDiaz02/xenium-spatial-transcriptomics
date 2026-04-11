@@ -18,7 +18,6 @@ Both methods always produce:
   adata.obs["cell_type_fine"]  → fine-grained label (when available)
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

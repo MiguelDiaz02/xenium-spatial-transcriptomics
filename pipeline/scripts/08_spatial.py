@@ -14,7 +14,6 @@ All results stored in adata.uns and adata.obsp.
 Figures saved to results/08_spatial_figures/.
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

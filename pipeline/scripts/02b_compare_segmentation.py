@@ -10,7 +10,6 @@ Generates an interactive HTML report with:
   - Side-by-side spatial overlay (tile from center of tissue)
 """
 
-from __future__ import annotations
 
 import sys
 from pathlib import Path

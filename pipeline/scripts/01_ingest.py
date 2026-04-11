@@ -10,7 +10,6 @@ The H&E registration uses the 2×3 affine matrix provided by 10x Genomics
 in the alignment CSV (columns: he_x, he_y, xen_x, xen_y for fiducial pairs).
 """
 
-from __future__ import annotations
 
 import sys
 import zipfile
