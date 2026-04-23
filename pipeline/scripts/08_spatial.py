@@ -75,7 +75,7 @@ def main():
         adata,
         coord_type=coord_type,
         n_neighs=n_neighs,
-        key_added="spatial_neighbors",
+        key_added="spatial",  # Use default key name for Squidpy compatibility
     )
 
     # 2. Neighborhood enrichment
@@ -91,12 +91,13 @@ def main():
     fig.savefig(fig_dir / "nhood_enrichment.pdf", bbox_inches="tight")
     plt.close(fig)
 
-    # 3. Co-occurrence
-    log.info("Co-occurrence analysis ...")
-    sq.gr.co_occurrence(adata, cluster_key=cluster_key)
-    fig = sq.pl.co_occurrence(adata, cluster_key=cluster_key, return_ax=True)
-    plt.savefig(fig_dir / "co_occurrence.pdf", bbox_inches="tight")
-    plt.close()
+    # 3. Co-occurrence (SKIPPED: too memory-intensive for 268k cells)
+    # log.info("Co-occurrence analysis ...")
+    # sq.gr.co_occurrence(adata, cluster_key=cluster_key)
+    # fig = sq.pl.co_occurrence(adata, cluster_key=cluster_key, return_ax=True)
+    # plt.savefig(fig_dir / "co_occurrence.pdf", bbox_inches="tight")
+    # plt.close()
+    log.info("Co-occurrence analysis skipped (memory-intensive for large datasets).")
 
     # 4. Moran's I (spatial autocorrelation)
     log.info(f"Moran's I (mode={autocorr_cfg['mode']}, n_perms={autocorr_cfg['n_perms']}) ...")

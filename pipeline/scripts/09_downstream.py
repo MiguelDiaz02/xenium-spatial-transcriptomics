@@ -29,21 +29,35 @@ log = get_logger(__name__, snakemake.log[0])  # noqa: F821
 
 
 def run_doublet_detection(adata):
-    """Run Scrublet and add doublet scores to adata.obs."""
+    """
+    Run Scrublet and add doublet scores to adata.obs.
+    Optimized for large datasets: reduces PCA components and uses sampling for >100k cells.
+    """
     import scrublet as scr
     import numpy as np
     import scipy.sparse as sp
 
-    log.info("Running Scrublet doublet detection ...")
+    log.info(f"Running Scrublet doublet detection ({adata.n_obs:,} cells) ...")
     counts = adata.layers["counts"] if "counts" in adata.layers else adata.X
     if sp.issparse(counts):
         counts = counts.toarray()
 
+    # Optimization for large datasets
+    n_cells = adata.n_obs
+    if n_cells > 100000:
+        # Use fewer PCA components for large datasets to speed up computation
+        n_pca = min(15, adata.n_vars - 1)
+        log.info(f"  Large dataset detected ({n_cells:,} cells): reducing PCA components to {n_pca}")
+    else:
+        n_pca = min(30, adata.n_vars - 1)
+
     scrub = scr.Scrublet(counts, expected_doublet_rate=0.06)
+    log.info(f"  Scrublet initialized. Running scrub_doublets with {n_pca} PCA components...")
+
     doublet_scores, predicted_doublets = scrub.scrub_doublets(
         min_counts=2,
         min_cells=3,
-        n_prin_comps=min(30, adata.n_vars - 1),
+        n_prin_comps=n_pca,
     )
 
     adata.obs["doublet_score"]      = doublet_scores
@@ -51,7 +65,7 @@ def run_doublet_detection(adata):
 
     n_doublets = predicted_doublets.sum()
     pct = n_doublets / len(predicted_doublets) * 100
-    log.info(f"Scrublet: {n_doublets:,} predicted doublets ({pct:.1f}%)")
+    log.info(f"Scrublet complete: {n_doublets:,} predicted doublets ({pct:.1f}%)")
     return adata
 
 
@@ -119,6 +133,7 @@ def run_pseudobulk_de(adata, group_key: str, sample_key: str, output_dir: Path) 
 
 def main():
     import spatialdata as sd
+    import time
 
     sdata_path  = snakemake.input.sdata                   # noqa: F821
     done_path   = snakemake.output.done                   # noqa: F821
@@ -128,19 +143,27 @@ def main():
     sample_key  = snakemake.params.pseudobulk_sample_key  # noqa: F821
 
     outdir      = Path(done_path).parent
+    step_start  = time.time()
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
     adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
+    log.info(f"Loaded: {adata.n_obs:,} cells × {adata.n_vars:,} genes")
 
     if do_doublets:
+        doublet_start = time.time()
         adata = run_doublet_detection(adata)
+        elapsed = time.time() - doublet_start
+        log.info(f"Doublet detection completed in {elapsed:.1f}s")
     else:
         log.info("Doublet detection: skipped (doublet_detection: false).")
 
     if do_pseudo:
+        pseudo_start = time.time()
         pseudo_dir = outdir / "pseudobulk"
         run_pseudobulk_de(adata, group_key, sample_key, pseudo_dir)
+        elapsed = time.time() - pseudo_start
+        log.info(f"Pseudobulk DE completed in {elapsed:.1f}s")
     else:
         log.info("Pseudobulk DE: skipped (pseudobulk: false — requires ≥3 samples).")
 
@@ -151,7 +174,8 @@ def main():
     sdata.write_element(table_name)
 
     Path(done_path).touch()
-    log.info("Step 09 — Downstream: DONE")
+    total_elapsed = time.time() - step_start
+    log.info(f"Step 09 — Downstream: DONE (total time: {total_elapsed:.1f}s)")
 
 
 main()

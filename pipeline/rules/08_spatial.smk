@@ -20,5 +20,8 @@ rule spatial:
     log:
         str(OUTDIR / "logs" / "08_spatial.log"),
     threads: config["spatial"]["spatial_autocorr"]["n_jobs"]
+    resources:
+        mem_mb = 32000,       # 32 GB for neighborhood enrichment permutations
+        runtime = 3600        # 1 hour timeout (neighborhood enrichment is compute-intensive)
     script:
         "../scripts/08_spatial.py"

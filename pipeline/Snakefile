@@ -70,6 +70,9 @@ include: "rules/06_annotation.smk"
 include: "rules/07_denoising.smk"
 include: "rules/08_spatial.smk"
 include: "rules/09_downstream.smk"
+include: "rules/10_visualize.smk"
+include: "rules/11_analysis.smk"
+include: "rules/12_export.smk"
 
 # ─── Final targets ────────────────────────────────────────────────────────────
 def final_targets(wildcards):
@@ -83,6 +86,14 @@ def final_targets(wildcards):
     # Add downstream if enabled
     if config["run"].get("downstream", True):
         targets.append(str(OUTDIR / "09_downstream.done"))
+    # Add optional extended steps (visualization, analysis, export)
+    extended = config.get("extended_steps", {})
+    if extended.get("visualization", True):
+        targets.append(str(OUTDIR / "10_visualize.done"))
+    if extended.get("extended_analysis", True):
+        targets.append(str(OUTDIR / "11_analysis.done"))
+    if extended.get("export", True):
+        targets.append(str(OUTDIR / "12_export.done"))
     # Add comparison if enabled
     if config["segmentation"].get("run_comparison", False):
         targets.append(str(OUTDIR / "02_segmentation_comparison.html"))

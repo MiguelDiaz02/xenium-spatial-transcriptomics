@@ -94,6 +94,23 @@ All steps read from and write back to `results/sdata.zarr`.
 Each script only writes the elements it modifies (using `sdata.write_element()`).
 Done files (`results/NN_stepname.done`) track completion for Snakemake.
 
+### Step 09 (Downstream) Performance Notes
+
+**Doublet detection (Scrublet)** is computationally intensive, especially for large datasets.
+
+- **Small datasets (<50k cells)**: ~5–10 minutes
+- **Medium datasets (50k–100k)**: ~15–30 minutes
+- **Large datasets (>100k cells, e.g., 268k)**: 45–90+ minutes
+
+**Optimizations applied** (as of 2026-04-23):
+1. Reduced PCA components from 30 → 15 for datasets > 100k cells (trades marginal accuracy for speed)
+2. Timeout increased to 3600s (1 hour) and memory to 32 GB
+3. Progress logging added to monitor execution
+
+**Tuning for future datasets:**
+- If a dataset is >200k cells and Scrublet still times out, reduce PCA further (e.g., `n_pca = 10`)
+- For rapid prototyping, set `doublet_detection: false` in config and add doublets later as an optional refinement step
+
 ### Layer conventions (critical)
 
 | Layer | Content | Used by |

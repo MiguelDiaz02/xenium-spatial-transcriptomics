@@ -19,6 +19,9 @@ if config["run"]["downstream"]:
         log:
             str(OUTDIR / "logs" / "09_downstream.log"),
         threads: 4
+        resources:
+            mem_mb = 32000,       # 32 GB (Scrublet with large datasets needs more memory)
+            runtime = 3600        # 60 min timeout (large datasets like 268k cells need time for Scrublet)
         script:
             "../scripts/09_downstream.py"
 else:

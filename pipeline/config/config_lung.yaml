@@ -14,7 +14,7 @@ data:
 run:
   denoising_resolvi: false    # false → skip ResolVI (requires rapids_singlecell), use normalized counts
   integration: false           # true → run Harmony/scVI (multi-sample only)
-  spatial_analysis: false      # false → skip Squidpy spatial analysis (complex dependencies)
+  spatial_analysis: true       # true → enable Squidpy spatial analysis (now optimized)
   downstream: true             # pseudobulk + doublet detection
   muspan: false                # requires separate MuSpAn install
 
@@ -96,7 +96,7 @@ spatial:
   n_neighs: 10
   coord_type: generic           # "generic" (centroids) | "grid"
   cluster_key: cell_type        # column used for enrichment / co-occurrence
-  n_perms_enrichment: 1000
+  n_perms_enrichment: 250       # Reduced: 268k cells @ 15 clusters (1000 too intensive)
   spatial_autocorr:
     mode: moran
     n_perms: 100
@@ -108,3 +108,9 @@ downstream:
   pseudobulk: false             # requires ≥3 samples; set true for multi-sample
   pseudobulk_group_key: cell_type
   pseudobulk_sample_key: sample
+
+# ─── Extended Analysis (Visualization, Analysis, Export) ─────────────────────
+extended_steps:
+  visualization: true           # Generate publication-quality figures
+  extended_analysis: true       # Compute cell-type specific spatial patterns
+  export: true                  # Package results in multiple formats
