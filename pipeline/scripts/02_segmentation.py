@@ -50,22 +50,40 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
         log.info("Cellpose: using DAPI morphology_focus image")
         img_element = sdata["morphology_focus"]
 
-    # Extract numpy array (take first z/c slice at full resolution)
-    img_np = np.array(img_element.data[0])   # shape: (Y, X) or (C, Y, X)
+    # Extract numpy array at full resolution (s0).
+    # img_element may be a DataTree (multiscale) or a DataArray.
+    import xarray as xr
+    if hasattr(img_element, "ds"):  # DataTree — spatialdata multiscale
+        scale0 = img_element["scale0"].ds
+        img_da = next(iter(scale0.data_vars.values()))
+    elif isinstance(img_element, xr.DataArray):
+        img_da = img_element
+    else:
+        img_da = img_element["scale0"]
+    img_np = np.array(img_da.data)   # shape: (C, Y, X) or (Y, X)
     if img_np.ndim == 3:
         img_np = img_np[0]   # take first channel
 
     log.info(f"Image shape: {img_np.shape}, dtype: {img_np.dtype}")
 
-    # Run Cellpose
+    # Run Cellpose v3+ (CellposeModel) with tiling for large images
     log.info(f"Running Cellpose (model={model_type}, gpu={gpu}) ...")
-    model  = models.Cellpose(gpu=gpu, model_type=model_type)
+    model = models.CellposeModel(gpu=gpu, pretrained_model=model_type)
+
+    # Get tiling params from config (with defaults)
+    tile_size = params.get("tile_size", 2048)
+    stitch_thr = params.get("stitch_threshold", 0.1)
+
+    log.info(f"Cellpose tiling: tile_size={tile_size}px, stitch_threshold={stitch_thr}")
     masks, flows, styles = model.eval(
         img_np,
         diameter=diameter,
-        channels=[0, 0],         # grayscale
+        channels=None,           # single-channel grayscale
         flow_threshold=flow_thr,
         cellprob_threshold=cellprob,
+        tile=True,               # enable native Cellpose tiling
+        bsize=tile_size,         # tile size in pixels (2048×2048)
+        stitch_threshold=stitch_thr,  # threshold for stitching tiles together
     )
 
     n_cells = int(masks.max())

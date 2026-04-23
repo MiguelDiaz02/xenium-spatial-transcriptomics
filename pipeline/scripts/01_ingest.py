@@ -88,7 +88,6 @@ def main():
     sdata = spatialdata_io.xenium(
         path=str(xenium_dir),
         n_jobs=n_jobs,
-        imread_kwargs={"level": 0},   # full resolution DAPI
     )
     log.info(f"SpatialData loaded: {sdata}")
 
@@ -98,7 +97,7 @@ def main():
         try:
             from spatialdata_io import xenium_aligned_image
             he_element = xenium_aligned_image(
-                path=he_image_path,
+                image_path=he_image_path,
                 alignment_file=he_align_path,
             )
             sdata["he_image"] = he_element

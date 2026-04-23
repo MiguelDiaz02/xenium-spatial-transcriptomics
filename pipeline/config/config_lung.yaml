@@ -25,12 +25,15 @@ segmentation:
     min_transcripts_for_baysor: 100   # median tx/cell required for Baysor
     min_genes_for_baysor: 500         # panel size required for Baysor
   cellpose:
-    model: nuclei              # "nuclei" | "cyto2" | "cyto3" | path to custom
+    model: cyto2               # "nuclei" | "cyto2" | "cyto3" | path to custom (cyto2 best for H&E)
     diameter: null             # null → auto-estimate
     flow_threshold: 0.4
     cellprob_threshold: 0.0
     use_he: true               # use H&E instead of DAPI if available
     gpu: true
+    tile_size: 2048            # tile size in pixels for tiling (2048×2048)
+    tile_overlap: 256          # overlap between tiles to avoid edge artifacts
+    stitch_threshold: 0.1      # threshold for Cellpose native stitching (0.0-1.0)
   baysor:
     # REQUIRES Julia + Baysor installed (see envs/xenium_pipeline.yaml)
     min_molecules_per_cell: 10

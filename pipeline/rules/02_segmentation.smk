@@ -21,6 +21,7 @@ rule segmentation:
     threads: 8
     resources:
         gpu = 1,
+        mem_mb = 16000,
     script:
         "../scripts/02_segmentation.py"
 
