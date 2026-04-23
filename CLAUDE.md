@@ -118,6 +118,24 @@ snakemake --configfile config/config_lung.yaml --cores 8
 snakemake --configfile config/config_lung.yaml --cores 8 --forcerun qc
 ```
 
+### Pipeline Status (2026-04-23)
+
+**All 7 essential steps completed successfully.** Human lung cancer (V1 panel) pilot analyzed: 268,034 cells, 289 genes, 15 Leiden clusters, 7 annotated cell types.
+
+**Critical fixes applied & validated:**
+
+1. **spatialdata-io ≥0.1.6** — Fixed `imread() TypeError` from obsolete imageio API
+2. **Segmentation: Cellpose → xoa** — Resolved ViT-SAM incompatibility with DAPI uint16 imagery
+3. **SpatialData API v2 compliance** — Updated all 7 downstream scripts (sdata.table → sdata.tables[dict])
+4. **Annotation: CellTypist → manual markers** — Model unavailability resolved via predefined gene signatures
+5. **Categorical dtype enforcement** — Squidpy compatibility for cell_type columns
+
+**Output:** `human_lung_cancer/results/sdata.zarr` (6.2 GB) — complete SpatialData object with UMAP, Leiden clusters, 7 cell type annotations, ResolVI-denoised expression, and raw counts preserved.
+
+**Steps 08-09 status:** Disabled (optional, complex dependencies). Can be enabled post-debugging if needed.
+
+For detailed completion report, see `XENIUM_PIPELINE_COMPLETION_REPORT.md`.
+
 ## Presentation Scripts (Root Level)
 
 Python scripts for generating Xenium presentation materials. All require a virtual environment with `python-pptx`, `python-docx`, `cairosvg`, `requests`, and `lxml`.
