@@ -33,7 +33,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     # Clip n_pcs to available genes
     n_pcs = min(n_pcs, adata.n_vars - 1)
@@ -51,10 +51,11 @@ def main():
     n_clusters = adata.obs["leiden"].nunique()
     log.info(f"Leiden: {n_clusters} clusters detected.")
 
-    sdata.table = adata
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata
     log.info("Writing table with embeddings to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info("Step 05 — Reduction: DONE")

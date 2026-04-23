@@ -131,7 +131,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     if do_doublets:
         adata = run_doublet_detection(adata)
@@ -144,10 +144,11 @@ def main():
     else:
         log.info("Pseudobulk DE: skipped (pseudobulk: false — requires ≥3 samples).")
 
-    sdata.table = adata
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata
     log.info("Writing downstream results to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info("Step 09 — Downstream: DONE")

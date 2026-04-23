@@ -157,7 +157,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     log.info("Computing QC metrics ...")
     adata = compute_qc_metrics(adata, sdata)
@@ -169,11 +169,12 @@ def main():
     log.info("Building QC report ...")
     build_qc_report(adata_before, adata_after, report_path, params)
 
-    # Update sdata.table with filtered cells and write back
-    sdata.table = adata_after
+    # Update sdata table with filtered cells and write back
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata_after
     log.info("Writing filtered table back to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info("Step 03 — QC: DONE")

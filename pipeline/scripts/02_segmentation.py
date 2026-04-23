@@ -59,11 +59,20 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
         img_da = img_element
     else:
         img_da = img_element["scale0"]
-    img_np = np.array(img_da.data)
+
+    # Materialize Dask arrays if needed
+    img_data = img_da.data
+    if hasattr(img_data, 'compute'):
+        img_data = img_data.compute()
+    img_np = np.array(img_data)
     if img_np.ndim == 3:
         img_np = img_np[0]
 
     log.info(f"Image shape: {img_np.shape}, dtype: {img_np.dtype}")
+
+    # Keep uint16 native - Cellpose can handle it
+    if img_np.dtype == np.uint16:
+        log.info(f"Using uint16 native: min/max = {img_np.min()}/{img_np.max()}")
 
     # Manual tiling: Cellpose 4.x doesn't support tile=True
     tile_size = params.get("tile_size", 2048)
@@ -77,13 +86,19 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
     masks_combined = np.zeros((h, w), dtype=np.uint32)
     cell_id_offset = 0
 
-    # Compute tile boundaries
-    y_starts = list(range(0, h, tile_size - overlap))
-    if y_starts[-1] + tile_size < h:
-        y_starts.append(h - tile_size)
-    x_starts = list(range(0, w, tile_size - overlap))
-    if x_starts[-1] + tile_size < w:
-        x_starts.append(w - tile_size)
+    # Compute tile boundaries - use stride without overlap to avoid irregular edge tiles
+    # This ensures all tiles are full-sized except possibly the last one in each dimension
+    stride = tile_size - overlap
+    y_starts = list(range(0, h - tile_size + 1, stride))
+    x_starts = list(range(0, w - tile_size + 1, stride))
+
+    # Add final tile if there's remaining space and it wouldn't overlap with the previous one
+    if len(y_starts) == 0 or y_starts[-1] + stride < h:
+        if h > tile_size:  # Only add if image is larger than tile
+            y_starts.append(h - tile_size)
+    if len(x_starts) == 0 or x_starts[-1] + stride < w:
+        if w > tile_size:  # Only add if image is larger than tile
+            x_starts.append(w - tile_size)
 
     n_tiles = len(y_starts) * len(x_starts)
     log.info(f"Processing {n_tiles} tiles ({len(y_starts)}×{len(x_starts)})")
@@ -95,17 +110,49 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
             x_end = min(x_start + tile_size, w)
             tile_img = img_np[y_start:y_end, x_start:x_end]
 
-            log.info(f"  Tile [{y_start}:{y_end}, {x_start}:{x_end}] shape {tile_img.shape}")
+            # Skip only completely empty tiles
+            if tile_img.max() == 0:
+                log.info(f"  Tile [{y_start}:{y_end}, {x_start}:{x_end}] SKIPPED (empty)")
+                continue
+
+            log.info(f"  Tile [{y_start}:{y_end}, {x_start}:{x_end}] shape {tile_img.shape}, signal max={int(tile_img.max())}")
+
+            # Pad tile to standard size if needed (Cellpose doesn't handle irregular sizes well)
+            tile_for_eval = tile_img
+            needs_padding = False
+            if tile_img.shape != (tile_size, tile_size):
+                needs_padding = True
+                pad_y = tile_size - tile_img.shape[0]
+                pad_x = tile_size - tile_img.shape[1]
+                tile_for_eval = np.pad(tile_img, ((0, pad_y), (0, pad_x)), mode='constant', constant_values=0)
+                log.info(f"    Padded from {tile_img.shape} to {tile_for_eval.shape}")
 
             # Run Cellpose on tile
-            masks_tile, _, _ = model.eval(
-                tile_img,
-                diameter=diameter,
-                channels=None,
-                flow_threshold=flow_thr,
-                cellprob_threshold=cellprob,
-                bsize=512,  # internal tiling for Cellpose
-            )
+            try:
+                masks_tile_full, _, _ = model.eval(
+                    tile_for_eval,
+                    diameter=diameter,
+                    channels=None,
+                    flow_threshold=flow_thr,
+                    cellprob_threshold=cellprob,
+                    bsize=512,  # internal tiling for Cellpose
+                )
+
+                # Crop masks back to original tile size if we padded
+                if needs_padding:
+                    masks_tile = masks_tile_full[:tile_img.shape[0], :tile_img.shape[1]]
+                else:
+                    masks_tile = masks_tile_full
+            except Exception as e:
+                log.warning(f"    Cellpose eval failed for this tile: {type(e).__name__}: {e}")
+                log.warning(f"    Skipping this tile")
+                continue
+
+            n_cells_tile = int(masks_tile.max())
+            if n_cells_tile == 0:
+                log.info(f"    → 0 cells detected")
+            else:
+                log.info(f"    → {n_cells_tile} cells detected")
 
             # Reindex mask labels to avoid collisions
             masks_tile[masks_tile > 0] += cell_id_offset
@@ -144,10 +191,14 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
             polygons.append(poly)
             cell_ids.append(str(region.label))
 
-    gdf = gpd.GeoDataFrame({"geometry": polygons}, index=cell_ids)
-    shapes = ShapesModel.parse(gdf)
-    sdata["cell_boundaries_cellpose"] = shapes
-    log.info(f"Stored {len(polygons):,} Cellpose polygons in sdata['cell_boundaries_cellpose']")
+    if len(polygons) == 0:
+        log.warning("No polygons created (no cells detected). Skipping shape storage.")
+    else:
+        gdf = gpd.GeoDataFrame({"geometry": polygons}, index=cell_ids)
+        shapes = ShapesModel.parse(gdf)
+        sdata["cell_boundaries_cellpose"] = shapes
+        log.info(f"Stored {len(polygons):,} Cellpose polygons in sdata['cell_boundaries_cellpose']")
+
     return sdata
 
 
@@ -260,9 +311,12 @@ def main():
     else:
         raise ValueError(f"Unknown segmentation method: {method!r}")
 
-    # Write only the new shapes element back to the zarr store
-    log.info(f"Writing {new_element} to zarr store ...")
-    sdata.write_element(new_element)
+    # Write only the new shapes element back to the zarr store (if it was created)
+    if new_element in sdata:
+        log.info(f"Writing {new_element} to zarr store ...")
+        sdata.write_element(new_element)
+    else:
+        log.warning(f"{new_element} was not created (no cells detected), skipping write.")
 
     Path(done_path).touch()
     log.info(f"Step 02 — Segmentation ({method.upper()}): DONE")

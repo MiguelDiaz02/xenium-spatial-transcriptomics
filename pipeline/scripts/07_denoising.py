@@ -70,7 +70,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     if "counts" not in adata.layers:
         raise RuntimeError(
@@ -115,10 +115,11 @@ def main():
     log.info("Raw counts layer preserved: ✓")
     log.info(f"Denoised layer added: shape {adata.layers['denoised'].shape}")
 
-    sdata.table = adata
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata
     log.info("Writing denoised table to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info("Step 07 — ResolVI denoising: DONE")

@@ -61,7 +61,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     if cluster_key not in adata.obs:
         log.warning(f"'{cluster_key}' not in adata.obs — falling back to 'leiden'.")
@@ -129,10 +129,11 @@ def main():
         top_genes.to_csv(fig_dir / "top_spatial_genes_moranI.csv")
 
     # 5. Save updated adata
-    sdata.table = adata
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata
     log.info("Writing spatial results to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info(f"Figures saved to {fig_dir}")

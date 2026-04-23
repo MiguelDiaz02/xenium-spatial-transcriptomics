@@ -35,7 +35,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     # 1. Preserve raw counts
     if "counts" not in adata.layers:
@@ -64,10 +64,11 @@ def main():
     else:
         log.info(f"Skipping HVG selection (panel has {n_genes} genes; select_hvg={select_hvg}).")
 
-    sdata.table = adata
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata
     log.info("Writing preprocessed table to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info("Step 04 — Preprocess: DONE")

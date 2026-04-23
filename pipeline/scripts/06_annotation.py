@@ -110,7 +110,7 @@ def main():
 
     log.info(f"Loading SpatialData from {sdata_path} ...")
     sdata = sd.read_zarr(sdata_path)
-    adata = sdata.table
+    adata = sdata.tables[list(sdata.tables.keys())[0]]  # Get first (usually only) table
 
     if "leiden" not in adata.obs:
         raise RuntimeError("Leiden clusters not found. Run step 05 (reduction) first.")
@@ -123,10 +123,11 @@ def main():
         raise ValueError(f"Unknown annotation method: {method!r}. "
                          "Choose 'celltypist' or 'manual'.")
 
-    sdata.table = adata
+    table_name = list(sdata.tables.keys())[0]
+    sdata.tables[table_name] = adata
     log.info("Writing annotated table to zarr store ...")
-    sdata.delete_element_from_disk("table")
-    sdata.write_element("table")
+    sdata.delete_element_from_disk(table_name)
+    sdata.write_element(table_name)
 
     Path(done_path).touch()
     log.info("Step 06 — Annotation: DONE")

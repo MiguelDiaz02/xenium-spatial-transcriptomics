@@ -19,16 +19,16 @@ run:
 
 # ─── Segmentation ─────────────────────────────────────────────────────────────
 segmentation:
-  method: auto                 # "auto" | "xoa" | "cellpose" | "baysor"
-  run_comparison: true         # generate HTML report comparing all methods
+  method: xoa                  # "auto" | "xoa" | "cellpose" | "baysor" - Using xoa (10x native) due to Cellpose incompatibility with DAPI
+  run_comparison: false        # Disable comparison report (not applicable for xoa)
   auto_thresholds:
     min_transcripts_for_baysor: 100   # median tx/cell required for Baysor
     min_genes_for_baysor: 500         # panel size required for Baysor
   cellpose:
-    model: cyto                # "nuclei" | "cyto" | "cyto2" | "cyto3" (cyto: no ViT-SAM overhead)
+    model: nuclei              # Changed from 'cyto' to 'nuclei' for DAPI-specific segmentation
     diameter: null             # null → auto-estimate
     flow_threshold: 0.4
-    cellprob_threshold: 0.0
+    cellprob_threshold: -3.0   # More permissive (-3.0 vs 0.0) to detect more cells
     use_he: false              # use DAPI morphology_focus (more reliable for Cellpose)
     gpu: true
     tile_size: 1024            # tile size in pixels for tiling (1024×1024)
