@@ -31,8 +31,8 @@ segmentation:
     cellprob_threshold: 0.0
     use_he: true               # use H&E instead of DAPI if available
     gpu: true
-    tile_size: 2048            # tile size in pixels for tiling (2048×2048)
-    tile_overlap: 256          # overlap between tiles to avoid edge artifacts
+    tile_size: 1024            # tile size in pixels for tiling (1024×1024, ViT-SAM compatible)
+    tile_overlap: 128          # overlap between tiles to avoid edge artifacts
     stitch_threshold: 0.1      # threshold for Cellpose native stitching (0.0-1.0)
   baysor:
     # REQUIRES Julia + Baysor installed (see envs/xenium_pipeline.yaml)
