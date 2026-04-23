@@ -25,8 +25,8 @@ log = get_logger(__name__, snakemake.log[0])  # noqa: F821
 
 def run_cellpose(sdata, params: dict, he_image_path: str):
     """
-    Segment cells using Cellpose on DAPI (or H&E if available and use_he=True).
-
+    Segment cells using Cellpose with manual tiling for large images.
+    Cellpose 4.x doesn't support tile= parameter, so we tile manually.
     Returns updated SpatialData with 'cell_boundaries_cellpose' shape element.
     """
     from cellpose import models
@@ -38,11 +38,11 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
     use_he   = params.get("use_he", True) and Path(he_image_path).exists() and "he_image" in sdata
     gpu      = params.get("gpu", True)
     model_type = params.get("model", "nuclei")
-    diameter   = params.get("diameter") or None  # None → auto-estimate
+    diameter   = params.get("diameter") or None
     flow_thr   = params.get("flow_threshold", 0.4)
     cellprob   = params.get("cellprob_threshold", 0.0)
 
-    # Select image to segment
+    # Select image
     if use_he and "he_image" in sdata:
         log.info("Cellpose: using H&E image")
         img_element = sdata["he_image"]
@@ -51,43 +51,75 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
         img_element = sdata["morphology_focus"]
 
     # Extract numpy array at full resolution (s0).
-    # img_element may be a DataTree (multiscale) or a DataArray.
     import xarray as xr
-    if hasattr(img_element, "ds"):  # DataTree — spatialdata multiscale
+    if hasattr(img_element, "ds"):
         scale0 = img_element["scale0"].ds
         img_da = next(iter(scale0.data_vars.values()))
     elif isinstance(img_element, xr.DataArray):
         img_da = img_element
     else:
         img_da = img_element["scale0"]
-    img_np = np.array(img_da.data)   # shape: (C, Y, X) or (Y, X)
+    img_np = np.array(img_da.data)
     if img_np.ndim == 3:
-        img_np = img_np[0]   # take first channel
+        img_np = img_np[0]
 
     log.info(f"Image shape: {img_np.shape}, dtype: {img_np.dtype}")
 
-    # Run Cellpose v3+ (CellposeModel) with tiling for large images
-    log.info(f"Running Cellpose (model={model_type}, gpu={gpu}) ...")
+    # Manual tiling: Cellpose 4.x doesn't support tile=True
+    tile_size = params.get("tile_size", 2048)
+    overlap = params.get("tile_overlap", 256)
+    log.info(f"Manual tiling: tile_size={tile_size}px, overlap={overlap}px")
+
     model = models.CellposeModel(gpu=gpu, pretrained_model=model_type)
 
-    # Get tiling params from config (with defaults)
-    tile_size = params.get("tile_size", 2048)
-    stitch_thr = params.get("stitch_threshold", 0.1)
+    # Create tile grid with overlap
+    h, w = img_np.shape
+    masks_combined = np.zeros((h, w), dtype=np.uint32)
+    cell_id_offset = 0
 
-    log.info(f"Cellpose tiling: tile_size={tile_size}px, stitch_threshold={stitch_thr}")
-    masks, flows, styles = model.eval(
-        img_np,
-        diameter=diameter,
-        channels=None,           # single-channel grayscale
-        flow_threshold=flow_thr,
-        cellprob_threshold=cellprob,
-        tile=True,               # enable native Cellpose tiling
-        bsize=tile_size,         # tile size in pixels (2048×2048)
-        stitch_threshold=stitch_thr,  # threshold for stitching tiles together
-    )
+    # Compute tile boundaries
+    y_starts = list(range(0, h, tile_size - overlap))
+    if y_starts[-1] + tile_size < h:
+        y_starts.append(h - tile_size)
+    x_starts = list(range(0, w, tile_size - overlap))
+    if x_starts[-1] + tile_size < w:
+        x_starts.append(w - tile_size)
 
+    n_tiles = len(y_starts) * len(x_starts)
+    log.info(f"Processing {n_tiles} tiles ({len(y_starts)}×{len(x_starts)})")
+
+    # Process each tile
+    for tile_idx, (y_start) in enumerate(y_starts):
+        for x_start in x_starts:
+            y_end = min(y_start + tile_size, h)
+            x_end = min(x_start + tile_size, w)
+            tile_img = img_np[y_start:y_end, x_start:x_end]
+
+            log.info(f"  Tile [{y_start}:{y_end}, {x_start}:{x_end}] shape {tile_img.shape}")
+
+            # Run Cellpose on tile
+            masks_tile, _, _ = model.eval(
+                tile_img,
+                diameter=diameter,
+                channels=None,
+                flow_threshold=flow_thr,
+                cellprob_threshold=cellprob,
+                bsize=512,  # internal tiling for Cellpose
+            )
+
+            # Reindex mask labels to avoid collisions
+            masks_tile[masks_tile > 0] += cell_id_offset
+            cell_id_offset = int(masks_tile.max())
+
+            # Place in combined mask (overlapping regions: keep largest)
+            mask_region = masks_combined[y_start:y_end, x_start:x_end]
+            # In overlap zones, keep cell with larger label (from newer tiles)
+            new_cells = masks_tile > 0
+            mask_region[new_cells] = masks_tile[new_cells]
+
+    masks = masks_combined
     n_cells = int(masks.max())
-    log.info(f"Cellpose detected {n_cells:,} cells.")
+    log.info(f"Cellpose detected {n_cells:,} cells (after tiling).")
 
     # Convert masks → polygons for ShapesModel
     # Uses regionprops to get contour for each mask label
