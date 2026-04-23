@@ -89,7 +89,7 @@ def run_cellpose(sdata, params: dict, he_image_path: str):
     log.info(f"Processing {n_tiles} tiles ({len(y_starts)}×{len(x_starts)})")
 
     # Process each tile
-    for tile_idx, (y_start) in enumerate(y_starts):
+    for tile_idx, y_start in enumerate(y_starts):
         for x_start in x_starts:
             y_end = min(y_start + tile_size, h)
             x_end = min(x_start + tile_size, w)
