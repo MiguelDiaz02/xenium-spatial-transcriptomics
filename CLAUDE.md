@@ -4,16 +4,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a collection of spatial transcriptomics (ST) analysis resources focused on 10x Genomics Xenium data. The primary codebase is `xenium_code_knowledge/Xenium_5k_analysis_pipeline/`, a reproducible Python pipeline (`recode_st` package). The other subdirectories contain reference codebases, notebooks, and documentation.
+This is a collection of spatial transcriptomics (ST) analysis resources focused on 10x Genomics Xenium data. There are two primary codebases:
 
-## Primary Project: Xenium_5k_analysis_pipeline
+1. **`xenium_code_knowledge/Xenium_5k_analysis_pipeline/`** — Reproducible Python pipeline (`recode_st` package) for modular, reusable ST analysis
+2. **`proyecto_demo_xenium/`** — Snakemake-based pipeline for end-to-end analysis (human lung cancer pilot, scales to liver via config)
+
+Supporting resources: reference codebases (git submodules), scientific papers, gene panel proposals, and presentation materials.
+
+## Primary Project: recode_st (Python Package)
+
+Located in `xenium_code_knowledge/Xenium_5k_analysis_pipeline/`. This is a modular, importable package for ST analysis with full test coverage and documentation.
 
 ### Setup
 
 ```bash
 cd xenium_code_knowledge/Xenium_5k_analysis_pipeline
 
-# Conda (recommended)
+# Conda (recommended; Python 3.10+)
 conda env create -f environment.yml
 conda activate xenium_5k_venv
 pip install --no-build-isolation --no-deps -e .
@@ -22,67 +29,168 @@ pip install --no-build-isolation --no-deps -e .
 python -m venv recode_st && source recode_st/bin/activate
 pip install -r requirements.txt && pip install -e .
 
-# Dev dependencies
-make install-dev
+# Dev dependencies + docs
+pip install -e .[dev]
+# or: make install-dev
 ```
 
-### Common Commands
+### Development Workflow
 
 ```bash
-# Run tests
+# Pre-commit hooks (runs ruff, format, markdown lint, YAML format on commit)
+pre-commit install
+# To bypass in a pinch: git commit --no-verify (not recommended)
+
+# Tests (must activate venv first)
 pytest tests/
+pytest tests/test_config.py                        # Single file
 pytest -v -p no:warnings --cov=src --cov-report=html --doctest-modules
 
-# Run a single test file
-pytest tests/test_config.py
-
-# Docs server
-make serve   # mkdocs at localhost:8000
-
-# Lint (ruff)
+# Lint & format (ruff; configured in pyproject.toml)
 ruff check src/
 ruff format src/
+ruff check --fix src/      # Auto-fix imports, upgrades, etc.
+
+# Docs server (mkdocs at localhost:8000)
+make serve
 ```
 
 ### Architecture
 
-The pipeline is in `src/recode_st/` and follows a sequential analysis workflow:
+Pipeline stages in `src/recode_st/`:
 
-1. **Entry & Config** — `__main__.py` orchestrates the pipeline; `config.py` uses Pydantic for typed configuration
-2. **Ingest** — `format_data.py` converts Xenium output → SpatialData Zarr store; `subsample_data.py` for downsampling
+1. **Entry & Config** — `__main__.py` orchestrates; `config.py` uses Pydantic for typed configuration
+2. **Ingest** — `format_data.py` (Xenium output → SpatialData Zarr); `subsample_data.py` for downsampling
 3. **QC** — `qc.py` computes and filters quality metrics
 4. **Dimensionality reduction & clustering** — `dimension_reduction.py` (PCA/UMAP/Leiden)
 5. **Annotation** — `annotate.py` for cell-type labeling
 6. **Integration** — `integrate_scvi.py` (scVI-tools), `integrate_ingest.py` (scanpy ingest)
-7. **Spatial analysis** — `spatial_statistics.py` (Squidpy), `muspan.py` / `ms_spatial_graph.py` / `ms_spatial_stat.py` (MuSpAn)
+7. **Spatial analysis** — `spatial_statistics.py` (Squidpy), `muspan.py` / `ms_spatial_graph.py` / `ms_spatial_stat.py` (MuSpAn, optional)
 8. **Visualization** — `view_images.py` for spatial image overlays
-9. **Downstream** — `drug2cell.py`, `doublet_identification.py`, `psuedobulk.py`, `denoise_resolvi.py`
+9. **Downstream** — `drug2cell.py`, `doublet_identification.py`, `pseudobulk.py`, `denoise_resolvi.py`
 
-Key data format: **SpatialData** (Zarr-backed). All intermediate and final results are stored as `SpatialData` objects.
+**Data format:** All intermediate and final results are **SpatialData** objects (Zarr-backed).
 
-### Dependencies to know
+### Key Dependencies
 
-- `spatialdata` / `spatialdata-io` — core data format
+- `spatialdata` / `spatialdata-io` — core spatial data format
 - `scanpy` + `anndata` — single-cell analysis
 - `squidpy` — spatial statistics
-- `torch` — required by scVI and ResolVI
-- `MuSpAn` — optional; controls spatial graph/statistics modules
+- `torch` — required by scVI-tools and ResolVI
+- `MuSpAn` — optional; for multiscale spatial analysis (see below)
 
-## Other Codebases (reference/learning)
+### MuSpAn (Optional Spatial Graph Module)
+
+To enable MuSpAn-based spatial analysis:
+
+```bash
+pip install -e ".[muspan]"
+# or manually:
+pip install -r requirements-muspan.txt
+```
+
+MuSpAn installation is non-standard; if it fails, debug with:
+```bash
+pip install --upgrade pip
+pip install --no-cache-dir -e ".[muspan]"
+```
+
+## Secondary Project: Snakemake Pipeline
+
+Located in `proyecto_demo_xenium/`. A modular, reproducible Snakemake workflow for end-to-end Xenium analysis. Designed as a pilot on human lung cancer (289-gene panel) but scales to liver (5K panel) via config only.
+
+See `proyecto_demo_xenium/CLAUDE.md` for detailed pipeline documentation, including setup, running, adapting to liver data, and layer conventions.
+
+Quick reference:
+
+```bash
+cd proyecto_demo_xenium/pipeline
+conda env create -f envs/xenium_pipeline.yaml
+conda activate xenium_pipeline
+
+# Dry run — check DAG without executing
+snakemake --configfile config/config_lung.yaml -n
+
+# Full run (8 cores)
+snakemake --configfile config/config_lung.yaml --cores 8
+
+# Resume from a specific step
+snakemake --configfile config/config_lung.yaml --cores 8 --forcerun qc
+```
+
+## Presentation Scripts (Root Level)
+
+Python scripts for generating Xenium presentation materials. All require a virtual environment with `python-pptx`, `python-docx`, `cairosvg`, `requests`, and `lxml`.
+
+```bash
+# Set up a simple venv for presentations (if needed)
+python -m venv pptx_env && source pptx_env/bin/activate
+pip install python-pptx python-docx cairosvg requests lxml
+
+# Generate slides (version 1 — dark navy theme, 3 slides)
+python create_xenium_slides.py
+
+# Generate slides (version 2 — redesigned, FlashTalk-MADC inspired)
+python create_xenium_slides_v2.py
+
+# Generate speaker notes / script
+python create_script_docx.py
+
+# Merge multiple PPTX files
+python merge_pptx.py
+```
+
+| Script | Output |
+|--------|--------|
+| `create_xenium_slides.py` | `xenium_presentacion_final.pptx`, `xenium_presentacion_grupo_*.pptx` |
+| `create_xenium_slides_v2.py` | Redesigned PPTX (columns, pill labels, banners) |
+| `create_script_docx.py` | `guion_xenium.docx` (speaker notes) |
+| `merge_pptx.py` | Combined slides (requires multiple PPTX sources) |
+
+Slide preview PNGs are cached in `slide_previews/`.
+
+## Git Submodules (Reference Codebases)
+
+All under `xenium_code_knowledge/` as git submodules. Initialize and update with:
+
+```bash
+# Clone with submodules (first time)
+git clone --recurse-submodules <repo-url>
+
+# Or update existing repo
+git submodule update --init --recursive
+
+# Check status
+git config --file .gitmodules --name-only --get-regexp path
+```
 
 | Directory | Language | Purpose |
 |-----------|----------|---------|
-| `xenium_code_knowledge/sopa/` | Python | Technology-agnostic spatial omics pipeline with CLI (`sopa`) and Snakemake integration |
-| `xenium_code_knowledge/spatialdata_xenium_explorer/` | Python | Convert SpatialData to Xenium Explorer format |
-| `xenium_code_knowledge/Xenium_benchmarking/` | Python | Benchmarking 25+ datasets; `xb` module |
-| `xenium_code_knowledge/XeniumIO/` | R | Bioconductor package for reading Xenium data |
-| `xenium_code_knowledge/XeniumSpatialAnalysis/` | R | Spatial gradient and clustering analysis |
-| `xenium_code_knowledge/liver_ped_map/` | Python/R | Pediatric liver atlas + IFALD spatial analysis |
-| `xenium_code_knowledge/analysis_guides/` | Python/R | Official 10x Genomics tutorial notebooks |
+| `sopa/` | Python | Technology-agnostic spatial omics pipeline with CLI and Snakemake |
+| `spatialdata_xenium_explorer/` | Python | Convert SpatialData → Xenium Explorer format |
+| `Xenium_benchmarking/` | Python | Benchmarking across 25+ datasets; `xb` module |
+| `XeniumIO/` | R | Bioconductor package for reading Xenium data |
+| `XeniumSpatialAnalysis/` | R | Spatial gradient and clustering analysis |
+| `liver_ped_map/` | Python/R | Pediatric liver atlas + IFALD spatial analysis |
+| `analysis_guides/` | Python/R | Official 10x Genomics tutorial notebooks |
+| `spatialdata-notebooks/` | Python | SpatialData community notebooks |
 
-### sopa CLI (for reference)
-```bash
-pip install sopa
-sopa --help
-# Snakemake pipeline: sopa/workflow/
-```
+## Non-code Resources
+
+| Path | Content |
+|------|---------|
+| `xenium_bibliography_knowledge/` | Key papers as PDFs (ST benchmarking, liver atlas, Xenium validation, deconvolution) |
+| `my_xenium_panel_markers/` | Custom Xenium gene panel proposals: lung (immunology-focused) and liver (August 2025) |
+| `my_project_objectives/` | Project proposal PDF (`Anteproyecto_MADC-1.pdf`) |
+| `slides_visual_references/` | Reference PPTX and PDF presentations |
+| `how_to_create_slides/` | Presentation design guides |
+
+## Autonomous Operation Guidelines
+
+When operating autonomously (sol rojo mode):
+- **Data format:** SpatialData (Zarr). Never convert to other formats unless explicitly requested.
+- **Environment:** Activate `xenium_5k_venv` (recode_st) or `xenium_pipeline` (Snakemake) before running code.
+- **Data safety:** No destructive ops on raw data — write all outputs to `results/` or a dedicated output directory.
+- **Failures:** Try one alternative; log errors to `logs/` and continue.
+- **Patterns:** Prefer patterns from `src/recode_st/` (Python) or `pipeline/scripts/` (Snakemake).
+- **Completion:** Write summary to `logs/session_summary_YYYYMMDD.txt`.
