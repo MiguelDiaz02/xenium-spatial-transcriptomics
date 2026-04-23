@@ -54,6 +54,10 @@ def annotate_celltypist(adata, model_name: str, majority_voting: bool):
     if "predicted_labels" in adata.obs:
         adata.obs["cell_type_fine"] = adata.obs["predicted_labels"]
 
+    # Convert to categorical for downstream compatibility
+    adata.obs["cell_type"] = adata.obs["cell_type"].astype("category")
+    adata.obs["cell_type_fine"] = adata.obs["cell_type_fine"].astype("category")
+
     n_types = adata.obs["cell_type"].nunique()
     log.info(f"CellTypist: {n_types} cell types annotated.")
     log.info(adata.obs["cell_type"].value_counts().to_string())
@@ -91,6 +95,10 @@ def annotate_manual(adata, markers: dict[str, list[str]]):
     )
     adata.obs["cell_type"]      = score_df.idxmax(axis=1).values
     adata.obs["cell_type_fine"] = adata.obs["cell_type"]
+
+    # Convert to categorical for downstream compatibility
+    adata.obs["cell_type"] = adata.obs["cell_type"].astype("category")
+    adata.obs["cell_type_fine"] = adata.obs["cell_type_fine"].astype("category")
 
     n_types = adata.obs["cell_type"].nunique()
     log.info(f"Manual annotation: {n_types} cell types assigned.")

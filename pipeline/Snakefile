@@ -73,11 +73,22 @@ include: "rules/09_downstream.smk"
 
 # ─── Final targets ────────────────────────────────────────────────────────────
 def final_targets(wildcards):
-    targets = [str(OUTDIR / "08_spatial.done")]
-    if config["run"]["downstream"]:
+    targets = []
+    # Add denoising if enabled
+    if config["run"].get("denoising_resolvi", True):
+        targets.append(str(OUTDIR / "07_denoising.done"))
+    # Add spatial analysis if enabled
+    if config["run"].get("spatial_analysis", True):
+        targets.append(str(OUTDIR / "08_spatial.done"))
+    # Add downstream if enabled
+    if config["run"].get("downstream", True):
         targets.append(str(OUTDIR / "09_downstream.done"))
-    if config["segmentation"]["run_comparison"]:
+    # Add comparison if enabled
+    if config["segmentation"].get("run_comparison", False):
         targets.append(str(OUTDIR / "02_segmentation_comparison.html"))
+    # Ensure we have at least one target
+    if not targets:
+        targets.append(str(OUTDIR / "06_annotation.done"))
     return targets
 
 rule all:

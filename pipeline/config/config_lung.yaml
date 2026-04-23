@@ -12,8 +12,9 @@ data:
 
 # ─── Module switches ──────────────────────────────────────────────────────────
 run:
-  denoising_resolvi: true     # false → skip ResolVI, use raw counts downstream
+  denoising_resolvi: false    # false → skip ResolVI (requires rapids_singlecell), use normalized counts
   integration: false           # true → run Harmony/scVI (multi-sample only)
+  spatial_analysis: false      # false → skip Squidpy spatial analysis (complex dependencies)
   downstream: true             # pseudobulk + doublet detection
   muspan: false                # requires separate MuSpAn install
 
@@ -64,9 +65,9 @@ reduction:
 
 # ─── Annotation ───────────────────────────────────────────────────────────────
 annotation:
-  method: celltypist            # "celltypist" | "manual" | "scanvi"
-  celltypist_model: Lung_Human_PIP   # swap for Liver_Human_PIP for liver
-  majority_voting: true
+  method: manual                # "celltypist" | "manual" | "scanvi"
+  celltypist_model: ignore      # Not used with manual method
+  majority_voting: false        # Not used with manual method
   # manual marker scoring (used if method: manual or for validation)
   markers:
     Epithelial: [EPCAM, KRT8, KRT18, KRT19]
