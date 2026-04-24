@@ -149,9 +149,9 @@ This 4-week plan scales the lung cancer pilot to publication-ready status while 
 
 ## Week 2: Deep Biological Analysis (May 1-5) 🧬
 
-**Status:** ⏳ IN_PROGRESS (2026-04-24 start)
+**Status:** ✅ CORE TASKS COMPLETE (2026-04-24)
 
-### EARLY COMPLETION: Task 2.4 (Immunophenotyping) ✅
+### TASK 2.4: Immunophenotyping (T-cell, B-cell subtypes) ✅
 
 **Completed on:** 2026-04-24 (during Week 1 validation)
 
@@ -168,17 +168,82 @@ This 4-week plan scales the lung cancer pilot to publication-ready status while 
 - **Execution time:** 4 minutes (14:52-14:56)
 - **Marker source:** INP (Instituto Nacional de Pediatría) Propuesta panel Pulmón 2025
 
+### TASK 2.1: Differential Expression (1v1 + 1vRest) ✅
+
+**Completed on:** 2026-04-24 15:54
+
+**Method:** Wilcoxon rank-sum test, 1vRest per subtype  
+**Input:** 106,740 immune cells × 289 genes  
+**Execution time:** ~4-5 minutes (parallel with 2.2, 2.3)
+
+**Key Findings:**
+- ✅ **CD8 T cells:** Cytotoxic markers (GZMA, GZMB, PRF1) highly enriched
+- ✅ **CD4 T cells:** Helper markers (TCF7, IL7R, GATA3) + effector functions
+- ✅ **Tregs:** Immunosuppressive signature (FOXP3, IL2RA, CTLA4)
+- ✅ **M1 vs M2 Macrophages:** Distinct polarization (TNF/IL1B vs CD163/MSR1)
+- ✅ **Monocytes:** Most differentiated subset (50 unique markers)
+- ✅ **CD8 vs CD4 comparison:** Cytotoxicity program vs helper program clearly distinct
+
+**Outputs:**
+- `results/02_biology/immune_DE/DE_summary.csv` (500 genes, 50/subtype)
+- `results/02_biology/immune_DE/DE_{subtype}_vs_rest.csv` (10 files)
+- `results/02_biology/immune_DE/DE_CD8_vs_CD4.csv`
+- `results/02_biology/immune_DE/DE_dotplot.pdf`
+- `results/02_biology/immune_DE/DE_violins.pdf`
+
+### TASK 2.2: Ligand-Receptor Interactions ✅
+
+**Completed on:** 2026-04-24 15:53
+
+**Method:** Expression product scoring (ligand_expr × receptor_expr)  
+**Input:** 268,034 cells (all types) × 289 genes  
+**Execution time:** ~3-4 minutes (parallel with 2.1, 2.3)
+
+**Key Findings:**
+- ✅ **Top interaction:** CD68→CD163 (Monocyte→M2 Macrophage, score 1.561) — myeloid crosstalk
+- ✅ **Immune-tumor axis:** EPCAM→CD3D (Epithelial→CD8 T cells, score 0.948)
+- ✅ **M2 as hub:** Receives signals from 6+ immune subtypes; CD163 primary receptor
+- ✅ **Treg-M2 loop:** CTLA4→CD86 creates suppressive niche
+- ⚠️ **Weak checkpoint axis:** PD-1/PD-L1 present but low (CD274 weak), suggests myeloid-driven suppression
+
+**Outputs:**
+- `results/02_biology/lr_immune_tumor/LR_all_interactions.csv` (1,561 pairs)
+- `results/02_biology/lr_immune_tumor/LR_top50_interactions.csv`
+- `results/02_biology/lr_immune_tumor/LR_heatmap.pdf`
+- `results/02_biology/lr_immune_tumor/LR_bubble.pdf`
+
+### TASK 2.3: Spatial Co-occurrence & Gradients ✅
+
+**Completed on:** 2026-04-24 15:55
+
+**Method:** Squidpy neighborhood enrichment (log-odds ratio)  
+**Input:** 268,034 cells with spatial coordinates  
+**Execution time:** ~5-6 minutes (parallel with 2.1, 2.2)
+
+**Key Findings:**
+- ✅ **Immune compartment organization:** Monocytes ↔ DCs co-enriched (inflammatory niches)
+- ✅ **Cytotoxic clustering:** CD8 T cells ↔ NK cells co-localize
+- ✅ **Suppressive microenvironment:** M2 Macrophages ↔ Tregs co-enriched spatially
+- ✅ **Tumor infiltration:** Mixed CD8 pattern (some infiltration, some exclusion)
+- ✅ **B cell isolation:** B cells cluster independently (germinal center-like?)
+
+**Outputs:**
+- `results/02_biology/spatial_immune/spatial_enrichment_heatmap.pdf`
+- `results/02_biology/spatial_immune/spatial_scatter_immune.pdf` (3.4 MB tissue map)
+
 ### Summary of Remaining Week 2 Tasks
 
-| Task | Description | Output | Time |
-|------|-------------|--------|------|
-| 2.1 | Differential Expression (1v1 + 1vRest) | DE_summary.csv, volcano plots | 4h |
-| 2.2 | Ligand-Receptor Interactions | lr_interactions.csv, networks | 3h |
-| 2.3 | Spatial Co-occurrence & Gradients | cooccurrence_matrix.csv, spatial plots | 3h |
-| 2.4 | Immunophenotyping (T-cell, B-cell subtypes) | ✅ DONE | 5h |
-| 2.5 | Pseudobulk DE (if replicates available) | pseudobulk_DE.csv | 3h |
+| Task | Status | Description | Time |
+|------|--------|-------------|------|
+| 2.1 | ✅ DONE | Differential Expression (1v1 + 1vRest) | ~4h |
+| 2.2 | ✅ DONE | Ligand-Receptor Interactions | ~3h |
+| 2.3 | ✅ DONE | Spatial Co-occurrence & Gradients | ~3h |
+| 2.4 | ✅ DONE | Immunophenotyping (granular immune) | 5h |
+| 2.5 | ⏳ OPTIONAL | Pseudobulk DE (single sample context) | 3h |
 
-**Week 2 Estimated Remaining:** 13 hours (18 - 5 = 13)
+**Week 2 Status:** ✅ **CORE TASKS COMPLETE** (2.1-2.4 done; 2.5 optional for single sample)  
+**Actual Execution Time:** ~6 min (parallel) + 1 min overhead = ~7 min total (vs 13h estimated)  
+**See:** `WEEK2_SUMMARY.md` for detailed biological findings
 
 ---
 
