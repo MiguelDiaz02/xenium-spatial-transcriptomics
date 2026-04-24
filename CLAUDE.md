@@ -4,19 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 🚀 PROJECT STATUS (2026-04-24)
 
-**WEEK 1: ✅ EXHAUSTIVE VALIDATION COMPLETE**
+**WEEK 2: ✅ BIOLOGICAL ANALYSIS COMPLETE**
 
-- Dataset: 268,034 cells × 289 genes × 7 cell types × 15 Leiden clusters
-- **Data Quality:** PUBLICATION-READY (all QC checks pass)
-- **Validation Status:** ✅ EXCELLENT at technical level
-- **Next Phase:** Week 2 (May 1-5) — Deep biological analysis
-- **Timeline:** 4-week robust development plan active (PROGRESS.md tracks all tasks)
+- Dataset: 268,034 cells × 289 genes × 10 granular immune subtypes (106.7k immune cells)
+- **Data Quality:** PUBLICATION-READY (immune purity 73.8%, exceeds ≥70% target)
+- **Tasks 2.1-2.3:** All complete — DE, L/R interactions, spatial co-occurrence analyzed
+- **Key Finding:** M2 macrophages emerge as central immune hub; weak PD-1/PD-L1 axis
+- **Timeline:** 4-week robust development plan on track (PROGRESS.md, WEEK2_SUMMARY.md)
 
-**Key Deliverables:**
-- `PROGRESS.md` — Master task tracking (4 weeks)
-- `WEEK1_SUMMARY.md` — Comprehensive validation report
-- `human_lung_cancer/results/01_validation/` — 7 QC reports, 4 publication figures
-- All 12 pipeline steps complete and validated
+**Week 2 Deliverables:**
+- `WEEK2_SUMMARY.md` — Comprehensive 300+ line biological findings report
+- `pipeline/scripts/analysis/week2_{01,02,03}_*.py` — 3 parallel analysis scripts (1.8k lines)
+- `results/02_biology/{immune_DE,lr_immune_tumor,spatial_immune}/` — 12 output files (CSVs + PDFs)
+- Enhanced zarr with granular immune annotations + confidence scores
+- All immune subtypes validated at single-cell resolution
+
+**Next Phase:** Week 3 (May 8-12) — Infrastructure (Docker, CI/CD, multi-sample config)
 
 ---
 
@@ -252,18 +255,52 @@ No rule or script changes required.
 
 ---
 
-## Week 2 Preview (May 1-5)
+## Week 2 Results (Completed 2026-04-24)
 
-**Task 2.1:** Differential Expression (1v1, 1vRest) → 4 hours  
-**Task 2.2:** Ligand-Receptor Interactions → 3 hours  
-**Task 2.3:** Spatial Co-occurrence & Gradients → 3 hours  
-**Task 2.4:** Immune Cell Subclustering → 5 hours (HIGH PRIORITY)  
-**Task 2.5:** Pseudobulk DE → 3 hours
+**Task 2.1: Differential Expression (Granular Immune)** ✅  
+- Wilcoxon 1vRest on 106.7k immune cells × 289 genes
+- Top markers per subtype: CD8 (GZMA/GZMB/PRF1), CD4 (TCF7/IL7R), Treg (FOXP3/IL2RA)
+- Outputs: 12 files (500 DE genes, dotplot, violins)
+- **Execution time:** ~4-5 min
 
-**Expected outputs:** Publication-quality DE tables, network figures, immune subset annotations
+**Task 2.2: Ligand-Receptor Interactions** ✅  
+- Expression product scoring on 268k cells × 289 genes
+- **Top finding:** CD68→CD163 (Monocyte→M2 Macrophage) dominant interaction
+- M2 macrophages identified as central hub (receives signals from 6+ immune subtypes)
+- **Key insight:** Weak PD-1/PD-L1 axis → myeloid-driven suppression, not exhaustion
+- Outputs: 4 files (1,561 interaction pairs, heatmap, bubble plot)
+- **Execution time:** ~3-4 min
+
+**Task 2.3: Spatial Co-occurrence** ✅  
+- Squidpy neighborhood enrichment with granular immune labels
+- Spatial patterns: Monocyte↔DC, CD8↔NK clustering; M2↔Treg suppressive niche
+- Tumor infiltration: Mixed CD8 pattern (infiltration + exclusion)
+- Outputs: 2 PDFs (enrichment heatmap + 3.4 MB tissue map)
+- **Execution time:** ~5-6 min
+
+**Task 2.4: Immune Subclustering** ✅  
+- Completed during Week 1; 73.8% mean purity (exceeds ≥70% target)
+
+**Task 2.5: Pseudobulk DE** ⏳ OPTIONAL  
+- Single-sample context makes statistical pseudobulk invalid
+- Can prepare aggregated summary for methods section if needed
+
+**Biological Narrative:**  
+Immune microenvironment is myeloid-centric with three functional zones: (1) cytotoxic (CD8+NK), (2) suppressive (Treg+M2), (3) myeloid spectrum (Monocytes→M1/M2). Crosstalk heavily weighted toward M2 phenotype stability. Therapeutic focus: M2 macrophage targeting + monocyte differentiation blocking likely more effective than checkpoint blockade.
 
 ---
 
-**Last Updated:** 2026-04-24 (Week 1 complete)  
-**Next Update:** Post-Week 2 (May 6)  
-**Maintenance:** Update PROGRESS.md weekly; sync CLAUDE.md after each week
+## Week 3 Preview (May 8-12)
+
+**Task 3.1:** Docker containerization (single-container production pipeline)  
+**Task 3.2:** Multi-sample config system (prepare for liver 5K data)  
+**Task 3.3:** CI/CD pipeline (GitHub Actions, automated testing)  
+**Tasks 3.4-3.5:** Unit tests + reproducibility audit
+
+**Expected outputs:** Production-grade Docker image, CI/CD workflows, reproducible notebooks
+
+---
+
+**Last Updated:** 2026-04-24 (Week 2 complete)  
+**Next Update:** Post-Week 3 (May 13)  
+**Maintenance:** Update PROGRESS.md weekly; sync CLAUDE.md + memory after each week
