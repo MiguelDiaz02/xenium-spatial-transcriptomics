@@ -81,6 +81,7 @@ annotation:
     Tumor: [TP63, MKI67, TOP2A]
 
 # ─── Immune Cell Subclustering (Step 06b) ─────────────────────────────────────
+# Markers sourced from: Propuesta panel Pulmón 2025 (custom immunology panel, INMEGEN)
 immune_annotation:
   enabled: true                                # Enable immune subclustering step
   immune_cell_types:                           # Cell types to subset for immune analysis
@@ -93,18 +94,18 @@ immune_annotation:
   n_pcs_immune: 25                             # PCA components (immune subset)
   min_immune_cluster_size: 50                  # Minimum cells per cluster
   validation_threshold: 0.7                    # Min purity for PASS status (0-1)
-  # Granular immune cell type marker panels
+  # Granular immune cell type marker panels (extracted from Xenium immunology panel)
   immune_markers:
-    CD8_T_cell: [CD8A, CD8B, GZMA, GZMB, PRF1]
-    CD4_T_cell: [CD4, IL7R, TCF7, CCR7]
-    Treg: [FOXP3, IL2RA, CTLA4]
-    NK_cell: [GNLY, NKG7, FGFBP2]
-    M1_Macrophage: [IL1B, TNF, IL6, NOS2]
-    M2_Macrophage: [IL10, TGM2, MRC1, ARG1]
-    B_cell: [MS4A1, CD19, IGHM]
-    Plasma_cell: [IGHG1, IGHG3, XBP1]
-    Monocyte: [CD14, LYZ, ITGAM]
-    Dendritic_cell: [CD1C, LAMP3]
+    CD8_T_cell: [GNLY, GZMK, GZMA, GZMB, PRF1, CD8A, CD8B, EOMES, CST7, CXCR6]
+    CD4_T_cell: [TCF7, CCR7, CD4, IL7R, GATA3, NOTCH1]
+    Treg: [CTLA4, IL2RA, FOXP3, CXCL13, IRF4, STAT3]
+    NK_cell: [GNLY, NKG7, CST7, STAT4, CXCL16, KLRB1, KLRD1, KLRK1]
+    M1_Macrophage: [CD44, VCAN, STAT1, TNF, IL6, CXCL1, CXCL5, CCR2, CCR1]
+    M2_Macrophage: [CD163, EGF, FGF2, MRC1, ARG1, IL10]
+    B_cell: [MS4A1, CD19, CD27, SELL, STMN1, MKI67, IGHM]
+    Plasma_cell: [IGHG1, IGHG2, IGHG3, JCHAIN, IGKC, SSR4, DERL3, XBP1]
+    Monocyte: [CD14, CSF1R, CSF1, FCGR3A, C1QB, LILRA5, MIS18BP1, CCR2]
+    Dendritic_cell: [CD1A, CD1C, IRF8, CXCL14, IL23A, PLA2G7, FCER1A, CLEC10A]
 
 # ─── ResolVI denoising ────────────────────────────────────────────────────────
 denoising:

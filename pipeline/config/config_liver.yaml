@@ -80,6 +80,7 @@ annotation:
     NK_cell: [GNLY, NKG7, KLRD1]
 
 # ─── Immune Cell Subclustering (Step 06b) — LIVER-SPECIFIC ─────────────────
+# Markers sourced from: Propuesta panel Xenium Liver August 2025 (INMEGEN liver panel + 5K genes)
 immune_annotation:
   enabled: true                                # Enable immune subclustering
   immune_cell_types:
@@ -91,23 +92,27 @@ immune_annotation:
   n_pcs_immune: 30                             # More PCs for 5K panel
   min_immune_cluster_size: 50
   validation_threshold: 0.7
-  # Liver-specific immune markers (5K panel enables more granularity)
+  # Liver-specific immune and tissue markers (5K panel enables granular resolution)
   immune_markers:
     # T cell subtypes
-    CD8_T_cell: [CD8A, CD8B, GZMA, GZMB, PRF1, PDCD1]
-    CD4_T_cell: [CD4, IL7R, TCF7, CCR7, CTLA4]
-    Treg: [FOXP3, IL2RA, CTLA4, IKZF2]
-    # Macrophage subtypes (liver-specific: Kupffer vs portal)
-    Kupffer_cell: [CD68, MARCO, CLEC4F, VSIG4, CD163]  # Resident liver macrophage
-    Portal_macrophage: [CD68, ITGAM, CCL2, MRC1]       # Infiltrating macrophage
-    # Other myeloid
-    Dendritic_cell: [CD1C, LAMP3, HLA-DRA]
-    Monocyte: [CD14, LYZ, ITGAM, S100A12]
-    NK_cell: [GNLY, NKG7, FGFBP2, NCAM1]
+    CD8_T_cell: [GNLY, GZMK, GZMA, GZMB, PRF1, CD8A, CD8B, EOMES, CXCR6, PDCD1]
+    CD4_T_cell: [TCF7, CCR7, CD4, IL7R, GATA3, NOTCH1]
+    Treg: [CTLA4, IL2RA, FOXP3, CXCL13, IRF4, STAT3]
+    # Macrophage subtypes (liver-resident vs portal infiltrating)
+    Kupffer_cell: [ADGRE1, MARCO, VSIG4, CD163, CD68, CD14, MRC1]  # Resident liver Mφ
+    Portal_macrophage: [CD68, ITGAM, CCR2, MRC1, CD14, CSF1R]      # Infiltrating Mφ
+    # Other immune
+    Dendritic_cell: [CD1C, CD1A, IRF8, CXCL14, IL23A, PLA2G7]
+    Monocyte: [CD14, CSF1R, CSF1, FCGR3A, ITGAM]
+    NK_cell: [GNLY, NKG7, STAT4, CXCL16, KLRB1, KLRD1]
     # B cells
-    B_cell_naive: [MS4A1, CD19, IGHM, IGHD]
-    B_cell_memory: [MS4A1, CD19, IGHG1, CD27]
-    Plasma_cell: [IGHG1, XBP1, IRF4, SDC1]
+    B_cell: [MS4A1, CD19, CD27, SELL, STMN1, IGHM]
+    Plasma_cell: [IGHG1, IGHG2, IGHG3, JCHAIN, IGKC, XBP1, IRF4]
+    # Tissue-specific hepatic cells (from Liver August 2025 panel ADD-ONS)
+    Hepatocyte: [ALB, ASGR1, CPS1, ASS1, TAT, PON1, GLUL, CYP2E1, ADH4, APOA5, AQP9, AR]
+    Cholangiocyte: [KRT19, KRT7, EPCAM, SOX9, SPP1]
+    Stellate_cell: [LRAT, RBP1, ACTA2, COL1A1, COL1A2, PDGFRB]
+    LSEC: [KDR, PECAM1, PLVAP]
 
 # ─── ResolVI denoising ────────────────────────────────────────────────────────
 denoising:

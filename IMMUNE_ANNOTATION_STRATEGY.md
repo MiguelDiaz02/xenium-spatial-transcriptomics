@@ -70,7 +70,10 @@ Output: Enhanced AnnData with granular immune annotation
 
 ### 1.3 Immune Cell Markers by Subtype
 
-Based on 289-gene Xenium v1 panel and literature consensus:
+**Marker source:** Extracted from INMEGEN custom Xenium immunology panels:
+- **Lung panel:** "Propuesta panel Pulmón 2025" — curated immunology-focused panel (289 genes + add-ons)
+- **Liver panel:** "Propuesta panel Xenium Liver August 2025" — hepatology + immunology panel (5K genes)
+- Additional validation: Literature consensus (Zheng et al. 2017, Human Protein Atlas)
 
 #### T Cells & NK Cells
 ```yaml
