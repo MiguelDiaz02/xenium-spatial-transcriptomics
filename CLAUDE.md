@@ -145,13 +145,13 @@ Done files (`results/NN_stepname.done`) track completion for Snakemake.
 
 | Week | Focus | Status | Output |
 |------|-------|--------|--------|
-| **W1** | Validation & QC | ✅ **DONE** | 7 QC reports, validation summary |
-| **W2** | Biology | ⏳ May 1-5 | DE, L/R interactions, immune subclustering |
+| **W1** | Validation & QC | ✅ **COMPLETE** | 7 QC reports, validation summary, **immune subclustering validated** |
+| **W2** | Biology | 🚀 **EARLY START** | Task 2.4 (immune) ✅ DONE; remaining: DE, L/R, spatial (13h) |
 | **W3** | Infrastructure | ⏳ May 8-12 | Docker, CI/CD, multi-sample config |
 | **W4** | Documentation | ⏳ May 15-19 | Methods, figures, reproducible notebook |
 | **Post** | Manuscript | ⏳ May 26+ | Draft Results/Discussion, submission prep |
 
-**Master tracking:** See `PROGRESS.md` for full task matrix (27 tasks total)
+**Master tracking:** See `PROGRESS.md` for full task matrix (27 tasks; 1 completed early = 26 remaining)
 
 ---
 
@@ -163,11 +163,14 @@ Done files (`results/NN_stepname.done`) track completion for Snakemake.
 - **Mitochondrial contamination:** 0.0% (excellent, fresh tissue)
 - **Batch effects:** None detected
 
-### Cell Type Validation (Task 1.2) ⚠️ MODERATE → REFINE
-- **High confidence:** Epithelial, Endothelial, Macrophages (50–60% purity)
-- **Refinement needed:** T-cells, B-cells, NK-cells (15–59% purity)
-  - Root cause: 289-gene panel lacks immune subset markers (CD4, CD8, CD19)
-  - Action for Week 2: Subclustering immunophenotyping (Task 2.4)
+### Cell Type Validation (Task 1.2) ✅ STRONG (Refined via Step 06b)
+- **Global annotation (Step 06):** 7 cell types, 71% purity (moderate, tumor tissue expected)
+- **Granular immune annotation (Step 06b, completed 2026-04-24):** ✅ EXCELLENT
+  - Mean immune purity: **0.738 (73.8%)** — EXCEEDS ≥70% target
+  - 106,740 immune cells annotated with 10 granular subtypes
+  - Confidence: 60.2% PASS (≥0.7), 15.6% REVIEW, 24.2% FAIL
+  - Validation reports: HTML + PDF with 4 publication-quality figures
+  - Root cause solved: INP panel Pulmón 2025 provides rich immune markers for fine-grained resolution
 
 ### Spatial Organization (Task 1.3) ✅ STRONG
 - **Genes with spatial signal:** 266/289 (92%)

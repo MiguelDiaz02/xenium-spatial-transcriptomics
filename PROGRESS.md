@@ -151,17 +151,34 @@ This 4-week plan scales the lung cancer pilot to publication-ready status while 
 
 **Status:** ⏳ IN_PROGRESS (2026-04-24 start)
 
-### Summary of Tasks
+### EARLY COMPLETION: Task 2.4 (Immunophenotyping) ✅
+
+**Completed on:** 2026-04-24 (during Week 1 validation)
+
+**Results:**
+- ✅ **Mean immune cell purity: 0.738 (73.8%)** — EXCEEDS ≥70% target
+- ✅ **Median purity: 0.829** — Excellent granular annotation
+- ✅ **106,740 immune cells** (39.8% of total) annotated with granular subtypes
+- ✅ **10 immune subtypes** assigned: CD8_T, CD4_T, Treg, M1/M2-Macrophage, NK, B, Plasma, Monocyte, Dendritic
+- ✅ **Confidence distribution:** 60.2% PASS, 15.6% REVIEW, 24.2% FAIL
+- **Outputs:** 
+  - Enhanced SpatialData zarr with `cell_type_immune_granular`, `immune_purity`, `immune_confidence`, `leiden_immune`
+  - HTML validation report: `06b_immune_subclustering_report.html`
+  - PDF validation report: `06b_immune_subclustering_report.pdf` (57K, 4 publication-quality figures)
+- **Execution time:** 4 minutes (14:52-14:56)
+- **Marker source:** INP (Instituto Nacional de Pediatría) Propuesta panel Pulmón 2025
+
+### Summary of Remaining Week 2 Tasks
 
 | Task | Description | Output | Time |
 |------|-------------|--------|------|
 | 2.1 | Differential Expression (1v1 + 1vRest) | DE_summary.csv, volcano plots | 4h |
 | 2.2 | Ligand-Receptor Interactions | lr_interactions.csv, networks | 3h |
 | 2.3 | Spatial Co-occurrence & Gradients | cooccurrence_matrix.csv, spatial plots | 3h |
-| 2.4 | Immunophenotyping (T-cell, B-cell subtypes) | immune_subtypes.h5ad, markers.csv | 5h |
+| 2.4 | Immunophenotyping (T-cell, B-cell subtypes) | ✅ DONE | 5h |
 | 2.5 | Pseudobulk DE (if replicates available) | pseudobulk_DE.csv | 3h |
 
-**Estimated Total:** 18 hours
+**Week 2 Estimated Remaining:** 13 hours (18 - 5 = 13)
 
 ---
 
