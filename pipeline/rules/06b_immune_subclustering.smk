@@ -31,7 +31,7 @@ rule immune_subclustering:
         mem_mb = 32000,
         runtime = 300  # 5 minutes (subclustering is fast for immune subset)
     conda:
-        "envs/xenium_pipeline.yaml"
+        "../envs/xenium_pipeline.yaml"
     params:
         immune_types = config.get("immune_annotation", {}).get("immune_cell_types", [
             "T_cell", "B_cell", "Macrophage", "NK_cell", "Mast_cell"

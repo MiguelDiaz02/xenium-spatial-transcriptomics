@@ -184,11 +184,11 @@ def assign_granular_immune_types(adata_immune, markers: Dict[str, List[str]],
 
     # Confidence level (based on purity threshold from config)
     validation_threshold = snakemake.params.validation_threshold  # noqa: F821
-    confidence = pd.Series(index=adata_immune.obs_names, dtype='category')
+    confidence = pd.Series('FAIL', index=adata_immune.obs_names)
     confidence[purity >= validation_threshold] = 'PASS'
     confidence[(purity >= 0.5) & (purity < validation_threshold)] = 'REVIEW'
     confidence[purity < 0.5] = 'FAIL'
-    adata_immune.obs['immune_confidence'] = confidence.astype('category')
+    adata_immune.obs['immune_confidence'] = pd.Categorical(confidence, categories=['PASS', 'REVIEW', 'FAIL'])
 
     # Summary
     log.info(f"Granular immune annotation assigned:")
