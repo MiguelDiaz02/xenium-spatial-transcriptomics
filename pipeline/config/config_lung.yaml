@@ -80,6 +80,32 @@ annotation:
     Mast_cell: [TPSAB1, CPA3]
     Tumor: [TP63, MKI67, TOP2A]
 
+# ─── Immune Cell Subclustering (Step 06b) ─────────────────────────────────────
+immune_annotation:
+  enabled: true                                # Enable immune subclustering step
+  immune_cell_types:                           # Cell types to subset for immune analysis
+    - "T_cell"
+    - "B_cell"
+    - "Macrophage"
+    - "NK_cell"
+    - "Mast_cell"
+  leiden_resolution_immune: 1.2                # High resolution for immune heterogeneity
+  n_pcs_immune: 25                             # PCA components (immune subset)
+  min_immune_cluster_size: 50                  # Minimum cells per cluster
+  validation_threshold: 0.7                    # Min purity for PASS status (0-1)
+  # Granular immune cell type marker panels
+  immune_markers:
+    CD8_T_cell: [CD8A, CD8B, GZMA, GZMB, PRF1]
+    CD4_T_cell: [CD4, IL7R, TCF7, CCR7]
+    Treg: [FOXP3, IL2RA, CTLA4]
+    NK_cell: [GNLY, NKG7, FGFBP2]
+    M1_Macrophage: [IL1B, TNF, IL6, NOS2]
+    M2_Macrophage: [IL10, TGM2, MRC1, ARG1]
+    B_cell: [MS4A1, CD19, IGHM]
+    Plasma_cell: [IGHG1, IGHG3, XBP1]
+    Monocyte: [CD14, LYZ, ITGAM]
+    Dendritic_cell: [CD1C, LAMP3]
+
 # ─── ResolVI denoising ────────────────────────────────────────────────────────
 denoising:
   max_epochs: 100

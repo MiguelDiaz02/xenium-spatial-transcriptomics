@@ -1,0 +1,145 @@
+# ─── Project ──────────────────────────────────────────────────────────────────
+project:
+  name: human_liver_xenium
+  output_dir: ../human_liver/results
+
+# ─── Data paths (relative to pipeline/) ──────────────────────────────────────
+data:
+  xenium_zip: ../human_liver/output_files/Xenium_Prime_Human_Liver_outs.zip
+  xenium_extracted_dir: ../human_liver/output_files/extracted
+  he_image: ../human_liver/supplemental_files/Xenium_Prime_Human_Liver_he_image.ome.tif
+  he_alignment: ../human_liver/supplemental_files/Xenium_Prime_Human_Liver_he_imagealignment.csv
+
+# ─── Module switches ──────────────────────────────────────────────────────────
+run:
+  denoising_resolvi: false    # false → skip ResolVI (requires rapids_singlecell), use normalized counts
+  integration: false           # true → run Harmony/scVI (multi-sample only)
+  spatial_analysis: true       # true → enable Squidpy spatial analysis
+  downstream: true             # pseudobulk + doublet detection
+  muspan: false                # requires separate MuSpAn install
+
+# ─── Segmentation ─────────────────────────────────────────────────────────────
+segmentation:
+  method: auto                 # "auto" detects: 5K panel → Baysor, <500 genes → Cellpose
+  run_comparison: false        # Skip segmentation comparison
+  auto_thresholds:
+    min_transcripts_for_baysor: 100   # median tx/cell required for Baysor
+    min_genes_for_baysor: 500         # panel size required for Baysor
+  cellpose:
+    model: nuclei
+    diameter: null             # null → auto-estimate
+    flow_threshold: 0.4
+    cellprob_threshold: -3.0
+    use_he: false
+    gpu: true
+    tile_size: 1024
+    tile_overlap: 128
+    stitch_threshold: 0.1
+  baysor:
+    min_molecules_per_cell: 10
+    scale: 30
+    prior_segmentation_confidence: 0.5
+    n_clusters: 4
+
+# ─── QC ───────────────────────────────────────────────────────────────────────
+qc:
+  min_transcripts: 10
+  max_transcripts: 5000        # Higher for 5K panel (more transcripts expected)
+  min_genes: 10                # Higher: 5K panel more comprehensive
+  max_pct_neg_ctrl: 5.0
+
+# ─── Preprocessing ────────────────────────────────────────────────────────────
+preprocess:
+  normalization_target_sum: 100
+  log1p: true
+  select_hvg: false            # false: use all genes from 5K panel
+  n_hvg: 5000                  # Placeholder (not used if select_hvg: false)
+
+# ─── Dimensionality reduction ─────────────────────────────────────────────────
+reduction:
+  n_pcs: 40                    # Higher: more genes = more variance to capture
+  n_neighbors: 15
+  umap_min_dist: 0.3
+  leiden_resolution: 0.6
+
+# ─── Annotation ───────────────────────────────────────────────────────────────
+annotation:
+  method: manual               # CellTypist model available for liver (Liver_Human_PIP)
+  celltypist_model: Liver_Human_PIP
+  majority_voting: true
+  # Liver-specific cell type markers
+  markers:
+    Hepatocyte: [ALB, APOB, APOC2, SERPINA1]
+    Portal_endothelial: [VWF, PECAM1, CDH5]
+    Sinusoidal_endothelial: [VWF, PECAM1, FCER1G]
+    Stellate_cell: [COL1A1, ACTA2, DES, PDGFRA]
+    Cholangiocyte: [KRT7, KRT19, SOX4]
+    T_cell: [CD3D, CD3E, CD8A, CD4]
+    B_cell: [CD79A, MS4A1, CD19]
+    Macrophage: [CD68, CD163, MRC1]
+    NK_cell: [GNLY, NKG7, KLRD1]
+
+# ─── Immune Cell Subclustering (Step 06b) — LIVER-SPECIFIC ─────────────────
+immune_annotation:
+  enabled: true                                # Enable immune subclustering
+  immune_cell_types:
+    - "T_cell"
+    - "B_cell"
+    - "Macrophage"
+    - "NK_cell"
+  leiden_resolution_immune: 1.3                # Slightly higher for liver data
+  n_pcs_immune: 30                             # More PCs for 5K panel
+  min_immune_cluster_size: 50
+  validation_threshold: 0.7
+  # Liver-specific immune markers (5K panel enables more granularity)
+  immune_markers:
+    # T cell subtypes
+    CD8_T_cell: [CD8A, CD8B, GZMA, GZMB, PRF1, PDCD1]
+    CD4_T_cell: [CD4, IL7R, TCF7, CCR7, CTLA4]
+    Treg: [FOXP3, IL2RA, CTLA4, IKZF2]
+    # Macrophage subtypes (liver-specific: Kupffer vs portal)
+    Kupffer_cell: [CD68, MARCO, CLEC4F, VSIG4, CD163]  # Resident liver macrophage
+    Portal_macrophage: [CD68, ITGAM, CCL2, MRC1]       # Infiltrating macrophage
+    # Other myeloid
+    Dendritic_cell: [CD1C, LAMP3, HLA-DRA]
+    Monocyte: [CD14, LYZ, ITGAM, S100A12]
+    NK_cell: [GNLY, NKG7, FGFBP2, NCAM1]
+    # B cells
+    B_cell_naive: [MS4A1, CD19, IGHM, IGHD]
+    B_cell_memory: [MS4A1, CD19, IGHG1, CD27]
+    Plasma_cell: [IGHG1, XBP1, IRF4, SDC1]
+
+# ─── ResolVI denoising ────────────────────────────────────────────────────────
+denoising:
+  max_epochs: 100
+  batch_size: 2048             # Larger batch for bigger dataset expected
+  accelerator: gpu
+
+# ─── Integration (multi-sample) ───────────────────────────────────────────────
+integration:
+  method: harmony
+  batch_key: sample
+
+# ─── Spatial analysis ─────────────────────────────────────────────────────────
+spatial:
+  n_neighs: 10
+  coord_type: generic
+  cluster_key: cell_type
+  n_perms_enrichment: 250      # Adjust based on expected cell count
+  spatial_autocorr:
+    mode: moran
+    n_perms: 100
+    n_jobs: 4
+
+# ─── Downstream ───────────────────────────────────────────────────────────────
+downstream:
+  doublet_detection: true
+  pseudobulk: true             # Enable for multi-sample liver analysis
+  pseudobulk_group_key: cell_type
+  pseudobulk_sample_key: sample
+
+# ─── Extended Analysis (Visualization, Analysis, Export) ─────────────────────
+extended_steps:
+  visualization: true
+  extended_analysis: true
+  export: true

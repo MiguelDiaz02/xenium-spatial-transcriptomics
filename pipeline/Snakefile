@@ -67,6 +67,7 @@ include: "rules/03_qc.smk"
 include: "rules/04_preprocess.smk"
 include: "rules/05_reduction.smk"
 include: "rules/06_annotation.smk"
+include: "rules/06b_immune_subclustering.smk"
 include: "rules/07_denoising.smk"
 include: "rules/08_spatial.smk"
 include: "rules/09_downstream.smk"
@@ -77,6 +78,9 @@ include: "rules/12_export.smk"
 # ─── Final targets ────────────────────────────────────────────────────────────
 def final_targets(wildcards):
     targets = []
+    # Add immune subclustering if enabled
+    if config.get("immune_annotation", {}).get("enabled", True):
+        targets.append(str(OUTDIR / "06b_immune_subclustering.done"))
     # Add denoising if enabled
     if config["run"].get("denoising_resolvi", True):
         targets.append(str(OUTDIR / "07_denoising.done"))
