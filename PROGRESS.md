@@ -147,7 +147,9 @@ This 4-week plan scales the lung cancer pilot to publication-ready status while 
 
 ---
 
-## Week 2: Deep Biological Analysis (May 1-5)
+## Week 2: Deep Biological Analysis (May 1-5) 🧬
+
+**Status:** ⏳ IN_PROGRESS (2026-04-24 start)
 
 ### Summary of Tasks
 
