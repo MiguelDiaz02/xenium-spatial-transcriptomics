@@ -2,13 +2,13 @@
 
 **Date Created:** 2026-04-24  
 **Last Updated:** 2026-04-24  
-**Project:** Xenium Spatial Transcriptomics Pipeline (INMEGEN)
+**Project:** Xenium Spatial Transcriptomics Pipeline (INP (Instituto Nacional de Pediatría))
 
 ---
 
 ## Overview
 
-All immune cell markers used in the pipeline (step 06b: immune subclustering) are sourced from INMEGEN's custom Xenium immunology panels. This document tracks the origin, validation, and usage of these markers.
+All immune cell markers used in the pipeline (step 06b: immune subclustering) are sourced from INP (Instituto Nacional de Pediatría)'s custom Xenium immunology panels. This document tracks the origin, validation, and usage of these markers.
 
 ---
 
@@ -18,7 +18,7 @@ All immune cell markers used in the pipeline (step 06b: immune subclustering) ar
 
 **File:** `my_xenium_panel_markers/Propuesta panel Pulmón 2025.xlsx`  
 **Panel Design:** 289-gene immunology-focused Xenium panel for lung cancer immunotherapy research  
-**Created by:** Miguel Ángel Díaz-Campos (INMEGEN)  
+**Created by:** Miguel Ángel Díaz-Campos (INP (Instituto Nacional de Pediatría))  
 **Type:** Targeted gene panel (immunology + epithelial + stromal cells)  
 
 **Key Features:**
@@ -50,7 +50,7 @@ All immune cell markers used in the pipeline (step 06b: immune subclustering) ar
 
 **File:** `my_xenium_panel_markers/Propuesta panel Xenium Liver August 2025-2.xlsx`  
 **Panel Design:** 5K-gene Xenium Prime panel for liver immunology + functional analysis  
-**Created by:** Miguel Ángel Díaz-Campos (INMEGEN)  
+**Created by:** Miguel Ángel Díaz-Campos (INP (Instituto Nacional de Pediatría))  
 **Type:** Comprehensive gene panel (immunology + hepatocyte-specific + metabolism)  
 **Conditions Tracked:** Normal, Fibrotic, Cirrhotic liver
 
@@ -126,8 +126,8 @@ All immune cell markers used in the pipeline (step 06b: immune subclustering) ar
 
 ### Why These Markers Are Robust
 
-1. **Panel-Derived:** Markers come from INMEGEN's own curated panels, not generic lists
-   - Reflects real experimental validation at INMEGEN
+1. **Panel-Derived:** Markers come from INP (Instituto Nacional de Pediatría)'s own curated panels, not generic lists
+   - Reflects real experimental validation at INP (Instituto Nacional de Pediatría)
    - Optimized for Xenium spatial detection
 
 2. **Multi-Source Validation:**
@@ -181,7 +181,7 @@ All immune cell markers used in the pipeline (step 06b: immune subclustering) ar
 
 If you use these markers in publications, please cite:
 
-> Immune cell markers extracted from INMEGEN custom Xenium immunology panels (Propuesta panel Pulmón 2025 for lung; Propuesta panel Xenium Liver August 2025 for liver). Validation against published single-cell atlases (Zheng et al. 2017, Halpern et al. 2018, Bonnardel et al. 2019) and CellTypist pre-trained models.
+> Immune cell markers extracted from INP (Instituto Nacional de Pediatría) custom Xenium immunology panels (Propuesta panel Pulmón 2025 for lung; Propuesta panel Xenium Liver August 2025 for liver). Validation against published single-cell atlases (Zheng et al. 2017, Halpern et al. 2018, Bonnardel et al. 2019) and CellTypist pre-trained models.
 
 ---
 
@@ -205,7 +205,7 @@ If you use these markers in publications, please cite:
 
 ---
 
-**Document Owner:** Miguel Ángel Díaz-Campos (INMEGEN)  
+**Document Owner:** Miguel Ángel Díaz-Campos (INP (Instituto Nacional de Pediatría))  
 **For Questions:** See `IMMUNE_ANNOTATION_GUIDE.md`  
 **Related Files:**
 - `pipeline/config/config_lung.yaml` — Lung panel markers

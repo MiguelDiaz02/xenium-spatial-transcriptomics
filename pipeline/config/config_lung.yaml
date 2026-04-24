@@ -81,7 +81,7 @@ annotation:
     Tumor: [TP63, MKI67, TOP2A]
 
 # ─── Immune Cell Subclustering (Step 06b) ─────────────────────────────────────
-# Markers sourced from: Propuesta panel Pulmón 2025 (custom immunology panel, INMEGEN)
+# Markers sourced from: Propuesta panel Pulmón 2025 (custom immunology panel, INP (Instituto Nacional de Pediatría))
 immune_annotation:
   enabled: true                                # Enable immune subclustering step
   immune_cell_types:                           # Cell types to subset for immune analysis

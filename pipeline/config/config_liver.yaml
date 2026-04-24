@@ -80,7 +80,7 @@ annotation:
     NK_cell: [GNLY, NKG7, KLRD1]
 
 # ─── Immune Cell Subclustering (Step 06b) — LIVER-SPECIFIC ─────────────────
-# Markers sourced from: Propuesta panel Xenium Liver August 2025 (INMEGEN liver panel + 5K genes)
+# Markers sourced from: Propuesta panel Xenium Liver August 2025 (INP (Instituto Nacional de Pediatría) liver panel + 5K genes)
 immune_annotation:
   enabled: true                                # Enable immune subclustering
   immune_cell_types:

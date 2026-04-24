@@ -327,7 +327,7 @@ immune_only.obs['subtype'] = immune_only.obs['cell_type_immune_granular']
 To cite this immune annotation workflow, reference:
 
 **XENIUM_ANNOTATION_STRATEGY.md** (v1.0, 2026-04-24)  
-Miguel Ángel Díaz-Campos, INMEGEN
+Miguel Ángel Díaz-Campos, INP (Instituto Nacional de Pediatría)
 
 Include the config file and immune markers used in your Methods:
 

@@ -70,7 +70,7 @@ Output: Enhanced AnnData with granular immune annotation
 
 ### 1.3 Immune Cell Markers by Subtype
 
-**Marker source:** Extracted from INMEGEN custom Xenium immunology panels:
+**Marker source:** Extracted from INP (Instituto Nacional de Pediatría) custom Xenium immunology panels:
 - **Lung panel:** "Propuesta panel Pulmón 2025" — curated immunology-focused panel (289 genes + add-ons)
 - **Liver panel:** "Propuesta panel Xenium Liver August 2025" — hepatology + immunology panel (5K genes)
 - Additional validation: Literature consensus (Zheng et al. 2017, Human Protein Atlas)
@@ -368,5 +368,5 @@ By end of Week 2:
 ---
 
 **Document prepared by:** Claude Code  
-**For:** Miguel Ángel Díaz-Campos (INMEGEN)  
+**For:** Miguel Ángel Díaz-Campos (INP (Instituto Nacional de Pediatría))  
 **Next review:** After Week 2 implementation

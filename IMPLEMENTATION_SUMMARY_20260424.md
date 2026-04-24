@@ -302,6 +302,6 @@ A complete, production-ready immune cell annotation module has been integrated i
 ---
 
 **Prepared by:** Claude Code  
-**For:** Miguel Ángel Díaz-Campos (INMEGEN)  
+**For:** Miguel Ángel Díaz-Campos (INP (Instituto Nacional de Pediatría))  
 **Date:** 2026-04-24  
 **Version:** 1.0
