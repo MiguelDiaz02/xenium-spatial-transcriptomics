@@ -318,9 +318,23 @@ Immune microenvironment is myeloid-centric with three functional zones: (1) cyto
 - **Scripts**: 4 new Python scripts (800 lines)
 - **Documentation**: Summary + commit message
 
-### Next Steps (User-Directed)
-- **Phase 3** (Optional): Spatial gradients, neighborhood effects, tissue mapping (2-3 hours)
-- **Phase 4** (Optional): Summary integration for manuscript prep
+### Next Steps (User-Directed — Resuming in ~2 days)
+
+**Phase 3: Spatial Mapping & Enrichment** (Optional, 2-3 hours)
+- Task 3.1: Spatial gradients (immune infiltration core → edge → healthy)
+- Task 3.2: Neighborhood enrichment (cell type co-localization patterns)
+- Task 3.3: Tissue region classification (functional zone mapping)
+- Output: 3 scripts, 6 figures, enrichment scores
+
+**Phase 4: Summary Integration & Manuscript Prep** (Optional, 2-3 hours)
+- Task 4.1: Integrated biological narrative (Week 2 + Week 3 synthesis)
+- Task 4.2: Figure panel assembly (cowplot composites, high-res)
+- Task 4.3: Supplementary figure organization (tables + captions)
+- Output: Integrated narrative, publication-ready composite figures
+
+**Decision Pending:** Execute Phase 3 only? Phase 3+4? Or skip to infrastructure?
+
+See `week3_next_steps.md` in memory for detailed plan + resumption checklist.
 
 ### Week 3 Infrastructure (Deferred)
 Original Week 3 plan included Docker/CI/CD for production. These remain optional post-analysis tasks.
