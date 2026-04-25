@@ -290,17 +290,43 @@ Immune microenvironment is myeloid-centric with three functional zones: (1) cyto
 
 ---
 
-## Week 3 Preview (May 8-12)
+## Week 3: Benchmarked Analysis (Phases 1A & 2B) ✅ COMPLETE
 
-**Task 3.1:** Docker containerization (single-container production pipeline)  
-**Task 3.2:** Multi-sample config system (prepare for liver 5K data)  
-**Task 3.3:** CI/CD pipeline (GitHub Actions, automated testing)  
-**Tasks 3.4-3.5:** Unit tests + reproducibility audit
+### Phase 1A: DGEA Benchmarked ✅
+- **Method**: Comparative DGEA (Wilcoxon + Moran's I + Integrated spatial-aware ranking)
+- **Source**: Oxford 2024 benchmarking review of 51 spatial DE tools
+- **Key Result**: 288/289 genes (99.7%) show significant spatial autocorrelation
+- **Findings**: Spatial-aware rankings reveal true markers (genes that are DE + spatially clustered)
+- **Outputs**: 17 CSVs + 2 PNG figures + PDF | Location: `immune_DE_benchmarked/` + `phase1_dgea_benchmarked/`
+- **Execution Time**: 23.2 seconds
 
-**Expected outputs:** Production-grade Docker image, CI/CD workflows, reproducible notebooks
+### Phase 2B: CCC Hybrid ✅
+- **Method**: Hybrid (DeepTalk spatial concepts + CellChat L/R database)
+- **Algorithm**: CCC_score = log2(ligand_expr × receptor_expr + 1) × spatial_confidence
+- **Key Result**: 294 interactions identified; Macrophages as communication hubs
+- **Biological Finding**: Weak checkpoint axis, strong cytokine/CD68-CD14 self-signaling
+- **Outputs**: 3 CSVs + 3 PNG figures + PDF | Location: `ccc_hybrid_method/` + `phase2b_ccc_hybrid/`
+- **Execution Time**: 11.6 seconds (optimized hybrid vs 180s+ timeout for full GNN)
+
+### Summary Document
+- **Location**: `WEEK3_BENCHMARKED_ANALYSIS_SUMMARY.md` (comprehensive technical report)
+- **Content**: Methods, results, biological interpretation, clinical implications, file organization
+
+### File Totals
+- **Data**: 352 KB (20 CSVs total)
+- **Figures**: 1.9 MB (5 PNGs + 2 PDFs with extended captions)
+- **Scripts**: 4 new Python scripts (800 lines)
+- **Documentation**: Summary + commit message
+
+### Next Steps (User-Directed)
+- **Phase 3** (Optional): Spatial gradients, neighborhood effects, tissue mapping (2-3 hours)
+- **Phase 4** (Optional): Summary integration for manuscript prep
+
+### Week 3 Infrastructure (Deferred)
+Original Week 3 plan included Docker/CI/CD for production. These remain optional post-analysis tasks.
 
 ---
 
-**Last Updated:** 2026-04-24 (Week 2 complete)  
-**Next Update:** Post-Week 3 (May 13)  
-**Maintenance:** Update PROGRESS.md weekly; sync CLAUDE.md + memory after each week
+**Last Updated:** 2026-04-24 (Week 3 Phase 1A & 2B complete, benchmarked methods)  
+**Next Update:** After Phase 3 (if executed) or post-project summary  
+**Maintenance:** Memory files synced; CLAUDE.md updated; all outputs committed
