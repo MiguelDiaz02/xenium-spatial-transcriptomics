@@ -1,0 +1,163 @@
+Loading SpatialData from ../human_lung_cancer/results/sdata.zarr...
+root_attr: omero
+root_attr: version
+root_attr: multiscales
+datasets [{'path': 's0', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 1.0, 1.0]}]}, {'path': 's1', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 2.0, 2.0]}]}, {'path': 's2', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 4.0, 4.000319030148349]}]}, {'path': 's3', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 8.0, 8.001914486279516]}]}, {'path': 's4', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 16.00294659300184, 16.00382897255903]}]}]
+resolution: s0
+ - shape ('c', 'y', 'x') = (3, 43448, 25078)
+ - chunks =  ['3', '43448', '25078']
+ - dtype = uint8
+resolution: s1
+ - shape ('c', 'y', 'x') = (3, 21724, 12539)
+ - chunks =  ['3', '21724', '12539']
+ - dtype = uint8
+resolution: s2
+ - shape ('c', 'y', 'x') = (3, 10862, 6269)
+ - chunks =  ['3', '10862', '6269']
+ - dtype = uint8
+resolution: s3
+ - shape ('c', 'y', 'x') = (3, 5431, 3134)
+ - chunks =  ['3', '5431', '3134']
+ - dtype = uint8
+resolution: s4
+ - shape ('c', 'y', 'x') = (3, 2715, 1567)
+ - chunks =  ['3', '2715', '1567']
+ - dtype = uint8
+root_attr: omero
+root_attr: version
+root_attr: multiscales
+root_attr: omero
+root_attr: version
+root_attr: multiscales
+datasets [{'path': 's0', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 1.0, 1.0]}]}, {'path': 's1', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 2.000058496636443, 2.0000369959304476]}]}, {'path': 's2', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 4.000351000351, 4.000073991860895]}]}, {'path': 's3', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 8.00163819330681, 8.00073997336096]}]}, {'path': 's4', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 16.007022471910112, 16.003848431024274]}]}]
+resolution: s0
+ - shape ('c', 'y', 'x') = (1, 34191, 54061)
+ - chunks =  ['1', '4096 (+ 1423)', '4096 (+ 813)']
+ - dtype = uint16
+resolution: s1
+ - shape ('c', 'y', 'x') = (1, 17095, 27030)
+ - chunks =  ['1', '4096 (+ 711)', '4096 (+ 2454)']
+ - dtype = uint16
+resolution: s2
+ - shape ('c', 'y', 'x') = (1, 8547, 13515)
+ - chunks =  ['1', '4096 (+ 355)', '4096 (+ 1227)']
+ - dtype = uint16
+resolution: s3
+ - shape ('c', 'y', 'x') = (1, 4273, 6757)
+ - chunks =  ['1', '4096 (+ 177)', '4096 (+ 2661)']
+ - dtype = uint16
+resolution: s4
+ - shape ('c', 'y', 'x') = (1, 2136, 3378)
+ - chunks =  ['1', '2136', '3378']
+ - dtype = uint16
+root_attr: omero
+root_attr: version
+root_attr: multiscales
+root_attr: version
+root_attr: multiscales
+root_attr: image-label
+no parent found for <ome_zarr.reader.Label object at 0x7bd0d06b2490>: None
+root_attr: version
+root_attr: multiscales
+root_attr: image-label
+datasets [{'path': 's0', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 1.0]}]}, {'path': 's1', 'coordinateTransformations': [{'type': 'scale', 'scale': [2.000058496636443, 2.0000369959304476]}]}, {'path': 's2', 'coordinateTransformations': [{'type': 'scale', 'scale': [4.000351000351, 4.000073991860895]}]}, {'path': 's3', 'coordinateTransformations': [{'type': 'scale', 'scale': [8.00163819330681, 8.00073997336096]}]}, {'path': 's4', 'coordinateTransformations': [{'type': 'scale', 'scale': [16.007022471910112, 16.003848431024274]}]}]
+resolution: s0
+ - shape ('y', 'x') = (34191, 54061)
+ - chunks =  ['4096 (+ 1423)', '4096 (+ 813)']
+ - dtype = uint32
+resolution: s1
+ - shape ('y', 'x') = (17095, 27030)
+ - chunks =  ['4096 (+ 711)', '4096 (+ 2454)']
+ - dtype = uint32
+resolution: s2
+ - shape ('y', 'x') = (8547, 13515)
+ - chunks =  ['4096 (+ 355)', '4096 (+ 1227)']
+ - dtype = uint32
+resolution: s3
+ - shape ('y', 'x') = (4273, 6757)
+ - chunks =  ['4096 (+ 177)', '4096 (+ 2661)']
+ - dtype = uint32
+resolution: s4
+ - shape ('y', 'x') = (2136, 3378)
+ - chunks =  ['2136', '3378']
+ - dtype = uint32
+root_attr: version
+root_attr: multiscales
+root_attr: image-label
+no parent found for <ome_zarr.reader.Label object at 0x7bd0d1fe5250>: None
+root_attr: version
+root_attr: multiscales
+root_attr: image-label
+datasets [{'path': 's0', 'coordinateTransformations': [{'type': 'scale', 'scale': [1.0, 1.0]}]}, {'path': 's1', 'coordinateTransformations': [{'type': 'scale', 'scale': [2.000058496636443, 2.0000369959304476]}]}, {'path': 's2', 'coordinateTransformations': [{'type': 'scale', 'scale': [4.000351000351, 4.000073991860895]}]}, {'path': 's3', 'coordinateTransformations': [{'type': 'scale', 'scale': [8.00163819330681, 8.00073997336096]}]}, {'path': 's4', 'coordinateTransformations': [{'type': 'scale', 'scale': [16.007022471910112, 16.003848431024274]}]}]
+resolution: s0
+ - shape ('y', 'x') = (34191, 54061)
+ - chunks =  ['4096 (+ 1423)', '4096 (+ 813)']
+ - dtype = uint32
+resolution: s1
+ - shape ('y', 'x') = (17095, 27030)
+ - chunks =  ['4096 (+ 711)', '4096 (+ 2454)']
+ - dtype = uint32
+resolution: s2
+ - shape ('y', 'x') = (8547, 13515)
+ - chunks =  ['4096 (+ 355)', '4096 (+ 1227)']
+ - dtype = uint32
+resolution: s3
+ - shape ('y', 'x') = (4273, 6757)
+ - chunks =  ['4096 (+ 177)', '4096 (+ 2661)']
+ - dtype = uint32
+resolution: s4
+ - shape ('y', 'x') = (2136, 3378)
+ - chunks =  ['2136', '3378']
+ - dtype = uint32
+Isolating immune cells: 106740/268034 (39.8%)
+Immune breakdown:
+  T_cell: 42698 cells
+  B_cell: 19786 cells
+  Macrophage: 34345 cells
+  NK_cell: 9911 cells
+Immune subclustering: PCA + UMAP + Leiden (res=1.2)
+  PCA: 25 components, 25 computed
+  Neighbors: k=15
+  UMAP: computed
+  Leiden: 20 clusters
+  Cluster sizes: 968-12393 cells
+Scoring 10 immune cell type marker panels...
+  CD8_T_cell: 6/10 markers found
+  CD4_T_cell: 3/6 markers found
+  Treg: 3/6 markers found
+  NK_cell: 4/8 markers found
+  M1_Macrophage: 1/9 markers found
+  M2_Macrophage: 1/6 markers found
+  B_cell: 5/7 markers found
+  Plasma_cell: NO marker genes in panel (asked for 8)
+  Monocyte: 4/8 markers found
+  Dendritic_cell: 6/8 markers found
+Granular immune annotation assigned:
+cell_type_immune_granular
+CD4_T_cell        38507
+M2_Macrophage     18873
+B_cell            10417
+Treg               9213
+Monocyte           8422
+CD8_T_cell         7512
+NK_cell            5439
+M1_Macrophage      4029
+Dendritic_cell     3590
+Plasma_cell         738
+Purity summary:
+  Mean: 0.738
+  Median: 0.829
+  Range: 0.000 - 1.000
+Confidence summary:
+immune_confidence
+PASS      64321
+FAIL      25794
+REVIEW    16625
+Merged immune annotations back to main AnnData
+  Immune cells: 106740
+  Non-immune cells: 161294
+Writing annotated table to zarr store...
+Generating validation report: ../human_lung_cancer/results/06b_immune_subclustering_report.html
+Validation report saved: ../human_lung_cancer/results/06b_immune_subclustering_report.pdf
+HTML report saved: ../human_lung_cancer/results/06b_immune_subclustering_report.html
+Step 06b — Immune Subclustering: DONE
