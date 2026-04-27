@@ -2,33 +2,55 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 🚀 PROJECT STATUS (2026-04-27)
+## 🚀 PROJECT STATUS (2026-04-27 — POST-AUDIT REBUILD)
 
-**PHASE 3: 🔄 DESIGN APPROVED — IMPLEMENTATION IN PROGRESS**
+**PIPELINE REBUILT WITH LIANA+ STANDARD**
 
 | Phase | Description | Status |
 |-------|-------------|--------|
 | Week 1 | Validation & QC | ✅ COMPLETE |
-| Week 2 | Biological Analysis (DE, L/R, spatial) | ✅ COMPLETE |
-| Phase 1A | DGEA Benchmarked (Wilcoxon + Moran's I) | ✅ COMPLETE |
-| Phase 2B | CCC Hybrid (294 interactions, M2 hub) | ✅ COMPLETE |
-| **Phase 3** | **Spatial Mapping & Neighborhood Enrichment** | **🔄 IMPLEMENTING** |
+| Phase 1A | DGEA Benchmarked (Wilcoxon + Moran's I) | ✅ VALIDATED |
+| Phase 2B | CCC via **LIANA+** (rank_aggregate, 5+ methods consensus) | ✅ REBUILT 2026-04-27 |
+| **Phase 3** | **Spatial Mapping & Neighborhood Enrichment** | **🔄 PLANNING** |
 
-**Phase 3 Design (approved 2026-04-27):**
+### Audit Findings (2026-04-27, Opus 4.7)
+Previous "CCC Hybrid" method was identified as **biologically invalid**:
+- Only 6 hardcoded L/R pairs survived panel filtering (not "comprehensive")
+- Top hits were trivial self-interactions
+- No real CCC packages installed (liana, cellchat all MISSING)
+- False negative on PD-1/PD-L1 axis due to CD274 absent from hardcoded list
+
+### LIANA+ as Standard CCC Method (2026-04-27)
+- **Replaces ALL custom CCC heuristics** for current and future projects
+- Multi-platform: Visium, Xenium, MERFISH, CosMx (any data with `obsm['spatial']`)
+- Consensus of: CellPhoneDB, CellChat, NATMI, Connectome, SingleCellSignalR, logFC
+- Permutation null model (n=1000), `remove_self_interactions=True`
+- Auto-filters L/R against gene panel
+- Spatial CCC via `liana.method.bivariate`
+
+**Phase 2B (LIANA+) Results:**
+- 141 significant interactions (p<0.05)
+- 13 unique ligands + 13 unique receptors detected
+- Biologically coherent top hits: ADAM17/MUC1, CDH1/EGFR, CD86/CTLA4, CD274/CD80 (PD-L1), CD34/SELL
+- Execution: 21s
+
+### Active Pipeline Files
+**Scripts (4 only — pipeline cleaned):**
+- `pipeline/scripts/analysis/week3_01_dgea_benchmarked.py` + viz (Phase 1A)
+- `pipeline/scripts/analysis/phase2b_ccc_liana.py` + viz (Phase 2B LIANA+)
+
+**Outputs:**
+- `results/02_biology/immune_DE_benchmarked/` (Phase 1A: 17 CSVs)
+- `results/02_biology/ccc_liana/` (Phase 2B: 5 CSVs)
+- `results/figures/phase1_dgea_benchmarked/` (3 files)
+- `results/figures/phase2b_ccc_liana/` (4 PNGs)
+
+### Phase 3 Design (Updated to use LIANA+ bivariate)
 - Spec: `docs/superpowers/specs/2026-04-27-phase3-spatial-mapping-design.md`
-- Task 3.1: Spatial gradients (Methods A+B — Squidpy + KDE)
-- Task 3.2: Spatial-weighted neighborhood enrichment (gaussian decay + permutation test)
-- Task 3.3: Tissue region classification (K-means + Napari H&E validation)
-- Integration: Single 2×2 figure linking Phase 1A+2B+3
-- Architecture: 2 Snakemake rule files + 5 Python scripts + config_lung.yaml update
-- Output dir: `results/03_phase3_spatial/`
-
-**Key Findings to Date:**
-- 288/289 genes with spatial autocorrelation (Moran's I)
-- M2 macrophages as central immune hub (294 CCC interactions)
-- Immune purity 73.8% (exceeds ≥70% target)
-
-**Next:** Invoke writing-plans → implement Phase 3 Snakemake rules + scripts
+- Task 3.1: Spatial gradients (Squidpy + KDE) — unchanged
+- Task 3.2: **LIANA+ bivariate (cosine local score)** — UPDATED, consistent with Phase 2B
+- Task 3.3: K-means tissue regions + Napari H&E validation — unchanged
+- Architecture: Snakemake rules to be created next
 
 ---
 

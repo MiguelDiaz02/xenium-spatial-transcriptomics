@@ -93,45 +93,53 @@ gradient_magnitude, gradient_direction_deg
 
 ---
 
-## 4. Task 3.2 — Neighborhood Enrichment Spatial-Weighted (Option Y)
+## 4. Task 3.2 — Spatial L/R Bivariate Analysis (LIANA+ `bivariate`)
 
-**Objective:** Identify co-localizing cell type pairs, weighted by spatial proximity.
+**Objective:** Identify spatially co-localizing ligand-receptor pairs at single-cell resolution.
 
-### Algorithm
+**Replaces previous custom heuristic.** Uses LIANA+ validated framework (`liana.method.bivariate`) which is the published standard for spatial CCC.
+
+### Method: `liana.method.bivariate` (Cosine local score)
+```python
+import liana as li
+li.method.bivariate(
+    adata,
+    local_name='cosine',          # spatially-weighted cosine of L-R co-expression
+    resource_name='consensus',    # OmniPath unified L/R database
+    connectivity_key='spatial_connectivities',
+    n_perms=1000,                 # permutation-based null model
+    mask_negatives=False,
+    add_categories=True,          # high-high / high-low / low-low classification
+    remove_self_interactions=True,
+    nz_prop=0.05,
+)
 ```
-For each cell pair (i, j) within knn_k neighbors:
-  d = euclidean_distance(i, j)
-  weight = exp(-d / bandwidth_um)
-  enrichment_score[type_i, type_j] += weight
 
-Normalize against null distribution:
-  Permute cell_type labels 1000x
-  z_score = (observed - mean_null) / std_null
-```
+### Spatial graph construction
+- `sq.gr.spatial_neighbors(adata, coord_type='generic', n_neighs=15, radius=200)` (μm)
+- Stored in `adata.obsp['spatial_connectivities']`
 
-### Cross-validation with Phase 2B
-- Where `enrichment_zscore(A,B) > 2` AND `ccc_score(A→B) > threshold` → `validated_interaction = True`
-- This produces **cross-validated interactions**: spatially co-localizing AND functionally interacting
+### Cross-validation with Phase 2B (LIANA+ rank_aggregate)
+- Phase 2B (LIANA+ rank_aggregate) reports cell-type-level interactions
+- Phase 3.2 (LIANA+ bivariate) reports spot/cell-level spatial co-expression
+- A pair is **spatially validated** if it appears significant in BOTH Phase 2B and Phase 3.2 (intersection)
 
 ### Config parameters (`config_lung.yaml`)
 ```yaml
 phase3:
   enrichment:
-    bandwidth_um: 50
+    local_name: cosine
     n_permutations: 1000
-    knn_k: 15
-    min_cells_per_type: 50
-    ccc_score_threshold: null  # computed at runtime as 75th percentile of Phase 2B ccc_score distribution
+    n_neighbors: 15
+    radius_um: 200
+    nz_prop: 0.05
+    resource: consensus
 ```
 
-### Spatial graph construction
-- `sq.gr.spatial_neighbors(adata, n_neighs=15, radius=200)`
-- Custom gaussian weights applied over this graph
-
-### Output: `enrichment_spatial_weighted.csv`
+### Output: `spatial_bivariate_lr.csv`
 ```
-cell_type_A, cell_type_B, enrichment_zscore, bandwidth_um,
-ccc_score_phase2b, validated_interaction
+ligand_complex, receptor_complex, local_score_mean, n_cells_high_high,
+permutation_pval, category_dominant, validated_with_phase2b
 ```
 
 ---

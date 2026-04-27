@@ -21,6 +21,7 @@ dependencies:
     - scanpy>=1.10.0
     - anndata>=0.10.0
     - squidpy>=1.4.0
+    - liana>=1.7.1            # standard CCC framework (multi-platform spatial)
     - scvi-tools>=1.1.0       # includes RESOLVI
     - celltypist>=1.6.3
     - cellpose>=3.0.0
