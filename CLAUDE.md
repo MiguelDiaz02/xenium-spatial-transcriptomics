@@ -2,24 +2,33 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 🚀 PROJECT STATUS (2026-04-24)
+## 🚀 PROJECT STATUS (2026-04-27)
 
-**WEEK 2: ✅ BIOLOGICAL ANALYSIS COMPLETE**
+**PHASE 3: 🔄 DESIGN APPROVED — IMPLEMENTATION IN PROGRESS**
 
-- Dataset: 268,034 cells × 289 genes × 10 granular immune subtypes (106.7k immune cells)
-- **Data Quality:** PUBLICATION-READY (immune purity 73.8%, exceeds ≥70% target)
-- **Tasks 2.1-2.3:** All complete — DE, L/R interactions, spatial co-occurrence analyzed
-- **Key Finding:** M2 macrophages emerge as central immune hub; weak PD-1/PD-L1 axis
-- **Timeline:** 4-week robust development plan on track (PROGRESS.md, WEEK2_SUMMARY.md)
+| Phase | Description | Status |
+|-------|-------------|--------|
+| Week 1 | Validation & QC | ✅ COMPLETE |
+| Week 2 | Biological Analysis (DE, L/R, spatial) | ✅ COMPLETE |
+| Phase 1A | DGEA Benchmarked (Wilcoxon + Moran's I) | ✅ COMPLETE |
+| Phase 2B | CCC Hybrid (294 interactions, M2 hub) | ✅ COMPLETE |
+| **Phase 3** | **Spatial Mapping & Neighborhood Enrichment** | **🔄 IMPLEMENTING** |
 
-**Week 2 Deliverables:**
-- `WEEK2_SUMMARY.md` — Comprehensive 300+ line biological findings report
-- `pipeline/scripts/analysis/week2_{01,02,03}_*.py` — 3 parallel analysis scripts (1.8k lines)
-- `results/02_biology/{immune_DE,lr_immune_tumor,spatial_immune}/` — 12 output files (CSVs + PDFs)
-- Enhanced zarr with granular immune annotations + confidence scores
-- All immune subtypes validated at single-cell resolution
+**Phase 3 Design (approved 2026-04-27):**
+- Spec: `docs/superpowers/specs/2026-04-27-phase3-spatial-mapping-design.md`
+- Task 3.1: Spatial gradients (Methods A+B — Squidpy + KDE)
+- Task 3.2: Spatial-weighted neighborhood enrichment (gaussian decay + permutation test)
+- Task 3.3: Tissue region classification (K-means + Napari H&E validation)
+- Integration: Single 2×2 figure linking Phase 1A+2B+3
+- Architecture: 2 Snakemake rule files + 5 Python scripts + config_lung.yaml update
+- Output dir: `results/03_phase3_spatial/`
 
-**Next Phase:** Week 3 (May 8-12) — Infrastructure (Docker, CI/CD, multi-sample config)
+**Key Findings to Date:**
+- 288/289 genes with spatial autocorrelation (Moran's I)
+- M2 macrophages as central immune hub (294 CCC interactions)
+- Immune purity 73.8% (exceeds ≥70% target)
+
+**Next:** Invoke writing-plans → implement Phase 3 Snakemake rules + scripts
 
 ---
 
