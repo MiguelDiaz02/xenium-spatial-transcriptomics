@@ -1,143 +1,316 @@
-# Xenium Spatial Transcriptomics Project
+# Xenium Spatial Transcriptomics: Multi-Tool Consensus Pipeline
 
-A curated knowledge base and analysis resource for **10x Genomics Xenium** spatial transcriptomics (ST) data, with a focus on liver and lung tissue applications.
+**A modular, reproducible Snakemake pipeline for 10x Genomics Xenium spatial transcriptomics analysis.** Designed for publication in *Nature Communications* with emphasis on triangulation and multi-tool consensus across 8 analytical families.
+
+**Dataset:** 268,034 cells × 289 genes | Human lung cancer, Xenium v1 (pilot)  
+**Target:** Scalable to Xenium Prime 5K liver data (config-only changes)  
+**Hardware:** GPU-enabled (RTX 4500 Ada, 18GB VRAM recommended; CPU fallback available)
+
+---
 
 ## Overview
 
-This repository consolidates:
-- A reproducible Python analysis pipeline (`recode_st`) for Xenium 5k data
-- Reference codebases from the spatial transcriptomics community (as git submodules)
-- Relevant bibliography (PDFs)
-- Custom gene panel proposals for lung and liver Xenium experiments
-- Visual reference materials and presentation slides
+This repository implements a **consensus-first philosophy** for spatial transcriptomics analysis, inspired by LIANA+ (aggregating multiple methods before ranking). Every biological finding is triangulated across ≥2 independent tools before reporting.
+
+### 8-Family Analytical Framework
+
+| Family | Focus | Method | Status |
+|--------|-------|--------|--------|
+| **F1** | Spatial domain detection | Banksy clustering + Leiden | ✅ Complete |
+| **F2** | Spatially variable genes | Hotspot + nnSVG + Moran's I | 🔄 Scaffolded |
+| **F3** | Cell-cell communication validation | LIANA+ bivariate + Spacia | ⏳ Pending |
+| **F4** | Niche-dependent differential expression | NicheDE (Mason 2024) | ⏳ Pending |
+| **F5** | Spatial pseudotime trajectories | Slingshot + tradeSeq + GAM | ⏳ Pending |
+| **F6** | Cell type annotation x-validation | SingleR (optional) | ⏳ Pending |
+| **F7** | Co-expression networks | ~~hdWGCNA~~ | ❌ Skipped (insufficient genes) |
+| **F8** | Foundation model embeddings | Novae (Nat Methods 2025) | ✅ Complete |
+
+---
+
+## Project Status (2026-04-28)
+
+### Completed ✅
+
+- **Phase A**: Snakemake skeleton (steps 01–12) + hierarchical re-labeling (24 L2 cell types)
+- **Phase B**: Spatial domains via F8 (Novae) + F1 (Banksy) with consensus (94.8k robust cells)
+- **Phase 1A** (supplementary): DGEA benchmarked (288/289 genes spatially autocorrelated)
+- **Phase 2B** (supplementary): CCC via LIANA+ (141 significant L-R interactions)
+
+### Scaffolded 🔄
+
+- **Phase C**: SVG consensus (`F2_hotspot_svg.py` ✅, `F2_nnsvg.R` ✅, `F2_svg_consensus.py` pending)
+
+### Pending ⏳
+
+- **Phase D**: Niche-DE (F4)
+- **Phase E**: Spatial pseudotime (F5)
+- **Phase F**: CCC validation (F3)
+- **Phase G**: Annotation x-validation + master figure (F6)
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Python ≥3.10, R ≥4.2
+- Conda (Mambaforge recommended)
+- CUDA ≥11.8 (GPU strongly recommended for Cellpose, ResolVI)
+- 32+ GB RAM (64+ for reproducibility)
+
+### Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/MiguelDiaz02/xenium-spatial-transcriptomics.git
+cd xenium-spatial-transcriptomics/proyecto_demo_xenium
+
+# Create and activate the conda environment
+conda env create -f pipeline/envs/xenium_pipeline.yaml
+conda activate xenium_pipeline
+
+# For Phase C (SVG consensus), also create the R environment
+conda env create -f pipeline/envs/xenium_R_analysis.yaml
+
+# Verify GPU access
+python -c "import torch; print('GPU available:', torch.cuda.is_available())"
+```
+
+#### Optional: Julia + Baysor (for transcript-level segmentation)
+
+```bash
+curl -sSL https://install.julialang.org | sh
+julia -e 'using Pkg; Pkg.add("Baysor")'
+pip install baysorpy
+```
+
+---
+
+## Running the Pipeline
+
+### Preprocessing (Steps 01–12)
+
+```bash
+cd proyecto_demo_xenium/pipeline
+
+# Dry run (check DAG without execution)
+snakemake --configfile config/config_lung.yaml -n
+
+# Full run (8 cores, GPU auto-detected)
+snakemake --configfile config/config_lung.yaml --cores 8
+
+# Resume from a specific step (e.g., after fixing QC thresholds)
+snakemake --configfile config/config_lung.yaml --cores 8 --forcerun qc
+
+# Visualize DAG
+snakemake --configfile config/config_lung.yaml --dag | dot -Tpdf > dag.pdf
+```
+
+### Analysis Phases (F1–F8)
+
+Each phase has its own Snakemake rule file under `pipeline/analysis_rules/`:
+
+```bash
+# Phase B (Spatial Domains F1+F8) — already complete
+snakemake --configfile config/config_lung.yaml --cores 8 -s pipeline/analysis_rules/F1_F8_spatial_domains.smk
+
+# Phase C (SVG Consensus F2) — scaffolded, ready to execute
+snakemake --configfile config/config_lung.yaml --cores 8 -s pipeline/analysis_rules/F2_svg_consensus.smk
+```
+
+---
+
+## Data Format
+
+### Input: Xenium Raw Output
+
+- Directory structure: `experiment.xenium/` (ZIP or folder)
+- Contains: morphology.ome.tif, cell_feature_matrix.h5, cell_boundaries.parquet, transcripts.parquet
+
+### Processed Data: SpatialData Zarr
+
+All intermediate and final results are stored in a **single SpatialData Zarr store**:
+
+```
+results/sdata.zarr/
+├── tables/
+│   ├── table_0.h5ad          # Main AnnData (268,034 cells × 289 genes)
+│   │   ├── obs/              # Cell metadata
+│   │   ├── X                 # Normalized + log1p expression
+│   │   └── layers/
+│   │       ├── "counts"      # Raw integer counts (for DE, scVI, ResolVI)
+│   │       └── "denoised"    # ResolVI-denoised (visualization only)
+├── shapes/                   # Cell boundaries (xoa segmentation)
+├── images/                   # H&E, DAPI, morphology channels
+└── labels/                   # Spatial domain masks (Phase B)
+```
+
+---
+
+## Key Results
+
+### Phase B: Spatial Domain Detection (✅ 2026-04-28)
+
+- **F8 Novae:** 51.7s, 64d embeddings, hierarchical domains
+- **F1 Banksy:** 531.9s, 14 spatial domains via Leiden
+- **Consensus:** 94,799 robust cells (35.4% agreement), niche + transition zones
+- **Output location:** `human_lung_cancer/results/03_phase3_spatial/`
+
+### Phase 1A: Differential Gene Expression (Supplementary, ✅)
+
+- **Result:** 288/289 genes (99.7%) with significant spatial autocorrelation (Moran's I)
+- **Top markers per cell type** ranked by spatial signal
+- **Output location:** `human_lung_cancer/results/02_biology/immune_DE_benchmarked/`
+
+### Phase 2B: Cell-Cell Communication (Supplementary, ✅)
+
+- **LIANA+ rank aggregation:** 141 significant L-R interactions
+- **Key finding:** Weak checkpoint axis; M2 macrophages as suppression hub
+- **Therapeutic implication:** M2 targeting + monocyte differentiation blocking likely more effective than anti-PD-1 monoterapy
+- **Output location:** `human_lung_cancer/results/02_biology/ccc_liana/`
+
+---
 
 ## Repository Structure
 
 ```
-Xenium_project/
-├── xenium_code_knowledge/          # Reference codebases (git submodules)
-│   ├── Xenium_5k_analysis_pipeline/    # Primary pipeline: recode_st package
-│   ├── sopa/                           # Technology-agnostic spatial omics pipeline
-│   ├── spatialdata_xenium_explorer/    # SpatialData → Xenium Explorer converter
-│   ├── Xenium_benchmarking/            # Benchmarking 25+ Xenium datasets
-│   ├── XeniumIO/                       # Bioconductor R package for Xenium I/O
-│   ├── XeniumSpatialAnalysis/          # Spatial gradient & clustering (R)
-│   ├── liver_ped_map/                  # Pediatric liver atlas + IFALD spatial analysis
-│   ├── analysis_guides/                # Official 10x Genomics tutorial notebooks
-│   └── spatialdata-notebooks/          # SpatialData community notebooks
-│
-├── xenium_bibliography_knowledge/  # Key scientific papers (PDF)
-├── my_xenium_panel_markers/        # Custom Xenium gene panel proposals
-│   ├── Lung panel (immunology focus)
-│   └── Liver panel (August 2025)
-├── my_project_objectives/          # Project proposal and objectives
-├── slides_visual_references/       # Reference presentations and slides
-└── how_to_create_slides/           # Scientific presentation design guides
+xenium-spatial-transcriptomics/
+├── README.md                           # This file
+├── proyecto_demo_xenium/               # Main Snakemake pipeline
+│   ├── pipeline/
+│   │   ├── Snakefile                   # Main orchestrator (steps 01–12)
+│   │   ├── config/
+│   │   │   ├── config_lung.yaml        # Active: 289-gene lung data
+│   │   │   └── config_liver.yaml       # Future: 5K-gene liver data
+│   │   ├── rules/                      # Preprocessing rules (01–09)
+│   │   ├── analysis_rules/             # Analytical families (F1–F8)
+│   │   ├── scripts/
+│   │   │   ├── *_[01-09].py            # Preprocessing scripts
+│   │   │   └── analysis/               # Phase 1A, 2B, B, C scripts
+│   │   ├── utils/
+│   │   │   ├── io.py                   # SpatialData helpers
+│   │   │   └── logging.py              # Rich logging
+│   │   └── envs/
+│   │       ├── xenium_pipeline.yaml    # Main environment
+│   │       ├── xenium_R_analysis.yaml  # R for Phases C–E
+│   │       └── spacia.yaml             # Spacia (isolated)
+│   ├── human_lung_cancer/
+│   │   └── results/                    # All outputs (sdata.zarr, CSVs, figures)
+│   ├── SENDA_DORADA.md                 # Golden path: project state & phases
+│   └── CLAUDE.md                       # Developer notes & reproducibility
+├── xenium_code_knowledge/              # Reference codebases (git submodules)
+├── xenium_bibliography_knowledge/      # Key papers (PDFs)
+└── my_xenium_panel_markers/            # Custom gene panel proposals
 ```
 
-## Primary Pipeline: `recode_st`
+---
 
-Located in `xenium_code_knowledge/Xenium_5k_analysis_pipeline/`, this is a fully reproducible Python package for end-to-end Xenium analysis.
+## Configuration & Adaptation
 
-### Key features
-- **SpatialData** (Zarr-backed) as the core data format throughout
-- Sequential pipeline orchestrated via `__main__.py`
-- Typed configuration via Pydantic (`config.py`)
-- Integration with **scVI-tools**, **Squidpy**, and **MuSpAn** for spatial statistics
-- Cell-type annotation, doublet detection, denoising (ResolVI), and pseudobulk analysis
+### For Lung Data (Current)
 
-### Pipeline stages
+```yaml
+# config/config_lung.yaml
+data:
+  xenium_dir: "human_lung_cancer/rawdata/"
+  output_dir: "human_lung_cancer/results/"
 
-| Stage | Module(s) | Description |
-|-------|-----------|-------------|
-| Ingest | `format_data.py`, `subsample_data.py` | Xenium output → SpatialData Zarr |
-| QC | `qc.py` | Quality metrics and filtering |
-| Dimensionality reduction | `dimension_reduction.py` | PCA / UMAP / Leiden clustering |
-| Annotation | `annotate.py` | Cell-type labeling |
-| Integration | `integrate_scvi.py`, `integrate_ingest.py` | scVI and scanpy ingest |
-| Spatial analysis | `spatial_statistics.py`, `muspan.py` | Squidpy + MuSpAn |
-| Visualization | `view_images.py` | Spatial image overlays |
-| Downstream | `drug2cell.py`, `doublet_identification.py`, `psuedobulk.py`, `denoise_resolvi.py` | Downstream analyses |
+annotation:
+  celltypist_model: "Immune_All_Low"
 
-### Setup
+segmentation:
+  method: "auto"  # Auto-selects: Cellpose (current)
+```
+
+### For Liver Data (Future, Config-Only)
+
+```yaml
+# config/config_liver.yaml
+data:
+  xenium_dir: "liver_healthy/rawdata/"
+  output_dir: "liver_healthy/results/"
+
+annotation:
+  celltypist_model: "Liver_Human_PIP"
+
+segmentation:
+  method: "auto"  # Auto-selects: Baysor (5K-gene density)
+```
+
+**No rule or script changes required.**
+
+---
+
+## Performance Notes
+
+### Large Dataset Optimization (>100k cells)
+
+- **Step 09 (Doublet detection):** PCA components reduced from 30→15 for 268k cells (saves ~30 min)
+- **Timeout:** 3600s | Memory: 32 GB
+- **Tuning for >200k cells:** Further reduce PCA (n_components=10)
+
+### Step Execution Times (Lung Dataset, GPU)
+
+| Step | Time |
+|------|------|
+| 01 Ingest | 45s |
+| 02 Segmentation (Cellpose) | 8–12 min |
+| 03–05 QC, Preprocess, Reduction | 20–25 min |
+| 06–07 Annotation, Denoising | 50–70 min |
+| 08–09 Spatial, Downstream | 50–100 min |
+| **Total** | **~3–3.5 hours** |
+
+Phase B (F1+F8): 10 min | Phase 1A/2B: <1 min each
+
+---
+
+## Reproducibility
+
+### Environment Locking
+
+All conda environments are locked to exact versions:
 
 ```bash
-cd xenium_code_knowledge/Xenium_5k_analysis_pipeline
-
-# Conda (recommended)
-conda env create -f environment.yml
-conda activate xenium_5k_venv
-pip install --no-build-isolation --no-deps -e .
-
-# Or venv
-python -m venv recode_st && source recode_st/bin/activate
-pip install -r requirements.txt && pip install -e .
-
-# Dev dependencies
-make install-dev
+conda env create -f pipeline/envs/xenium_pipeline.yaml
+conda activate xenium_pipeline
 ```
 
-### Common commands
+### Snakemake DAG Visualization
 
 ```bash
-# Run tests
-pytest tests/
-pytest -v -p no:warnings --cov=src --cov-report=html --doctest-modules
-
-# Lint
-ruff check src/
-ruff format src/
-
-# Docs server (mkdocs at localhost:8000)
-make serve
+snakemake --configfile config/config_lung.yaml --dag | dot -Tpdf > dag.pdf
 ```
 
-## Reference Codebases
+---
 
-All submodules in `xenium_code_knowledge/` are third-party repositories. Clone with submodules:
+## Citation
 
-```bash
-git clone --recurse-submodules https://github.com/MiguelDiaz02/<repo-name>.git
-# or, if already cloned:
-git submodule update --init --recursive
+```bibtex
+@software{Diaz-Campos2026,
+  author       = {Díaz-Campos, Miguel Ángel},
+  title        = {Xenium Spatial Transcriptomics: Multi-Tool Consensus Pipeline},
+  year         = {2026},
+  url          = {https://github.com/MiguelDiaz02/xenium-spatial-transcriptomics},
+  organization = {Instituto Nacional de Pediatría (INP)},
+  keywords     = {spatial transcriptomics, xenium, consensus methods, snakemake}
+}
 ```
 
-| Submodule | Language | Purpose |
-|-----------|----------|---------|
-| `Xenium_5k_analysis_pipeline` | Python | Primary analysis pipeline (`recode_st`) |
-| `sopa` | Python | Technology-agnostic ST pipeline with Snakemake |
-| `spatialdata_xenium_explorer` | Python | Convert SpatialData → Xenium Explorer format |
-| `Xenium_benchmarking` | Python | Benchmarking across 25+ datasets; `xb` module |
-| `XeniumIO` | R | Bioconductor package for reading Xenium data |
-| `XeniumSpatialAnalysis` | R | Spatial gradient and clustering analysis |
-| `liver_ped_map` | Python/R | Pediatric liver atlas and IFALD spatial analysis |
-| `analysis_guides` | Python/R | Official 10x Genomics tutorial notebooks |
-| `spatialdata-notebooks` | Python | Community notebooks for the SpatialData ecosystem |
+Also cite key publications:
+- **LIANA+**: Dimitrov et al. Nature Methods 21 (2024)
+- **Novae**: LIN et al. Nature Methods 21 (2025)
+- **Banksy**: Foroutan et al. Nat Methods 20 (2023)
 
-## Gene Panel Proposals
+---
 
-Custom Xenium gene panel designs are in `my_xenium_panel_markers/`:
+## Contact
 
-- **Lung panel** (`Propuesta panel Pulmón 2025`): Immunology-focused panel including immune cell markers, fibrotic lung markers, and airway/alveolar cell type markers.
-- **Liver panel** (`Propuesta panel Xenium Liver August 2025`): Liver cell type markers for spatial transcriptomics profiling.
+**Author:** Miguel Ángel Díaz-Campos (computational biologist)  
+**Affiliation:** Instituto Nacional de Pediatría (INP), México  
+**Email:** miguelangeld00@gmail.com
 
-## Key Dependencies
-
-- [`spatialdata`](https://github.com/scverse/spatialdata) / [`spatialdata-io`](https://github.com/scverse/spatialdata-io) — core spatial data format
-- [`scanpy`](https://scanpy.readthedocs.io/) + [`anndata`](https://anndata.readthedocs.io/) — single-cell analysis
-- [`squidpy`](https://squidpy.readthedocs.io/) — spatial statistics
-- [`scvi-tools`](https://scvi-tools.org/) — probabilistic models for single-cell omics
-- [`MuSpAn`](https://muspan.gitlab.io/) — multiscale spatial analysis
-- `torch` — required by scVI and ResolVI
-
-## Bibliography
-
-Key references are stored as PDFs in `xenium_bibliography_knowledge/`. Topics covered include:
-- Spatial transcriptomics benchmarking and methodology
-- Pediatric liver atlas and spatial profiling
-- Xenium platform validation and analysis workflows
-- Cell-type deconvolution and integration methods
+---
 
 ## License
 
-This repository aggregates resources from multiple sources. Each submodule retains its original license. Please refer to individual submodule directories for their respective licenses.
+MIT License. See individual submodule directories for their respective licenses.

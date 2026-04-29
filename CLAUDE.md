@@ -203,6 +203,52 @@ git config --file .gitmodules --name-only --get-regexp path
 | `slides_visual_references/` | Reference PPTX and PDF presentations |
 | `how_to_create_slides/` | Presentation design guides |
 
+## Week 3 Status: Phase 1A & 1B COMPLETE ✅
+
+**Date**: 2026-04-24  
+**Completion**: Spatial-Aware DGE Analysis + Within-Celltype Validation
+
+### Phase 1A Results
+- **288/289 genes (99.7%)** with significant spatial autocorrelation (Moran's I, p<0.05)
+- **Wilcoxon DE analysis** for all 7 cell types (B_cell, Endothelial, Epithelial, Macrophage, NK_cell, T_cell, Tumor)
+- **100% spatial enrichment** in top-50 DE markers per cell type
+- **Outputs**: 12 CSV files + 4 publication figures (PNG) + 1 comprehensive PDF with captions
+- **Location**: `human_lung_cancer/results/02_biology/immune_DE/` + `figures/phase1a_spatial_de/`
+
+### Phase 1B Results
+- **325/350 robust markers (92.86%)** validated by DE + within-celltype spatial signal
+- **Phase 1A ↔ 1B concordance**: r>0.85 (highly consistent, biologically valid)
+- **54 genes flagged** as scattered expression (non-clustered, deprioritized)
+- **Outputs**: 4 CSV files + 3 publication figures (PNG) + 1 comprehensive PDF with captions
+- **Location**: `human_lung_cancer/results/02_biology/immune_DE/phase1b_validation/` + `figures/phase1b_spatial_de_validation/`
+
+### Next Phase: Phase 2 (CCC Analysis)
+- **Method**: DeepTalk (graph attention networks)
+- **Focus**: Ligand-receptor interactions, M2 macrophage hub validation
+- **Timeline**: 4-6 hours
+- **Status**: Ready to begin
+
+### Key Scripts Created
+- `pipeline/scripts/analysis/week3_01a_dge_squidpy.py` — Phase 1A spatial-aware DE
+- `pipeline/scripts/analysis/week3_01a_visualizations.py` — Phase 1A figures
+- `pipeline/scripts/analysis/week3_01b_spatial_de_validation.py` — Phase 1B validation
+- `pipeline/scripts/analysis/week3_01b_visualizations.py` — Phase 1B figures
+
+### File Organization
+```
+proyecto_demo_xenium/
+├── human_lung_cancer/results/02_biology/immune_DE/          [16 CSVs]
+├── human_lung_cancer/results/figures/
+│   ├── phase1a_spatial_de/                                   [4 PNGs + PDF]
+│   ├── phase1b_spatial_de_validation/                        [3 PNGs + PDF]
+│   ├── phase2_ccc/                                           [empty - next]
+│   ├── phase3_spatial/                                       [empty - next]
+│   └── phase4_summary/                                       [empty - next]
+├── pipeline/scripts/analysis/week3_*.py                      [4 scripts]
+├── WEEK3_FILE_LOCATIONS.txt                                  [quick reference]
+└── WEEK3_ANALYSIS_SUMMARY.md                                 [detailed summary]
+```
+
 ## Autonomous Operation Guidelines
 
 When operating autonomously (sol rojo mode):
@@ -212,3 +258,6 @@ When operating autonomously (sol rojo mode):
 - **Failures:** Try one alternative; log errors to `logs/` and continue.
 - **Patterns:** Prefer patterns from `src/recode_st/` (Python) or `pipeline/scripts/` (Snakemake).
 - **Completion:** Write summary to `logs/session_summary_YYYYMMDD.txt`.
+- **Figure organization:** Always organize figures in `results/figures/` with subfolders per analysis phase
+- **Documentation:** Update CLAUDE.md and memory files at end of session to preserve context
+- **Reproducibility:** All scripts should be self-contained and include logging via `utils.logging.get_logger()`
