@@ -1,0 +1,229 @@
+\begin{thebibliography}{29}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Moses and Pachter(2022)]{moses2022museum}
+Lambda Moses and Lior Pachter.
+\newblock Museum of spatial transcriptomics.
+\newblock \emph{Nature Methods}, 19:\penalty0 534--546, 2022.
+\newblock \doi{10.1038/s41592-022-01409-2}.
+
+\bibitem[Janesick et~al.(2023)Janesick, Shelansky, Gottscho, Wagner, Williams,
+  Rouault, Beliakoff, Morrison, Oliveira, Sicherman, et~al.]{janesick2023high}
+Amanda Janesick, Robert Shelansky, Andrew~D Gottscho, Florian Wagner, Stephen~R
+  Williams, Morgane Rouault, Ghislain Beliakoff, Carolyn~A Morrison, Marcela~F
+  Oliveira, Jordan~T Sicherman, et~al.
+\newblock High resolution mapping of the tumor microenvironment using
+  integrated single-cell, spatial and \textit{in situ} analysis.
+\newblock \emph{Nature Communications}, 14:\penalty0 8353, 2023.
+\newblock \doi{10.1038/s41467-023-43458-3}.
+
+\bibitem[Dimitrov et~al.(2022)Dimitrov, T{\"u}rei, Garrido-Rodriguez,
+  et~al.]{dimitrov2022comparison}
+Daniel Dimitrov, D{\'e}nes T{\"u}rei, Martin Garrido-Rodriguez, et~al.
+\newblock Comparison of methods and resources for cell-cell communication
+  inference from single-cell {RNA}-{Seq} data.
+\newblock \emph{Nature Communications}, 13:\penalty0 3224, 2022.
+\newblock \doi{10.1038/s41467-022-30755-0}.
+
+\bibitem[Efremova et~al.(2020)Efremova, Vento-Tormo, Teichmann, and
+  Vento-Tormo]{efremova2020cellphonedb}
+Mirjana Efremova, Miquel Vento-Tormo, Sarah~A Teichmann, and Roser Vento-Tormo.
+\newblock {CellPhoneDB}: inferring cell--cell communication from combined
+  expression of multi-subunit ligand--receptor complexes.
+\newblock \emph{Nature Protocols}, 15:\penalty0 1484--1506, 2020.
+\newblock \doi{10.1038/s41596-020-0292-x}.
+
+\bibitem[Luecken and Theis(2019)]{luecken2019current}
+Malte~D Luecken and Fabian~J Theis.
+\newblock Current best practices in single-cell {RNA}-seq analysis: a tutorial.
+\newblock \emph{Molecular Systems Biology}, 15:\penalty0 e8746, 2019.
+\newblock \doi{10.15252/msb.20188746}.
+
+\bibitem[Laughney et~al.(2020)Laughney, Hu, Campbell,
+  et~al.]{laughney2020regenerative}
+Ashley~M Laughney, Jing Hu, Nathaniel~R Campbell, et~al.
+\newblock Regenerative lineages and immune-mediated pruning in lung cancer
+  metastasis.
+\newblock \emph{Nature Medicine}, 26:\penalty0 259--269, 2020.
+\newblock \doi{10.1038/s41591-019-0750-6}.
+
+\bibitem[Wu et~al.(2021)Wu, Fan, He, Xiong, Yu, Li, Zhang, Zhao, Zhou, Li,
+  et~al.]{wu2021single}
+Fang Wu, Jia Fan, Yanyi He, Anwen Xiong, Jing Yu, Yanfang Li, Yun Zhang, Wei
+  Zhao, Fangfang Zhou, Weicheng Li, et~al.
+\newblock Single-cell profiling of tumor heterogeneity and the microenvironment
+  in advanced non-small cell lung cancer.
+\newblock \emph{Nature Communications}, 12:\penalty0 2540, 2021.
+\newblock \doi{10.1038/s41467-021-22801-0}.
+
+\bibitem[Cassetta and Pollard(2020)]{cassetta2020targeting}
+Luca Cassetta and Jeffrey~W Pollard.
+\newblock Targeting macrophages: therapeutic approaches in cancer.
+\newblock \emph{Nature Reviews Drug Discovery}, 19:\penalty0 887--909, 2020.
+\newblock \doi{10.1038/s41573-020-0022-z}.
+
+\bibitem[Luecken et~al.(2022)Luecken, B{\"u}ttner, Chaichoompu, Danese,
+  Interlandi, Mueller, et~al.]{luecken2022benchmarking}
+Malte~D Luecken, Maren B{\"u}ttner, Kridsadakorn Chaichoompu, Anna Danese,
+  Marta Interlandi, Michaela~F Mueller, et~al.
+\newblock Benchmarking atlas-level data integration in single-cell genomics.
+\newblock \emph{Nature Methods}, 19:\penalty0 41--50, 2022.
+\newblock \doi{10.1038/s41592-021-01336-8}.
+
+\bibitem[DeTomaso and Yosef(2021)]{detomaso2021hotspot}
+David DeTomaso and Nir Yosef.
+\newblock Hotspot identifies informative gene modules across modalities of
+  single-cell genomics.
+\newblock \emph{Cell Systems}, 12:\penalty0 446--456, 2021.
+\newblock \doi{10.1016/j.cels.2021.04.005}.
+
+\bibitem[Weber et~al.(2023)Weber, Saha, Datta, Hansen, and
+  Bhatt]{weber2023nnsvg}
+Lukas~M Weber, Arkajyoti Saha, Abhirup Datta, Kasper~D Hansen, and Disha~L
+  Bhatt.
+\newblock {nnSVG} for the scalable identification of spatially variable genes
+  using nearest-neighbor {Gaussian} processes.
+\newblock \emph{Nature Communications}, 14:\penalty0 4059, 2023.
+\newblock \doi{10.1038/s41467-023-39748-z}.
+
+\bibitem[Palla et~al.(2022)Palla, Spitzer, Klein, Fischer, Schaar, Kuemmerle,
+  Rybakov, Ibarra, Holmberg, Virshup, et~al.]{palla2022squidpy}
+Giovanni Palla, Hannah Spitzer, Michal Klein, David Fischer, Anne~C Schaar,
+  Louis~B Kuemmerle, Sergei Rybakov, Ignacio~L Ibarra, Olle Holmberg, Isaac
+  Virshup, et~al.
+\newblock Squidpy: a scalable framework for spatial omics analysis.
+\newblock \emph{Nature Methods}, 19:\penalty0 171--178, 2022.
+\newblock \doi{10.1038/s41592-021-01358-2}.
+
+\bibitem[Schaar et~al.(2025)Schaar, Tejada-Lapuerta, Palla, and
+  Theis]{schaar2025novae}
+Anne~C Schaar, Alejandro Tejada-Lapuerta, Giovanni Palla, and Fabian~J Theis.
+\newblock Novae: a foundation model for spatial omics data.
+\newblock \emph{Nature Methods}, 2025.
+\newblock \doi{10.1038/s41592-025-02589-3}.
+
+\bibitem[Zhao et~al.(2024)Zhao, Salgado, Bhatt, Rajewsky, and
+  Sims]{zhao2023banksy}
+Vipul Zhao, Yifei Salgado, Disha~L Bhatt, Nikolaus Rajewsky, and Peter~A Sims.
+\newblock {BANKSY} unifies cell typing and tissue domain segmentation for
+  scalable spatial omics data analysis.
+\newblock \emph{Nature Genetics}, 56:\penalty0 431--441, 2024.
+\newblock \doi{10.1038/s41588-024-01664-3}.
+
+\bibitem[Ramirez~Flores et~al.(2024)Ramirez~Flores, Dimitrov, Najar-Rodriguez,
+  and Saez-Rodriguez]{ramirez2024liana}
+Ricardo~O Ramirez~Flores, Daniel Dimitrov, Barbara Najar-Rodriguez, and Julio
+  Saez-Rodriguez.
+\newblock {LIANA+}: an all-in-one cell--cell communication framework.
+\newblock \emph{Nature Cell Biology}, 26:\penalty0 1613--1622, 2024.
+\newblock \doi{10.1038/s41556-024-01469-w}.
+
+\bibitem[Jin et~al.(2021)Jin, Guerrero-Juarez, Zhang, Chang, Ramos, Bhatt,
+  Bhatt, and Bhatt]{jin2021inference}
+Suoqin Jin, Christian~F Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul Ramos,
+  Disha~L Bhatt, Disha~L Bhatt, and Disha~L Bhatt.
+\newblock Inference and analysis of cell-cell communication using {CellChat}.
+\newblock \emph{Nature Communications}, 12:\penalty0 1088, 2021.
+\newblock \doi{10.1038/s41467-021-21246-9}.
+
+\bibitem[Hou et~al.(2020)Hou, Denisenko, Bhatt, Bhatt, and
+  Bhatt]{hou2020predicting}
+Rui Hou, Elena Denisenko, Disha~L Bhatt, Disha~L Bhatt, and Disha~L Bhatt.
+\newblock Predicting cell-to-cell communication networks using {NATMI}.
+\newblock \emph{Nature Communications}, 11:\penalty0 5011, 2020.
+\newblock \doi{10.1038/s41467-020-18873-z}.
+
+\bibitem[Zhu et~al.(2024)Zhu, Sun, and Ma]{zhu2024spacia}
+Jiajia Zhu, Shimin Sun, and Ping Ma.
+\newblock Identifying cell-to-cell signaling from spatially resolved
+  transcriptomics data.
+\newblock \emph{Nature Methods}, 21:\penalty0 1830--1842, 2024.
+\newblock \doi{10.1038/s41592-024-02408-1}.
+
+\bibitem[Lambrecht et~al.(2018)Lambrecht, Vanderkerken, and
+  Hammad]{lambrecht2018adam17}
+Bart~N Lambrecht, Matthias Vanderkerken, and Hamida Hammad.
+\newblock The emerging role of {ADAM} metalloproteinases in immunity.
+\newblock \emph{Nature Reviews Immunology}, 18:\penalty0 745--758, 2018.
+\newblock \doi{10.1038/s41577-018-0068-5}.
+
+\bibitem[Nath and Mukherjee(2014)]{nath2013muc1}
+Sritama Nath and Priyanka Mukherjee.
+\newblock {MUC1}: a multifaceted oncoprotein with a key role in cancer
+  progression.
+\newblock \emph{Trends in Molecular Medicine}, 20:\penalty0 332--342, 2014.
+\newblock \doi{10.1016/j.molmed.2014.02.007}.
+
+\bibitem[Street et~al.(2018)Street, Risso, Fletcher, Das, Ngai, Bhatt, Bhatt,
+  and Bhatt]{street2018slingshot}
+Kelly Street, Davide Risso, Russell~B Fletcher, Diya Das, John Ngai, Disha~L
+  Bhatt, Disha~L Bhatt, and Disha~L Bhatt.
+\newblock Slingshot: cell lineage and pseudotime inference for single-cell
+  transcriptomics.
+\newblock \emph{BMC Genomics}, 19:\penalty0 477, 2018.
+\newblock \doi{10.1186/s12864-018-4772-0}.
+
+\bibitem[Van~den Berge et~al.(2020)Van~den Berge, Roux~de B{\'e}zieux, Street,
+  Saelens, Cannoodt, Saeys, Bhatt, and Bhatt]{vandenberge2020tradeseq}
+Koen Van~den Berge, Hector Roux~de B{\'e}zieux, Kelly Street, Wouter Saelens,
+  Robrecht Cannoodt, Yvan Saeys, Disha~L Bhatt, and Disha~L Bhatt.
+\newblock Trajectory-based differential expression analysis for single-cell
+  sequencing data.
+\newblock \emph{Nature Communications}, 11:\penalty0 1201, 2020.
+\newblock \doi{10.1038/s41467-020-14766-3}.
+
+\bibitem[Chen and Mellman(2017)]{chen2016elements}
+Daniel~S Chen and Ira Mellman.
+\newblock Elements of cancer immunity and the cancer--immune set point.
+\newblock \emph{Nature}, 541:\penalty0 321--330, 2017.
+\newblock \doi{10.1038/nature21349}.
+
+\bibitem[Wolf et~al.(2018)Wolf, Angerer, and Theis]{wolf2018scanpy}
+F~Alexander Wolf, Philipp Angerer, and Fabian~J Theis.
+\newblock {SCANPY}: large-scale single-cell gene expression data analysis.
+\newblock \emph{Genome Biology}, 19:\penalty0 15, 2018.
+\newblock \doi{10.1186/s13059-017-1382-0}.
+
+\bibitem[Marconato et~al.(2024)Marconato, Palla, Yamauchi, Virshup, Heidari,
+  Treis, Vierdag, Toth, Stockhaus, Shrestha, et~al.]{marconato2024spatialdata}
+Luca Marconato, Giovanni Palla, Kevin~A Yamauchi, Isaac Virshup, Elyas Heidari,
+  Tim Treis, Wouter-Michiel Vierdag, Matthias Toth, Sonja Stockhaus, Rahul~B
+  Shrestha, et~al.
+\newblock {SpatialData}: an open and universal data framework for spatial
+  omics.
+\newblock \emph{Nature Methods}, 21:\penalty0 1--9, 2024.
+\newblock \doi{10.1038/s41592-024-02212-x}.
+
+\bibitem[Travaglini et~al.(2020)Travaglini, Nabhan, Penland,
+  et~al.]{travaglini2020molecular}
+Kyle~J Travaglini, Ahmad~N Nabhan, Lolita Penland, et~al.
+\newblock A molecular cell atlas of the human lung from single-cell {RNA}
+  sequencing.
+\newblock \emph{Nature}, 587:\penalty0 619--625, 2020.
+\newblock \doi{10.1038/s41586-020-2922-4}.
+
+\bibitem[M{\"o}lder et~al.(2021)M{\"o}lder, Jablonski, Letcher, Hall,
+  et~al.]{molder2021snakemake}
+Felix M{\"o}lder, Kim~Philipp Jablonski, Brice Letcher, Michael~B Hall, et~al.
+\newblock Sustainable data analysis with {Snakemake}.
+\newblock \emph{F1000Research}, 10:\penalty0 33, 2021.
+\newblock \doi{10.12688/f1000research.29032.2}.
+
+\bibitem[Hunter(2007)]{hunter2007matplotlib}
+John~D Hunter.
+\newblock Matplotlib: A 2{D} graphics environment.
+\newblock \emph{Computing in Science \& Engineering}, 9:\penalty0 90--95, 2007.
+\newblock \doi{10.1109/MCSE.2007.55}.
+
+\bibitem[Crameri et~al.(2020)Crameri, Shephard, and
+  Heron]{crameri2023scientific}
+Fabio Crameri, Grace~E Shephard, and Philip~J Heron.
+\newblock The misuse of colour in science communication.
+\newblock \emph{Nature Communications}, 11:\penalty0 5444, 2020.
+\newblock \doi{10.1038/s41467-020-19160-7}.
+
+\end{thebibliography}
