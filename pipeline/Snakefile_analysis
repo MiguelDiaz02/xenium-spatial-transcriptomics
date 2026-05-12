@@ -1,0 +1,117 @@
+"""
+Xenium Spatial Transcriptomics — Multi-Tool Analysis Pipeline
+==============================================================
+Snakemake DAG for downstream analysis (post-preprocessing).
+
+Architecture (Option C from brainstorm 2026-04-27):
+- The main `Snakefile` (preprocessing, steps 01-12) is untouched.
+- This file orchestrates the 8 analytical families using the multi-tool
+  consensus philosophy validated by spec 2026-04-27-multi-tool-pipeline-spec.md.
+
+DAG:
+    sdata.zarr (input from preprocessing)
+        ├── F0  Re-annotation (L1 + immune_granular)
+        ├── F1  Spatial Domains (Novae + Banksy)
+        ├── F2  SVG Consensus (Hotspot + nnSVG + Moran's I)
+        ├── F3  CCC Validation (LIANA+ bivariate + Spacia)
+        ├── F5  Pseudotime (Slingshot + tradeSeq GAM)
+        ├── F5b TLS Detection (Tertiary Lymphoid Structures)
+        ├── F6  Annotation Cross-validation (SingleR vs manual)  [optional]
+        ├── F8  Novae Embeddings + Pathways
+        └── Integration figure (5 panels)
+
+DESCARTADOS (289 genes insuficientes — diseñados para paneles ≥1k-3k genes):
+    F4  Niche-DE  — nicheDE requiere ≥1k genes; con 289 = 0 genes significativos
+    F7  Co-expression — hdWGCNA/SCENIC requieren ≥3k genes
+
+Usage:
+    cd pipeline
+    # Dry run
+    snakemake -s Snakefile_analysis --configfile config/config_lung.yaml -n
+    # Full run
+    snakemake -s Snakefile_analysis --configfile config/config_lung.yaml --cores 8 --use-conda
+    # Single family
+    snakemake -s Snakefile_analysis --configfile config/config_lung.yaml --cores 4 results/03_phase3_spatial/F0_reannotation.done
+
+Citations: see docs/superpowers/specs/2026-04-27-multi-tool-pipeline-spec.md
+"""
+from pathlib import Path
+
+# ─── Config ────────────────────────────────────────────────────────────────
+configfile: "config/config_lung.yaml"
+
+OUTDIR  = Path(config["project"]["output_dir"])
+SDATA   = str(OUTDIR / "sdata.zarr")
+ADIR    = OUTDIR / "03_phase3_spatial"
+FIGDIR  = OUTDIR / "figures"
+
+# ─── Sub-config: which families to run ─────────────────────────────────────
+ANALYSIS_CFG = config.get("analysis", {})
+
+# ─── Include analysis rule modules ─────────────────────────────────────────
+include: "analysis_rules/F0_reannotation.smk"
+include: "analysis_rules/F1_spatial_domains.smk"
+include: "analysis_rules/F2_svg_consensus.smk"
+include: "analysis_rules/F3_ccc_validation.smk"
+# F4 Niche-DE DESCARTADO: 289 genes insuf. (requiere ≥1k); cell_type_fine = L1 sin L2 real
+# include: "analysis_rules/F4_niche_de.smk"
+include: "analysis_rules/F5_pseudotime.smk"
+include: "analysis_rules/F5b_tls_detection.smk"
+include: "analysis_rules/F6_annotation_xval.smk"
+include: "analysis_rules/F8_novae.smk"
+include: "analysis_rules/integration_viz.smk"
+
+
+# ─── Default targets ───────────────────────────────────────────────────────
+def analysis_targets(wildcards):
+    """Final analysis outputs based on config flags."""
+    targets = []
+
+    # F0 always runs (foundation for everything)
+    targets.append(str(ADIR / "F0_reannotation.done"))
+
+    # F8 Novae (drives F1 + F5 substrate)
+    if ANALYSIS_CFG.get("f8_novae", {}).get("enabled", True):
+        targets.append(str(ADIR / "F8_novae.done"))
+
+    # F1 spatial domains
+    if ANALYSIS_CFG.get("f1_domains", {}).get("novae", {}).get("enabled", True):
+        targets.append(str(ADIR / "F1_novae_domains.done"))
+    if ANALYSIS_CFG.get("f1_domains", {}).get("banksy", {}).get("enabled", True):
+        targets.append(str(ADIR / "F1_banksy_domains.done"))
+
+    # F2 SVG consensus
+    if ANALYSIS_CFG.get("f2_svg", {}).get("enabled", True):
+        targets.append(str(ADIR / "F2_svg_consensus.done"))
+
+    # F3 CCC validation (Phase 2B already done; this adds bivariate + Spacia)
+    if ANALYSIS_CFG.get("f3_ccc", {}).get("liana_bivariate", {}).get("enabled", True):
+        targets.append(str(ADIR / "F3_liana_bivariate.done"))
+    if ANALYSIS_CFG.get("f3_ccc", {}).get("spacia_validation", {}).get("enabled", True):
+        targets.append(str(ADIR / "F3_spacia_validation.done"))
+
+    # F4 Niche-DE — DESCARTADO (289 genes insuficientes)
+    # if ANALYSIS_CFG.get("f4_niche_de", {}).get("enabled", False):
+    #     targets.append(str(ADIR / "F4_niche_de.done"))
+
+    # F5 Pseudotime
+    if ANALYSIS_CFG.get("f5_pseudotime", {}).get("enabled", True):
+        targets.append(str(ADIR / "F5_pseudotime.done"))
+
+    # F5b TLS detection
+    if ANALYSIS_CFG.get("f5b_tls", {}).get("enabled", True):
+        targets.append(str(ADIR / "F5b_tls.done"))
+
+    # F6 Annotation cross-val (optional)
+    if ANALYSIS_CFG.get("f6_annotation_xval", {}).get("enabled", False):
+        targets.append(str(ADIR / "F6_singler.done"))
+
+    # Integration figure
+    targets.append(str(FIGDIR / "phase3_integration_master_figure.png"))
+
+    return targets
+
+
+rule all_analysis:
+    input: analysis_targets
+    default_target: True

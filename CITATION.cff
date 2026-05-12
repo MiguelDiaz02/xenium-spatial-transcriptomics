@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software or its analysis framework, please cite the manuscript and this repository."
+title: "Multi-method consensus analysis of targeted in situ spatial transcriptomics — pilot demonstration on human lung adenocarcinoma"
+version: "1.0.0-pilot"
+date-released: "2026-05-12"
+license: MIT
+repository-code: "https://github.com/MiguelDiaz02/xenium-spatial-transcriptomics"
+type: software
+authors:
+  - given-names: "Miguel Ángel"
+    family-names: "Díaz-Campos"
+    affiliation: "Instituto Nacional de Pediatría (INP), México"
+    email: "mdiazc161@unam.edu"
+  - given-names: "Alfredo de Jesús"
+    family-names: "Rodríguez Gómez"
+    affiliation: "Instituto Nacional de Pediatría (INP), México"
+    email: "alfredo.rodriguez@iibiomedicas.unam.mx"
+preferred-citation:
+  type: article
+  title: "Multi-method consensus analysis of targeted in situ spatial transcriptomics: a framework with pilot demonstration on human lung adenocarcinoma"
+  authors:
+    - given-names: "Miguel Ángel"
+      family-names: "Díaz-Campos"
+    - given-names: "Alfredo de Jesús"
+      family-names: "Rodríguez Gómez"
+  journal: "Nature Communications"
+  year: 2026
+  status: "submitted"
+keywords:
+  - spatial transcriptomics
+  - Xenium
+  - consensus analysis
+  - cell-cell communication
+  - tumor microenvironment
+  - lung adenocarcinoma
+  - macrophage polarization
+  - ADAM17
+  - MUC1

@@ -1,0 +1,360 @@
+# Cohort definition — TBDs (Telomere Biology Disorders) lung + liver fibrosis
+# =========================================================================
+# DESIGN (locked 2026-05-11, panel design PDF reviewed):
+#   - 2 Xenium TMA slides (one per organ): LUNG_AF and LIVER_AF
+#   - Each TMA = ~55–60 cores from multiple donors with technical replicates
+#   - Donor breakdown:
+#       LUNG_AF  : 10 TBD + 3 NS + 3 NN  = 16 donors  → ~55 cores
+#       LIVER_AF : 4 TBD  + 4 Control + 4 Alc_Cirh = 12 donors → ~60 cores
+#   - All TBD donors are clinically fibrotic at biopsy.
+#   - Sample granularity = CORE (sample_id ≡ TMA_DONOR_coreNN).
+#   - Statistical unit = DONOR (subject_id). Pseudobulk aggregates over cores
+#     of the same (cell_type, subject_id).
+#   - Cohort-level controls:
+#       Lung   → NS (non-short-telomere) + NN (non-neoplastic) = healthy reference
+#       Liver  → Control (healthy) + Alc_Cirh (fibrotic non-TBD reference)
+#
+# IMPORTANT — this template lists the donor x core matrix expected from the
+# panel-design PDF. Once the per-core polygons are resolved (Xenium Explorer
+# or sopa.utils.dearray), the operator must:
+#   1. populate ``core_id`` exactly as it appears in the per-TMA sdata.zarr
+#      ``obs.core_id`` column.
+#   2. assign actual TBD subject IDs (TBD1–TBD10 may map to real donor IDs
+#      like SUBJ_TBD_001..010 once de-anonymized).
+#   3. add ``replicates_expected`` per donor to flag missing cores at QC time.
+
+cohort_id: TBDs_v1
+description: "TBDs lung + liver TMA cohort — 2 Xenium slides, ~28 donors total"
+created: 2026-05-11
+
+# ─── condition axis (unified across organs) ───────────────────────────────
+# Reference category for DE = first entry. Per-organ contrasts below.
+conditions:
+  - control                # NS + NN (lung) or Control (liver)
+  - fibrotic_nonTBD        # Alc_Cirh (liver only)  → liver-specific contrast
+  - fibrotic_TBD           # TBD donors (both organs) → primary disease group
+
+# Auxiliary categorical axes (always present in obs):
+#   tbd_status         : {TBD, nonTBD}
+#   control_subtype    : {NS, NN, Control, AlcCirh, None}  — fine-grained
+#   tma_slide          : {LUNG_AF, LIVER_AF}
+#   organ              : {lung, liver}
+
+organs:
+  lung:
+    panel_name: "Xenium TBDs lung panel (439 genes)"
+    n_genes_total: 439
+    tma_slide: LUNG_AF
+    markers_yaml: pipeline/config/markers/lung_TBDs.yaml
+    analysis_config: pipeline/config/config_lung.yaml
+    # TMA-level outputs (one sdata.zarr for the whole TMA):
+    tma_raw_dir: TBDs/lung/raw
+    tma_sdata: TBDs/lung/results/sdata_TMA.zarr
+    contrasts:
+      - {test: fibrotic_TBD, ref: control}             # primary disease test
+  liver:
+    panel_name: "Xenium TBDs liver panel (439 genes)"
+    n_genes_total: 439
+    tma_slide: LIVER_AF
+    markers_yaml: pipeline/config/markers/liver_TBDs.yaml
+    analysis_config: pipeline/config/config_liver.yaml
+    tma_raw_dir: TBDs/liver/raw
+    tma_sdata: TBDs/liver/results/sdata_TMA.zarr
+    contrasts:
+      - {test: fibrotic_TBD,   ref: control}            # TBD vs healthy
+      - {test: fibrotic_nonTBD, ref: control}           # Alc cirrhosis vs healthy
+      - {test: fibrotic_TBD,   ref: fibrotic_nonTBD}    # KEY: TBD-specific vs generic fibrosis
+
+# ─── donor manifest (no per-core enumeration; cores resolved at runtime) ──
+# At runtime, ``utils.cohort.load_cohort()`` expands each donor into one
+# ``SampleSpec`` per core by reading the per-TMA sdata's obs.core_id column.
+# Field ``cores_expected`` is a soft check (warn if discrepancy).
+donors:
+  # ─── LUNG_AF TMA: 10 TBD + 3 NS + 3 NN ──────────────────────────────────
+  - subject_id: LUNG_TBD01
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD1            # label as it appears on the TMA layout
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD02
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD2
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD03
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD3
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD04
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD4
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD05
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD5
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD06
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD6
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD07
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD7
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD08
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD8
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 4
+  - subject_id: LUNG_TBD09
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD9
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 5
+  - subject_id: LUNG_TBD10
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: TBD10
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 5
+  # Controls — NS = Non-Short telomere
+  - subject_id: LUNG_CTRL_NS1
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: Control NS1
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: NS
+    cores_expected: 3
+  - subject_id: LUNG_CTRL_NS2
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: Control NS2
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: NS
+    cores_expected: 3
+  - subject_id: LUNG_CTRL_NS3
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: Control NS3
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: NS
+    cores_expected: 3
+  # Controls — NN = Non-Neoplastic
+  - subject_id: LUNG_CTRL_NN1
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: Control NN1
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: NN
+    cores_expected: 3
+  - subject_id: LUNG_CTRL_NN2
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: Control NN2
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: NN
+    cores_expected: 3
+  - subject_id: LUNG_CTRL_NN3
+    organ: lung
+    tma_slide: LUNG_AF
+    tma_core_label: Control NN3
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: NN
+    cores_expected: 3
+
+  # ─── LIVER_AF TMA: 4 TBD + 4 Control + 4 Alc_Cirh ──────────────────────
+  - subject_id: LIVER_TBD01
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: TBD1
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 5
+  - subject_id: LIVER_TBD02
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: TBD2
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 5
+  - subject_id: LIVER_TBD03
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: TBD3
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 5
+  - subject_id: LIVER_TBD04
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: TBD4
+    condition: fibrotic_TBD
+    tbd_status: TBD
+    control_subtype: null
+    cores_expected: 5
+  - subject_id: LIVER_CTRL01
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Control 1
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: Control
+    cores_expected: 5
+  - subject_id: LIVER_CTRL02
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Control 2
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: Control
+    cores_expected: 5
+  - subject_id: LIVER_CTRL03
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Control 3
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: Control
+    cores_expected: 5
+  - subject_id: LIVER_CTRL04
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Control 4
+    condition: control
+    tbd_status: nonTBD
+    control_subtype: Control
+    cores_expected: 5
+  - subject_id: LIVER_ALCCIRH01
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Alc Cirh 1
+    condition: fibrotic_nonTBD
+    tbd_status: nonTBD
+    control_subtype: AlcCirh
+    cores_expected: 5
+  - subject_id: LIVER_ALCCIRH02
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Alc Cirh 2
+    condition: fibrotic_nonTBD
+    tbd_status: nonTBD
+    control_subtype: AlcCirh
+    cores_expected: 5
+  - subject_id: LIVER_ALCCIRH03
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Alc Cirh 3
+    condition: fibrotic_nonTBD
+    tbd_status: nonTBD
+    control_subtype: AlcCirh
+    cores_expected: 5
+  - subject_id: LIVER_ALCCIRH04
+    organ: liver
+    tma_slide: LIVER_AF
+    tma_core_label: Alc Cirh 4
+    condition: fibrotic_nonTBD
+    tbd_status: nonTBD
+    control_subtype: AlcCirh
+    cores_expected: 5
+
+# ─── Integration / DGE / CCC / spatial parameters ─────────────────────────
+integration:
+  batch_key: sample_id              # core, with subject_id as a covariate downstream
+  n_latent: 30
+  n_layers: 2
+  gene_likelihood: nb
+  max_epochs: 400
+  early_stopping: true
+  use_gpu: true
+  hvg_top_n: null
+
+pseudobulk:
+  groupby:
+    - cell_type_L2
+    - subject_id                    # DONOR-level, NOT core (controls pseudo-replication)
+  reference_condition: control
+  # Contrasts are organ-aware; pulled from organs.<organ>.contrasts at runtime.
+  min_cells_per_pseudobulk: 10
+  min_donors_per_group: 2
+  fdr_threshold: 0.05
+  lfc_threshold: 0.585
+
+ccc_multisample:
+  sample_key: subject_id            # aggregate within donor before cross-donor view
+  condition_key: condition
+  method: rank_aggregate
+  resource: consensus
+  n_perms: 1000
+  min_cells: 50
+  expr_prop: 0.1
+  fdr_method: bh
+  fdr_threshold: 0.05
+
+spacia_meta:
+  per_sample: true                  # one Spacia run per core
+  meta_unit: subject_id             # aggregate cores → donor → cohort
+  mcmc_params: "50000,20000,100,2"
+  n_cells_subsample: 5000
+  dist_cutoff_um: 30
+  multiple_testing: bonferroni
+  meta_method: stouffer
+  min_donors_validating: 2
+
+pseudotime_cohort:
+  target_lineages:
+    lung:
+      - {name: "AT2_to_AT1",            anchor_celltypes: [AT2, AT2_dysfunctional, AT1]}
+      - {name: "Fibroblast_activation", anchor_celltypes: [Fibroblast_general, Myofibroblast]}
+    liver:
+      - {name: "HSC_activation",        anchor_celltypes: [HSC_quiescent, HSC_activated]}
+      - {name: "Hepatocyte_zonation",   anchor_celltypes: [Hepatocyte_periportal, Hepatocyte_pericentral]}
+  method: slingshot
+  condition_test: tradeSeq
+
+spatial_domains:
+  cross_sample_mode: novae
+  novae_finetune_epochs: 100
+  per_core: true                    # domains computed per core, harmonized across cohort

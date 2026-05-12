@@ -48,6 +48,7 @@ qc:
   max_transcripts: 2000        # removes doublets / segmentation errors
   min_genes: 5
   max_pct_neg_ctrl: 5.0        # % of negative control transcripts per cell
+  max_cell_area_um2: 1500      # tissue-morphology dependent; reset histogram per dataset
 
 # ─── Preprocessing ────────────────────────────────────────────────────────────
 preprocess:
@@ -141,3 +142,107 @@ extended_steps:
   visualization: true           # Generate publication-quality figures
   extended_analysis: true       # Compute cell-type specific spatial patterns
   export: true                  # Package results in multiple formats
+
+# ─── Multi-tool Analysis Pipeline (Snakefile_analysis) ────────────────────────
+# Spec: docs/superpowers/specs/2026-04-27-multi-tool-pipeline-spec.md
+# Markers DB: pipeline/config/cell_markers_lung.yaml
+analysis:
+
+  # F0 — Hierarchical re-annotation (L1/L2/L3)
+  f0_reannotation:
+    enabled: true
+    z_score_threshold: 1.0
+    ambiguity_threshold: 0.3
+
+  # F1 — Spatial domains (Novae + Banksy consensus)
+  f1_domains:
+    novae:
+      enabled: true
+      pretrained: "MICS-Lab/novae-human-0"
+      n_levels: [5, 10, 20]                # multi-resolution hierarchical
+      radius_um: 200
+      batch_correct: true
+    banksy:
+      enabled: true
+      lambda: 0.2                          # 0.0=non-spatial, 1.0=fully spatial
+      k_geom: 6                            # k-nearest geometric neighbors
+      n_clusters: 10
+
+  # F2 — Spatial Variable Genes (multi-tool consensus)
+  f2_svg:
+    enabled: true
+    methods: [moran, hotspot, nnsvg]       # Wilcoxon+Moran's existing; add Hotspot + nnSVG
+    min_methods_for_robust: 2              # robust SVG = sig in ≥2 methods
+    hotspot:
+      n_neighbors: 30
+      model: danb                          # negative binomial
+      fdr_threshold: 0.05
+    nnsvg:
+      n_neighbors: 10                      # Gaussian process kernel
+
+  # F3 — CCC validation (LIANA+ rank_aggregate + Spacia)
+  f3_ccc:
+    liana:
+      enabled: true
+      method: rank_aggregate               # consensus over CellPhoneDB, NATMI, Connectome, SCSignalR, logFC
+      n_perms: 1000
+      min_cells: 50                        # min cells per cluster
+      expr_prop: 0.1                       # min expression proportion of L-R per cluster
+      fdr_method: bh                       # BH-FDR over cellphone_pvals (the audit-correct setting)
+      fdr_threshold: 0.05
+    liana_bivariate:                       # legacy params kept for back-compat
+      enabled: false
+      local_name: cosine
+      n_perms: 1000
+      n_neighbors: 15
+      radius_um: 200
+      nz_prop: 0.05
+    spacia_validation:
+      enabled: true
+      top_n_pairs: 30                      # validate top-30 LIANA+ hits
+      mcmc_params: "50000,20000,100,2"     # Ntotal,Nwarm,Nthin,Nchains (publishable)
+      n_cells_subsample: 5000              # subsample per cell type (-nc)
+      dist_cutoff_um: 30                   # juxtacrine range (-d)
+      multiple_testing: bonferroni         # cross-test correction (audit-corrected)
+      # spacia_repo: resolved via SPACIA_PATH env var or pipeline/external/Spacia/
+      # (Docker image: spacia:audited, 4.4 GB). Do not hardcode here.
+
+  # F4 — Niche-DE (context-dependent expression)
+  f4_niche_de:
+    enabled: true
+    domains_source: novae                  # use Novae domains as niches
+    celltype_col: cell_type_L2
+    fdr_threshold: 0.05
+    log2fc_threshold: 0.5
+
+  # F5 — Spatial pseudotime (Slingshot + tradeSeq GAM)
+  f5_pseudotime:
+    enabled: true
+    trajectory_anchor: tumor_distance      # rank by distance to tumor centroid
+    tumor_celltypes: [Tumor_proliferating, Tumor_resting]
+    slingshot:
+      embedding_source: novae              # use Novae embeddings as latent space
+      start_cluster: stroma_far
+    tradeseq:
+      n_knots: 6
+      pval_threshold: 0.05
+
+  # F5b — Tertiary Lymphoid Structure detection
+  f5b_tls:
+    enabled: true
+    eps_um: 50                             # DBSCAN cluster radius
+    min_samples: 30                        # min cells to form a TLS
+    tls_score_threshold: 1.5               # z-score threshold from F0 L3 scoring
+
+  # F6 — Annotation cross-validation (optional)
+  f6_annotation_xval:
+    enabled: false                         # opt-in (slow, runs in R)
+    method: singler
+    reference: Sikkema2023_HCA_Lung        # alt: Travaglini2020_HCA_Lung
+
+  # F8 — Novae foundation model embeddings
+  f8_novae:
+    enabled: true
+    output_embeddings: true
+    pathway_analysis: true
+    pathway_db: msigdb_hallmark

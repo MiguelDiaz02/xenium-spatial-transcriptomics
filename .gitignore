@@ -32,3 +32,25 @@ Thumbs.db
 # Keep summaries but ignore verbose per-run logs
 human_lung_cancer/results/logs/pipeline_*.log
 human_lung_cancer/results/logs/pipeline_stats_*.json
+
+# ─── LaTeX build artifacts ────────────────────────────────────────────────────
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.out
+manuscript/*.toc
+manuscript/*.fls
+manuscript/*.fdb_latexmk
+manuscript/*.synctex.gz
+
+# ─── Non-project bibliographies and external reference material ───────────────
+DGEA_Cell-comm_bibliography/
+Figures_creation_bibliography/
+slides_visual_references/
+
+# ─── Internal planning docs (keep locally, not for repo) ─────────────────────
+docs/superpowers/
+
+# ─── Large PowerPoint/presentation files ─────────────────────────────────────
+*.pptx

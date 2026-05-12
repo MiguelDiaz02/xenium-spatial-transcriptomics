@@ -1,0 +1,180 @@
+# TBDs lung fibrosis cohort — markers and annotation hierarchy
+# =============================================================
+# TEMPLATE for the incoming TBDs cohort: 6 fibrotic + 6 healthy donors,
+# Xenium 439-gene panel (389 + 50 add-on), dyskeratosis congenita.
+#
+# IMPORTANT: marker lists below must be VERIFIED against the actual panel
+# manifest when received. Any marker absent from the panel must be removed
+# before running F0_reannotation_v3.py --markers config/markers/lung_TBDs.yaml.
+#
+# No tumor markers — TBDs is a fibrotic disease, not a malignancy. Tumor
+# annotations are intentionally absent from this template.
+
+panel:
+  name: "Xenium TBDs panel (lung fibrosis cohort) — 439 genes"
+  n_genes: 439
+  notes: |
+    Panel composition is "immune + fibrosis" focused.
+    Verify the following key axes are present in the manifest before running:
+      Fibrotic: COL1A1, COL3A1, COL1A2, ACTA2, TAGLN, FAP, PDGFRB
+      TGF-β:    TGFB1, TGFBR1, TGFBR2, SMAD3
+      Chemokines: CXCL12, CXCR4, CCL2, CCL18
+      Surfactant (AT2): SFTPC, SFTPA1, SFTPB, SFTPD, ABCA3
+      Telomere/dysfunction: DKC1, TERC, TERT (if disease-specific add-on)
+
+# ─── L2 markers (per-cell sc.tl.score_genes) ────────────────────────────────
+# These are CANDIDATE marker sets. Pre-flight verification required.
+markers:
+  # Epithelial — alveolar
+  AT1:                   [AGER, PDPN, RTKN2, EMP2]
+  AT2:                   [SFTPC, SFTPA1, SFTPB, ABCA3]    # core stem-cell exhaustion biology in TBDs
+  AT2_dysfunctional:     [SFTPC, KRT5, KRT17, MMP7]       # KRT5+/KRT17+ aberrant basaloid (TBDs hallmark)
+
+  # Epithelial — airway
+  Basal:                 [KRT5, KRT15, TP63, KRT17]
+  Ciliated:              [CAPS, FOXJ1, TPPP3, SNTN]
+  Club:                  [SCGB1A1, SCGB3A2, CYP2F2]
+  Secretory:             [MUC5B, MUC5AC, AGR3]
+
+  # Stromal / mural
+  Fibroblast_resting:    [PDGFRA, COL1A2, DCN]
+  Myofibroblast:         [ACTA2, COL1A1, COL3A1, FAP]      # canonical fibrotic activation
+  Smooth_muscle:         [ACTA2, MYH11, TAGLN, CNN1]
+  Pericyte:              [RGS5, PDGFRB, NOTCH3, MCAM]
+
+  # Endothelial
+  Endothelial_capillary: [PECAM1, CDH5, CA4, FCN3]
+  Endothelial_venous:    [PECAM1, CDH5, ACKR1, SELP]
+  Endothelial_arterial:  [PECAM1, CDH5, GJA5, BMX]
+  Endothelial_lymphatic: [PROX1, LYVE1, PDPN, FLT4]
+
+  # Immune — T cells
+  CD4_T_helper:          [CD4, IL7R, CD3D, CD3E]
+  CD8_T_cytotoxic:       [CD8A, CD8B, GZMB, PRF1]
+  Treg:                  [FOXP3, IL2RA, CTLA4, IKZF2]
+
+  # Immune — B / plasma
+  B_cell:                [MS4A1, CD79A, CD19, BANK1]
+  Plasma:                [IGHG1, IGKC, MZB1, SDC1]
+
+  # Immune — NK
+  NK_cytotoxic:          [GNLY, NKG7, KLRD1, NCR1]
+
+  # Immune — myeloid
+  Macrophage_alveolar:   [MARCO, MSR1, CD68, FABP4]        # AM signature
+  Macrophage_M1:         [CD68, IL1B, TNF, CXCL10]
+  Macrophage_M2:         [CD68, MRC1, CD163, TGFB1]
+  Monocyte_classical:    [CD14, LYZ, S100A8, FCN1]
+  cDC1:                  [CLEC9A, XCR1, CADM1, IRF8]
+  cDC2:                  [CD1C, FCER1A, CLEC10A, IRF4]
+  pDC:                   [IL3RA, CLEC4C, TCF4, LILRA4]
+
+# ─── L2 → L1 (broad type) ───────────────────────────────────────────────────
+hierarchy_l1:
+  AT1: Epithelial_alveolar
+  AT2: Epithelial_alveolar
+  AT2_dysfunctional: Epithelial_dysfunctional
+  Basal: Epithelial_airway
+  Ciliated: Epithelial_airway
+  Club: Epithelial_airway
+  Secretory: Epithelial_airway
+  Fibroblast_resting: Stromal
+  Myofibroblast: Stromal_activated
+  Smooth_muscle: Stromal
+  Pericyte: Stromal
+  Endothelial_capillary: Endothelial
+  Endothelial_venous: Endothelial
+  Endothelial_arterial: Endothelial
+  Endothelial_lymphatic: Endothelial
+  CD4_T_helper: T_cell
+  CD8_T_cytotoxic: T_cell
+  Treg: T_cell
+  B_cell: B_cell
+  Plasma: Plasma_cell
+  NK_cytotoxic: NK_cell
+  Macrophage_alveolar: Macrophage
+  Macrophage_M1: Macrophage
+  Macrophage_M2: Macrophage
+  Monocyte_classical: Monocyte
+  cDC1: Dendritic_cell
+  cDC2: Dendritic_cell
+  pDC: Dendritic_cell
+  Unassigned: Unassigned
+
+# ─── L2 → L3 (functional / activation state) ────────────────────────────────
+hierarchy_l3:
+  AT1: Steady_state
+  AT2: Steady_state
+  AT2_dysfunctional: Disease_associated      # TBDs hallmark
+  Basal: Steady_state
+  Ciliated: Steady_state
+  Club: Steady_state
+  Secretory: Steady_state
+  Fibroblast_resting: Steady_state
+  Myofibroblast: Pro_fibrotic                # disease-associated
+  Smooth_muscle: Steady_state
+  Pericyte: Steady_state
+  Endothelial_capillary: Steady_state
+  Endothelial_venous: Steady_state
+  Endothelial_arterial: Steady_state
+  Endothelial_lymphatic: Steady_state
+  CD4_T_helper: Antigen_presenting
+  CD8_T_cytotoxic: Cytotoxic_effector
+  Treg: Immune_regulatory
+  B_cell: Steady_state
+  Plasma: Steady_state
+  NK_cytotoxic: Cytotoxic_effector
+  Macrophage_alveolar: Steady_state
+  Macrophage_M1: Pro_inflammatory
+  Macrophage_M2: Immune_regulatory
+  Monocyte_classical: Pro_inflammatory
+  cDC1: Antigen_presenting
+  cDC2: Antigen_presenting
+  pDC: Antigen_presenting
+  Unassigned: Steady_state
+
+# ─── immune_granular column → L2 candidates (sub-type by score) ─────────────
+immune_granular_to_l2:
+  CD4_T_cell:     [CD4_T_helper, Treg]
+  CD8_T_cell:     [CD8_T_cytotoxic]
+  B_cell:         [B_cell]
+  M1_Macrophage:  [Macrophage_M1]
+  M2_Macrophage:  [Macrophage_M2]
+  Alveolar_Macrophage: [Macrophage_alveolar]
+  Monocyte:       [Monocyte_classical]
+  Dendritic_cell: [cDC1, cDC2, pDC]
+  NK_cell:        [NK_cytotoxic]
+  Plasma_cell:    [Plasma]
+  Treg:           [Treg, CD4_T_helper]
+
+# ─── L2 candidates for per-cell scoring of non-immune cells ─────────────────
+nonimmune_l2:
+  - AT1
+  - AT2
+  - AT2_dysfunctional
+  - Basal
+  - Ciliated
+  - Club
+  - Secretory
+  - Fibroblast_resting
+  - Myofibroblast
+  - Smooth_muscle
+  - Pericyte
+  - Endothelial_capillary
+  - Endothelial_venous
+  - Endothelial_arterial
+  - Endothelial_lymphatic
+
+# ─── Pure Leiden clusters: DISABLED for TBDs ─────────────────────────────
+# Cluster IDs are dataset-specific; do not reuse pilot's mapping.
+# Pre-flight per sample is required if this is to be enabled.
+leiden_direct: {}
+
+# ─── Annotation parameters ─────────────────────────────────────────────────
+annotation_params:
+  immune_granular_col: cell_type_immune_granular
+  leiden_col: leiden
+  use_leiden_direct: false       # disabled: pilot-specific cluster IDs
+  score_threshold: 0.3
+  unassigned_label: Unassigned
+  min_markers_per_signature: 2

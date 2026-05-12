@@ -1,0 +1,96 @@
+RESUMEN COMPLETO DE SESIÓN — 04 de mayo de 2026
+=================================================
+
+CONTEXTO DE PARTIDA
+El pipeline de análisis computacional estaba 100% completo (Fases A–G + Master Figure).
+Esta sesión fue dedicada íntegramente a planificar y preparar la siguiente fase:
+el manuscrito para Nature Communications.
+
+---
+
+LO QUE HICIMOS
+
+1. Brainstorm estratégico del manuscrito
+Evaluamos 3 enfoques posibles:
+  A: methods-only paper
+  B: research article con contribución metodológica
+  C: letter corto
+
+Seleccionamos Enfoque B: Research Article NatComm donde los hallazgos biológicos del TME
+son los findings y el pipeline multi-tool consensus es la contribución innovadora que los
+sustenta y los hace reproducibles.
+
+---
+
+2. Recopilación de información esencial
+- Autores: Miguel Ángel Díaz-Campos (1°) y Alfredo de Jesús Rodríguez Gómez
+  (correspondencia Alfredo)
+- Dataset: público (10x Genomics CG000709 Rev C), FFPE lung adenocarcinoma, Stage IB -mas informacion en '/home/mdiaz/Documents/Xenium_project/proyecto_demo_xenium/human_lung_cancer/dataset_overview/overview_xenium_v1_ffpe_lung_cancer.md'
+- Longitud: concisa (~4,500 palabras)
+- Referencias: a construir desde cero
+- Regla crítica establecida: NUNCA usar códigos internos (F1, v3, L2, etc.) en el paper
+
+---
+
+3. Diseño de figuras (5 principales + 4 suplementarias + Graphical Abstract)
+Cada figura asignada con tesis visual de una oración, paneles específicos y justificación
+de si va en principal o suplementaria. Se definieron instrucciones detalladas para que el
+Graphical Abstract (Fig 1) salga bien a la primera en BioRender/ChatGPT (el usuario la proprocionará y posteriormente se añade al manuscritoTr).
+
+---
+
+4. Inventario y generación de figuras faltantes
+Hicimos un inventario completo de las 14 figuras requeridas:
+  - 3 figuras pre-existentes listas ✅
+  - 9 figuras nuevas generadas ✅
+  - 2 figuras pre-existentes reutilizables ✅
+
+Diagnóstico especial de Fig 5B: tradeSeq corrió sobre dimensiones Novae latentes (no genes
+expresados) y no exportó los plotSmoothers. La solución fue generar curvas de proporciones
+de tipos celulares a lo largo del pseudotime — biológicamente más interpretable y conectada
+directamente con la narrativa ADAM17/MUC1. Todos los datos necesarios existían en
+pseudotime_with_spatial.csv.
+
+Script creado: pipeline/scripts/analysis/Fmanuscript_figures.py
+Output: human_lung_cancer/results/figures/manuscript/ (9 PNGs, 300 DPI)
+
+---
+
+5. Spec del manuscrito escrito y self-reviewed
+Archivo: docs/superpowers/specs/2026-05-04-manuscript-design.md
+
+Self-review checklist:
+  ✅ Sin placeholders vacíos — funding marcado como "pending" explícitamente
+  ✅ Sin códigos internos (F1, v3, L2, etc.) en la narrativa del paper
+  ✅ Estructura coherente con enfoque B aprobado
+  ✅ Todas las figuras mapeadas a archivos reales existentes
+  ✅ Methods outline cubre los 7 pilares del pipeline sin omisiones
+  ✅ Word budget suma ~4,480 palabras — dentro del target conciso
+  ✅ BioRender instructions incluidas para Fig 1
+  ✅ Sin contradicciones entre secciones
+
+---
+
+6. Memorias y CLAUDE.md actualizados
+  - CLAUDE.md actualizado: estado manuscrito en progreso, sección de manuscrito NatComm
+    añadida, regla crítica de no-usar-códigos-internos documentada
+  - memory/manuscript_status.md creado: spec completo, mapa de figuras, autores, dataset,
+    próximo paso
+  - memory/MEMORY.md actualizado con entrada del manuscrito
+
+---
+
+ESTADO AL CIERRE DE SESIÓN
+
+  Spec manuscrito                 ✅ Aprobado
+  Figuras (14 total)              ✅ Todas listas
+  Graphical Abstract              ⏳ Pendiente (usuario genera con BioRender)
+  Escritura del manuscrito        ⏳ Pendiente — siguiente paso: invocar writing-plans
+  LaTeX template NatComm          ⏳ Por crear desde cero en sesión de escritura
+  refs.bib                        ⏳ Por construir (~25–30 referencias)
+
+---
+
+PRÓXIMO PASO
+Cuando estés listo para escribir, arrancamos la sesión invocando el skill writing-plans
+para trazar el plan de implementación de escritura del manuscrito completo en LaTeX.

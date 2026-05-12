@@ -4,6 +4,8 @@
 
 These datasets are provided as part of the *Post-Xenium In Situ Applications: Immunofluorescence, H&E, Visium v2, and Visium HD Technical Note (CG000709, Rev C)*.
 
+**Project Name:** Post-Xenium Technical Note: Xenium v1 and Xenium Prime 5K for FFPE Human Lung Cancer
+
 - **Experiment 1:** Xenium In Situ Gene Expression (Xenium v1) data for adult human lung adenocarcinoma tissue (FFPE) using the Xenium Human Lung Gene Expression Panel with nuclear expansion.
 - **Experiment 2:** Xenium Prime 5K In Situ Gene Expression with cell segmentation data for human lung adenocarcinoma tissue (FFPE) using the Xenium Prime 5K Human Pan Tissue and Pathways Panel.
 

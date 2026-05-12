@@ -1,0 +1,147 @@
+# Lung adenocarcinoma pilot — markers and annotation hierarchy
+# =============================================================
+# Source of truth for F0_reannotation_v3.py.
+# These are the markers/mappings that produced the canonical sdata.zarr (2026-04-30).
+#
+# To adapt the pipeline to a new dataset, copy this file to a new path
+# (e.g. lung_TBDs.yaml) and edit the markers/hierarchy. Pass --markers <path>
+# to F0_reannotation_v3.py.
+
+panel:
+  name: "Xenium v1 INMUNO panel (lung adenocarcinoma pilot)"
+  n_genes: 289
+  notes: |
+    Markers below were used for the v3 hybrid annotation (immune_granular +
+    Leiden + score_genes). Some lung-specific genes (SFTPC, KRT5, KRT17,
+    SCGB1A1) are not in the panel; AT2 / Club / Aberrant_Basaloid annotations
+    are therefore not feasible.
+
+# ─── L2 markers (per-cell sc.tl.score_genes) ────────────────────────────────
+markers:
+  AT1:                  [AGER, CAVIN1, EMP2, RTKN2]
+  Ciliated:             [CAPS, FOXJ1, TPPP3, SNTN]
+  Epithelial_general:   [EPCAM, KRT8, KRT18, CDH1]
+  Smooth_muscle:        [ACTA2, MYH11, TAGLN, CNN1]
+  Pericyte:             [RGS5, PDGFRB, NOTCH3, MCAM]
+  Endothelial_blood:    [PECAM1, CDH5, VWF, CLDN5]
+  Endothelial_lymphatic: [PROX1, LYVE1, PDPN, FLT4]
+  CD4_T_helper:         [CD4, IL7R, CD3D, CD3E]
+  CD8_T_cytotoxic:      [CD8A, CD8B, GZMB, PRF1]
+  CD8_T_exhausted:      [CD8A, TIGIT, LAG3, HAVCR2]
+  Treg:                 [FOXP3, IL2RA, CTLA4, IKZF2]
+  B_naive:              [MS4A1, CD19, IGHD, TCL1A]
+  B_memory:             [MS4A1, CD27, CD44, IGHG1]
+  Plasma:               [IGHG1, IGKC, MZB1, SDC1]
+  Plasmablast:          [MKI67, IGHG1, IGKC, PRDM1]
+  NK_cytotoxic:         [GNLY, NKG7, KLRD1, NCR1]
+  Macrophage_M1:        [CD68, IL1B, TNF, CXCL10]
+  Macrophage_M2:        [CD68, MRC1, CD163, TGFB1]
+  Monocyte_classical:   [CD14, LYZ, S100A8, FCN1]
+  cDC1:                 [CLEC9A, XCR1, CADM1, IRF8]
+  cDC2:                 [CD1C, FCER1A, CLEC10A, IRF4]
+  DC_mature:            [CCR7, LAMP3, CCL19, CD83]
+  pDC:                  [IL3RA, CLEC4C, TCF4, LILRA4]
+  Tumor_proliferating:  [MKI67, TOP2A, PCNA, CDK1]
+  Tumor_resting:        [EPCAM, KRT8, MMP7, S100A2]
+
+# ─── L2 → L1 (broad type) ───────────────────────────────────────────────────
+hierarchy_l1:
+  AT1: Epithelial_alveolar
+  AT2: Epithelial_alveolar
+  Ciliated: Epithelial_airway
+  Epithelial_general: Epithelial_general
+  Smooth_muscle: Stromal
+  Pericyte: Stromal
+  Endothelial_blood: Endothelial
+  Endothelial_lymphatic: Endothelial
+  CD4_T_helper: T_cell
+  CD8_T_cytotoxic: T_cell
+  CD8_T_exhausted: T_cell
+  Treg: T_cell
+  B_naive: B_cell
+  B_memory: B_cell
+  Plasma: Plasma_cell
+  Plasmablast: Plasma_cell
+  NK_cytotoxic: NK_cell
+  Macrophage_M1: Macrophage
+  Macrophage_M2: Macrophage
+  Monocyte_classical: Monocyte
+  cDC1: Dendritic_cell
+  cDC2: Dendritic_cell
+  DC_mature: Dendritic_cell
+  pDC: Dendritic_cell
+  Tumor_proliferating: Tumor
+  Tumor_resting: Tumor
+  Unassigned: Unassigned
+
+# ─── L2 → L3 (functional / activation state) ────────────────────────────────
+hierarchy_l3:
+  AT1: Steady_state
+  AT2: Steady_state
+  Ciliated: Steady_state
+  Epithelial_general: Steady_state
+  Smooth_muscle: Steady_state
+  Pericyte: Steady_state
+  Endothelial_blood: Steady_state
+  Endothelial_lymphatic: Steady_state
+  CD4_T_helper: Antigen_presenting
+  CD8_T_cytotoxic: Cytotoxic_effector
+  CD8_T_exhausted: Exhaustion
+  Treg: Immune_regulatory
+  B_naive: Steady_state
+  B_memory: Steady_state
+  Plasma: Steady_state
+  Plasmablast: Proliferating
+  NK_cytotoxic: Cytotoxic_effector
+  Macrophage_M1: Pro_inflammatory
+  Macrophage_M2: Immune_regulatory
+  Monocyte_classical: Pro_inflammatory
+  cDC1: Antigen_presenting
+  cDC2: Antigen_presenting
+  DC_mature: Antigen_presenting
+  pDC: Antigen_presenting
+  Tumor_proliferating: Proliferating
+  Tumor_resting: Steady_state
+  Unassigned: Steady_state
+
+# ─── immune_granular column → L2 candidates (sub-type by score) ─────────────
+immune_granular_to_l2:
+  CD4_T_cell:     [CD4_T_helper, Treg]
+  CD8_T_cell:     [CD8_T_cytotoxic, CD8_T_exhausted]
+  B_cell:         [B_naive, B_memory]
+  M1_Macrophage:  [Macrophage_M1]
+  M2_Macrophage:  [Macrophage_M2]
+  Monocyte:       [Monocyte_classical]
+  Dendritic_cell: [cDC1, cDC2, DC_mature, pDC]
+  NK_cell:        [NK_cytotoxic]
+  Plasma_cell:    [Plasma, Plasmablast]
+  Treg:           [Treg, CD4_T_helper]
+
+# ─── L2 candidates for per-cell scoring of non-immune cells ─────────────────
+nonimmune_l2:
+  - AT1
+  - Ciliated
+  - Epithelial_general
+  - Smooth_muscle
+  - Pericyte
+  - Endothelial_blood
+  - Endothelial_lymphatic
+  - Tumor_proliferating
+  - Tumor_resting
+
+# ─── Pure Leiden clusters (panel-specific; ≥70% of one cell type) ───────────
+# WARNING: leiden cluster IDs are dataset-specific. For new datasets, run a
+# pre-flight check and update this section, or set use_leiden_direct: false.
+leiden_direct:
+  "6": Smooth_muscle      # 88% pure on pilot
+  "8": Epithelial_general # 92% pure on pilot
+  "2": Epithelial_general # 68% pure (lower threshold, high N)
+
+# ─── Annotation parameters ─────────────────────────────────────────────────
+annotation_params:
+  immune_granular_col: cell_type_immune_granular
+  leiden_col: leiden
+  use_leiden_direct: true
+  score_threshold: 0.3       # min z-score to assign non-immune by score
+  unassigned_label: Unassigned
+  min_markers_per_signature: 2

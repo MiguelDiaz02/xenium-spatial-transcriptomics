@@ -1,0 +1,639 @@
+================================================================================
+BITÁCORA DE SESIÓN — 2026-05-08
+Proyecto: Xenium Spatial Transcriptomics Pipeline (proyecto_demo_xenium)
+Operador: Miguel Ángel Díaz-Campos (INP)
+Asistente: Claude Opus 4.7
+Sesión: auditoría exhaustiva del pipeline + manuscrito (3 días: 2026-05-06 → 2026-05-08)
+================================================================================
+
+
+=== 0. CONTEXTO DEL PROYECTO (snapshot) ============================================
+
+Dataset piloto: Human lung adenocarcinoma, Xenium v1, 268,034 células, 289 genes.
+Posicionamiento del paper: case study + framework demonstration (NO biology paper).
+Venues evaluados: Nat Methods, Cell Reports Methods, Nat Communications.
+Datos reales (próximos): TBDs (disqueratosis congénita, fibrosis pulmonar/hepática).
+  - Llegan en <1 mes a partir del 2026-05-06.
+  - Panel: 389 + 50 add-on = 439 genes (no 889 como entendí inicialmente; corregido).
+  - Cohorte: 6 fibróticos pareados con 6 donadores sanos = 12 muestras.
+
+Repositorio: https://github.com/MiguelDiaz02/xenium-spatial-transcriptomics
+  (estado: existe pero contiene mix de bibliografía + código antiguo;
+   pendiente: refactor para release público con solo código auditado).
+
+
+=== 1. PROBLEMAS IDENTIFICADOS EN LA AUDITORÍA =====================================
+
+CRÍTICOS (publication-blocking; los 5 que un reviewer técnico detecta en 30 min)
+--------------------------------------------------------------------------------
+C1. tradeSeq aplicado sobre embeddings Novae como si fueran counts
+    - Script: F5_pseudotime_slingshot.R:212-237
+    - Embedding dims escaladas y redondeadas a "counts" violan la verosimilitud
+      binomial-negativa de tradeSeq. Los p-values de associationTest() son
+      estadísticamente inválidos.
+
+C2. Slingshot con start.clus = "Tumor_proliferating" + end clusters mezcla
+    inmune+epitelio+endotelio
+    - Las células tumorales no se diferencian en T cells, AT1, ni endotelio.
+    - La trayectoria inferida era un gradiente espacial relabeled como
+      pseudotime de desarrollo.
+
+C3. LIANA+ "FDR < 5%" en realidad era top-K por rank, no FDR
+    - Script F0c_ccc_liana_granular_v2.py:79-89: el filtro caía en
+      df.nsmallest(50, ...) cuando la columna activa era magnitude_rank (rank,
+      no pvalue). El manuscrito reportaba "1,565 al FDR 5%" — mentira
+      metodológica directa.
+
+C4. Spacia "22/25 = 88% validados" usaba pvalues per-test sin corrección
+    cross-test, y los 5 "excluidos a priori" en realidad fallaron post-hoc
+    - El manuscrito implicaba exclusión a priori; el código intentó correr y
+      falló por count <500 cells del sender.
+    - Sin corrección Bonferroni a través de los 30 tests sometidos.
+
+C5. Manuscrito reportaba versiones de software, parámetros MCMC y subsamples
+    INCORRECTOS frente al código real
+    - Discrepancias múltiples: spatialdata 0.2 (manus) vs 0.7.2 (código);
+      novae 0.3 vs 1.0.5; Banksy 0.1.9 Python (NO EXISTE) vs Banksy 1.6.0 R;
+      MCMC "5,000 iter, 2,500 burn-in" (manus) vs 50,000 iter, 20,000 burn-in
+      (código); distance cutoff 30 µm y subsample 5,000/type NO reportados.
+
+MAYORES (must-fix)
+--------------------------------------------------------------------------------
+M1. Anotación "tres fuentes" no son fuentes independientes (todas usan el panel
+    de 289 genes y lógica de markers compartida); el ARI = 0.742 es
+    estabilidad interna, no validación externa. CellTypist no aplicable
+    (panel <2000 genes → colapso a 4-5 clases broad).
+
+M2. Pseudo-replicación: pvalues hasta 10⁻⁷¹ con n=1 paciente (cells != bio
+    replicates).
+
+M3. Pseudotime sólo tenía 1 método (Slingshot) → violaba el framework propio
+    "≥2 métodos por familia".
+
+M4. "14 dominios" en Banksy y Novae sospechosamente coincidente — había que
+    documentar la selección.
+
+M5. "35.4% consensus" presentado como fortaleza; en realidad significa que
+    64.6% de células reciben asignaciones distintas entre los dos métodos.
+
+M6. ADAM17–MUC1 NO es par receptor-ligando canónico (ADAM17 es sheddasa,
+    MUC1 es mucina transmembrana); está en la base de LIANA+ pero su
+    interpretación como signaling axis directo es cuestionable.
+
+M7. spacia conda env esencialmente vacío (numpy, pandas, python 3.8, r-base).
+    Spacia se invocaba como path absoluto a un clone manual del GitHub →
+    NO reproducible.
+
+NUEVOS CRÍTICOS DESCUBIERTOS DURANTE LA AUDITORÍA (no estaban en plan inicial)
+--------------------------------------------------------------------------------
+NC1. Novae tiene 10 dominios, NO 14 como afirmaba el manuscrito (Banksy = 14).
+
+NC2. ARI(Banksy, Novae) global = 0.151, NMI = 0.309 — disagreement sustancial
+     a nivel partición. Las dos particiones NO son redundantes; capturan
+     escalas complementarias (Novae = compartimentos amplios, Banksy = bordes
+     finos).
+
+NC3. El "pseudotime M1↔M2" NO captura polarización direccional. Diagnóstico
+     post-hoc de markers reveló que TANTO M1 markers (CD86, CD80, CXCL9,
+     CXCL10) COMO M2 markers (CD163, MS4A4A, TREM2) suben monotónicamente
+     con el pseudotime. Es un GRADIENTE DE ACTIVACIÓN GLOBAL, no
+     polarización M1→M2. Reframe completo de §3.5 requerido.
+
+
+=== 2. SOLUCIONES IMPLEMENTADAS ====================================================
+
+A. Re-cómputos estadísticos correctos
+   - Faudit_recompute_stats.py: nuevo script que aplica BH-FDR a LIANA+ y
+     Bonferroni a Spacia desde los outputs ya generados (sin re-correr).
+   - F0c editado: BH-FDR sobre cellphone_pvals correctamente aplicado.
+   - F3c editado: Bonferroni cross-test añadido.
+
+B. Pseudotime corregido
+   - F5_pseudotime_slingshot.R: marcado DEPRECATED con explicación.
+   - F5b_macrophage_pseudotime.py: PAGA + DPT sobre M1+M2 (22,902 células),
+     con counts reales (no embeddings).
+   - F5c_macrophage_slingshot.R: Slingshot + tradeSeq sobre PCA + counts
+     reales, Bonferroni explícito.
+   - F5d_concordance_figure.py: figura concordance Slingshot vs DPT
+     (reemplaza el ggplot abortado del R).
+   - F5e_manuscript_fig5.py: regenera el Fig5 del manuscrito (3 paneles).
+   - F5f_marker_directionality.py: diagnóstico de directionality que
+     reveló NC3.
+
+C. Manuscrito reescrito (EN + ES sincronizados)
+   - Título cambiado a methods-first:
+     "Multi-method consensus analysis of targeted in situ spatial
+      transcriptomics: a framework with pilot demonstration on human lung
+      adenocarcinoma"
+   - Abstract reescrito: case study + framework, n=1 explícito.
+   - §3.1 ARI 0.742 reframed como "internal stability" (no validación
+     externa); CellTypist failure documentado.
+   - §3.3 Banksy 14 + Novae 10 (corregido); ARI 0.15 reportado honestamente;
+     35.4% consensus como filtro estricto, no como fortaleza.
+   - §3.4 BH-FDR para LIANA, Bonferroni para Spacia, ADAM17–MUC1 caveat
+     biológico añadido.
+   - §3.5 reescrito como "macrophage activation continuum (NOT a M1→M2
+     polarization trajectory)" — refleja NC3.
+   - §Methods: versiones de software corregidas, MCMC params reales,
+     parámetros Spacia (30 µm, 5000/type) reportados, GitHub URL.
+   - §Discussion: limitación n=1 expandida, métodos excluidos transparentes,
+     plan TBDs cohort, caveat sobre 99.7% SVG (panel selection bias).
+   - refs.bib: PAGA (Wolf 2019), DPT (Haghverdi 2016), Mantovani 2022 añadidos.
+
+D. Figuras
+   - Fig4B regenerada con Bonferroni (Faudit_fig4b_corrected.py): 20 de 30
+     submitted; ADAM17→MUC1 = 7 senders únicos / 9 pares.
+   - Fig5B regenerada (3 paneles M1↔M2: UMAP + concordance hexbin + dist).
+   - SupS2 generada (Faudit_supS2_confusion.py): matriz de confusión
+     Banksy×Novae con ARI/NMI.
+   - F_master_figure.py actualizado: Panel D nuevo (M1↔M2), headers de
+     Panel A y Panel C corregidos a números post-Bonferroni.
+   - Reorganización: phase5_pseudotime/ → figuras_desactualizadas/
+     phase5_pseudotime_OLD_tumor_to_multiend_BIASED/
+     phase_f_spacia/ → figuras_desactualizadas/
+     phase_f_spacia_OLD_per_test_22of25/
+     README.md en figuras_desactualizadas/ explicando el archivo.
+   - phase5_pseudotime_v2/ → renombrado a phase5_pseudotime_audited/.
+
+E. Reproducibilidad
+   - Spacia Docker image construida (spacia:audited, 4.4 GB, ID 8b644cbf9d5e).
+     Test: `docker run --rm spacia:audited --help` → CLI usage completo.
+   - Dockerfile guardado en /home/mdiaz/tools/Spacia/Dockerfile (separa la
+     conda layer de la pip layer para evitar cache poisoning futuro).
+
+F. Documentación
+   - AUDIT_REPORT.md: peer review formal + tabla bias/severidad + lista de
+     fixes aplicados.
+   - PIPELINE_PORTABILITY_CHECKLIST.md: 30 h de dev work estimadas para
+     que el pipeline corra sobre TBDs cohort.
+   - Esta bitácora.
+
+
+=== 3. RESULTADOS — esperados vs obtenidos =========================================
+
+LIANA+ con BH-FDR
+   Esperado: cambio significativo en conteos
+   Obtenido: 1,565 (rank-based) → 1,557 (BH-FDR < 0.05). Δ = -8 (-0.5%).
+   Interpretación: el conteo del manuscrito original era aproximadamente
+   correcto en magnitud pero por la razón equivocada. El framing es ahora
+   honesto.
+
+Spacia con Bonferroni
+   Esperado: pérdida de varias validaciones marginales
+   Obtenido: 22 → 20 sobrevivientes. Las 2 que cayeron: cDC1 (p=0.048) y
+   Ciliated→Endothelial_blood vía CD24-SELP (p=0.049). Hub ADAM17/MUC1
+   sobrevive en 6 de 7 senders (cDC1 marginal cae). Narrativa biológica
+   intacta.
+
+Pseudotime M1↔M2 — concordance Slingshot vs DPT
+   Esperado: r ~ 0.6-0.8 si trayectoria clean
+   Obtenido: Spearman r = 0.478, Pearson r = 0.279, n=22,902.
+   Interpretación: moderado-bajo. Los métodos coinciden en ordering grueso
+   pero no en escala absoluta. CONSISTENTE con un continuo que no tiene
+   direccionalidad clara.
+
+tradeSeq sobre M1↔M2 (paneles 289 genes, count-based correcto)
+   Esperado: ~50-100 genes pseudotime-asociados
+   Obtenido: 227 / 288 BH-FDR < 0.05 (78.8%); 221 / 288 Bonferroni < 0.05
+   (76.7%). ADAM17 mismo en el top.
+   Interpretación: el panel está enriquecido en genes con dinámica de
+   activación macrofágica → alta tasa de significancia esperable para este
+   panel específico. NO generalizable a transcriptoma completo.
+
+Marker directionality (CD86, CD80, CXCL9, CXCL10 / CD163, MS4A4A, TREM2)
+   Esperado: M1 markers r<0, M2 markers r>0 (si M1→M2 polarización real)
+   Obtenido: TODOS los markers tienen r>0 vs Slingshot pseudotime
+   (M1 mean r=+0.34, M2 mean r=+0.59).
+   Interpretación clave (NC3): el "pseudotime" parametriza nivel global
+   de activación macrofágica, no polarización. Reframe del manuscrito.
+
+Banksy × Novae confusion
+   Esperado: ARI ~0.4-0.5 si métodos similares; <0.3 si distintos
+   Obtenido: ARI = 0.151, NMI = 0.309. Banksy=14 dominios, Novae=10.
+   Interpretación: métodos capturan escalas complementarias, no
+   redundantemente la misma arquitectura. Reframe en §3.3.
+
+Spacia Docker image
+   Esperado: imagen funcional con CLI operativo
+   Obtenido: spacia:audited, 4.4 GB, --help funciona end-to-end.
+
+Manuscrito EN + ES (compilación)
+   Esperado: ambas versiones limpias, sin warnings críticos
+   Obtenido: EN = 26 pp, ES = 28 pp, ambos compilan sin errores; las
+   2 citaciones nuevas (PAGA, DPT) añadidas correctamente; LaTeX
+   warnings solo cosméticos (microtype patch, 2 overfull hbox).
+
+
+=== 4. ARCHIVOS — creados o modificados en la sesión ===============================
+
+SCRIPTS
+  Modificados:
+    pipeline/scripts/analysis/F0c_ccc_liana_granular_v2.py   (BH-FDR fix)
+    pipeline/scripts/analysis/F3c_aggregate_spacia_results.py (Bonferroni)
+    pipeline/scripts/analysis/F5_pseudotime_slingshot.R       (DEPRECATED)
+    pipeline/scripts/analysis/F_master_figure.py              (panel D + headers)
+  Nuevos:
+    pipeline/scripts/analysis/Faudit_recompute_stats.py
+    pipeline/scripts/analysis/Faudit_fig4b_corrected.py
+    pipeline/scripts/analysis/Faudit_supS2_confusion.py
+    pipeline/scripts/analysis/F5b_macrophage_pseudotime.py
+    pipeline/scripts/analysis/F5c_macrophage_slingshot.R
+    pipeline/scripts/analysis/F5d_concordance_figure.py
+    pipeline/scripts/analysis/F5e_manuscript_fig5.py
+    pipeline/scripts/analysis/F5f_marker_directionality.py
+
+MANUSCRITO
+  manuscript/manuscript.tex      (todos los fixes EN, 26 pp)
+  manuscript/manuscript_es.tex   (sync completo de fixes ES, 28 pp)
+  manuscript/refs.bib            (PAGA + DPT + Mantovani 2022 añadidos)
+  manuscript/figures/Fig4B_spacia_axes.png      (regenerada Bonferroni)
+  manuscript/figures/Fig5B_pseudotime_proportions.png (3 paneles M1↔M2)
+  manuscript/figures/FigS2_banksy_novae_confusion.png (nueva)
+
+FIGURAS
+  human_lung_cancer/results/figures/master_figure/master_figure_v1.{png,pdf}
+    (regenerada con headers post-audit)
+  human_lung_cancer/results/figures/manuscript/Fig4B_spacia_axes.png  (mirror)
+  human_lung_cancer/results/figures/manuscript/Fig5B_pseudotime_proportions.png
+  human_lung_cancer/results/figures/manuscript/FigS2_banksy_novae_confusion.png
+  human_lung_cancer/results/figures/phase5_pseudotime_audited/  (renombrado de _v2)
+    F5b_dpt_distribution.png
+    F5b_pseudotime_distributions.png
+    F5c_concordance_slingshot_vs_dpt.png
+    F5f_marker_directionality.png
+    paga_F5b_macrophage_paga.png
+    umap_F5b_macrophage_overview.png
+  human_lung_cancer/results/figures/figuras_desactualizadas/
+    phase5_pseudotime_OLD_tumor_to_multiend_BIASED/  (archivo)
+    phase_f_spacia_OLD_per_test_22of25/              (archivo)
+    README.md                                         (explicación)
+
+DATOS / RESULTADOS
+  human_lung_cancer/results/02_biology/audit_corrected/
+    audit_summary.json
+    liana_L2_significant_BH_FDR_corrected.csv
+    liana_L2_pair_counts_BH_FDR.csv
+    spacia_results_corrected.csv
+    banksy_novae_confusion_summary.csv
+  human_lung_cancer/results/03_phase3_spatial/F5b_macrophage_pseudotime/
+    macrophage_counts_for_R.csv      (export para R, 22,902 × 289)
+    macrophage_metadata_for_R.csv
+    macrophage_pca_for_R.csv         (30 PCs)
+    macrophage_pseudotime.csv        (DPT per cell)
+    macrophage_slingshot_pseudotime.csv (concordance + Slingshot)
+    macrophage_summary.json
+    macrophage_tradeseq_gene_assoc.csv  (227 BH / 221 Bonf significativos)
+    macrophage_tradeseq_summary.rds
+    F5f_marker_directionality.csv
+
+DOCUMENTACIÓN
+  AUDIT_REPORT.md                       (peer review formal completo)
+  PIPELINE_PORTABILITY_CHECKLIST.md     (30 h dev para TBDs)
+  bitacora/2026-05-08.txt               (este archivo)
+
+INFRAESTRUCTURA
+  /home/mdiaz/tools/Spacia/Dockerfile   (Docker recipe para Spacia portable)
+  Docker image: spacia:audited (4.4 GB, ID 8b644cbf9d5e)
+
+
+=== 5. PENDIENTES — para próxima sesión ============================================
+
+ALTA PRIORIDAD (bloqueantes para submission)
+--------------------------------------------------------------------------------
+P1. GitHub push del repo limpio
+    - https://github.com/MiguelDiaz02/xenium-spatial-transcriptomics
+    - Plan: rama release/v0.1 con solo pipeline/, envs/, config/, docs/,
+      tests/ + README + LICENSE + CITATION.cff.
+    - Tag para fecha de submission.
+    - Sin esto, "Code available at GitHub" en el manuscrito es promesa
+      vacía y un reviewer técnico lo va a marcar.
+
+P2. Decidir sobre SVG null comparison
+    - 1-2 días de trabajo.
+    - Tomar 200 housekeeping + 200 random no expresados en pulmón, correr
+      Hotspot/nnSVG/Moran's-I y reportar % salen "SVG".
+    - Casi obligatorio para Nat Methods. Opcional con caveat para Cell
+      Reports Methods.
+
+P3. Decidir sobre benchmark sintético
+    - Opción 1 (recomendada): splatter para simular spatial dataset con
+      L-R conocidos (10 reales + 50 falsos), correr LIANA+ solo, Spacia
+      solo, consenso. Reportar TPR/FPR. 1-2 días.
+    - Sin esto, contribución metodológica del paper es débil.
+
+MEDIA PRIORIDAD (pre-cohort TBDs)
+--------------------------------------------------------------------------------
+P4. Empezar a ejecutar PIPELINE_PORTABILITY_CHECKLIST.md
+    - Foco P0: paths hardcoded, markers panel-específicos, threshold
+      parameterization, multi-sample integration (scVI), Spacia per-sample
+      meta-analysis.
+    - Total ~30 h de dev work, distribuir antes de que llegue muestra 1.
+
+P5. Definir markers TBDs
+    - lung_TBDs.yaml: AT1, AT2 (clave: dysfunction telomérica), basal,
+      ciliated, club, secretory, fibroblasts (resting + myofibroblast con
+      ACTA2/COL1A1/COL3A1/FAP), endothelial, pericytes, smooth muscle,
+      immune compartments. NO tumor markers.
+    - liver_TBDs.yaml: hepatocitos zonales, cholangiocytes, hepatic
+      stellate (resting → activated con ACTA2/COL1A1/LRAT), Kupffer, LSEC,
+      portal fibroblasts. NO tumor markers.
+    - Verificar que panel inmuno-enfocado de 439 genes incluye TGFβ1,
+      TGFBR1/2, COL1A1, ACTA2, PDGFB, PDGFRB, CXCL12, CXCR4 cuando llegue
+      el manifest del panel.
+
+BAJA PRIORIDAD (cleanup / nice-to-have)
+--------------------------------------------------------------------------------
+P6. Color schemes colorblind-safe (Crameri) consistentes en TODAS las figuras
+P7. Limpiar directorios stale en 02_biology/ (v2 versions)
+P8. Snakemake DAG completeness — añadir reglas para los nuevos scripts
+    Faudit_*, F5b/c/d/e/f
+P9. Test coverage smoke tests para pipeline/scripts/analysis/*
+
+
+=== 6. DECISIONES PENDIENTES — necesitan tu input ==================================
+
+D1. ¿Hacemos SVG null comparison (1-2 días)?
+    Recomendación: SÍ si target Nat Methods; opcional si Cell Reports Methods.
+
+D2. ¿Hacemos benchmark sintético opción 1 (1-2 días con splatter)?
+    Recomendación: SÍ — sube las chances en cualquier methods journal.
+
+D3. ¿Ejecutamos portability work AHORA o esperamos a recibir muestra 1?
+    Recomendación: AHORA. La P0 (paths hardcoded, markers externalizados,
+    multi-sample integration) toma >1 semana de dev y bloquea recibir datos
+    sin sorpresas.
+
+D4. Submission timeline: ¿target específico de fecha?
+    Esto define el orden y prioridad de todo lo demás.
+
+D5. ¿Queremos Singularity image además de Docker?
+    Singularity es preferido en HPC clusters; Docker en estaciones locales.
+    El Dockerfile actual se puede convertir con singularity build.
+
+
+=== 7. CONSIDERACIONES TÉCNICAS / NOTAS PARA RETOMAR CONTEXTO ======================
+
+ENTORNOS CONDA
+  xenium_pipeline       (Python: scanpy 1.11.5, spatialdata 0.7.2,
+                         liana 1.7.1, novae 1.0.5, hotspotsc 1.1.3,
+                         squidpy 1.8.1, scvi-tools 1.4.2)
+  xenium_R_analysis     (R 4.5 + Bioconductor 3.22: slingshot 2.16,
+                         tradeSeq 1.22, nnSVG 1.12, Banksy 1.6.0)
+  spacia                (mínimo: Python 3.8 + numpy + pandas + r-base 4.5.3;
+                         para reproducir afuera, USAR Docker spacia:audited)
+
+DATOS CANÓNICOS (NO USAR las versiones DESACTUALIZADO)
+  human_lung_cancer/results/sdata.zarr           (anotación v3, 268,034 cells)
+  human_lung_cancer/results/02_biology/dgea_L2_v3/        (DGEA L2, sin cambios)
+  human_lung_cancer/results/02_biology/ccc_liana_L2_v3/   (LIANA+ raw)
+  human_lung_cancer/results/02_biology/audit_corrected/   (LIANA BH + Spacia Bonf)
+  human_lung_cancer/results/02_biology/phase_f_spacia/    (Spacia jobs raw)
+
+ANOTACIÓN v3 (canónica)
+  14 broad L1 / 26 granular L2 / 7 functional L3
+  ARI vs immune subclustering = 0.742 (estabilidad interna, no validación
+  externa — esto NO cambia, solo el framing en el manuscrito)
+  Columnas: cell_type_L1, cell_type_L2, cell_type_L3, annotation_source_v3
+
+NÚMEROS POST-AUDIT (para citar de memoria)
+  LIANA+ significant   = 1,557 BH-FDR<0.05 (de 2,631)
+  Spacia validated     = 20 de 30 submitted (Bonferroni p<1.67e-3) = 67%
+                       = 20 de 25 completed = 80%
+  ADAM17/MUC1 hub      = 6 de 7 senders post-Bonferroni
+  Banksy domains       = 14 (B1-B14)
+  Novae domains        = 10 (D971-D1013)
+  ARI Banksy×Novae     = 0.151
+  NMI Banksy×Novae     = 0.309
+  Macrophages M1+M2    = 22,902 (4,029 + 18,873)
+  Pseudotime concordance Slingshot vs DPT (Spearman r) = 0.478
+  tradeSeq significant = 227 BH-FDR / 221 Bonferroni (de 288 testados)
+
+HALLAZGO CIENTÍFICO CLAVE
+  El "pseudotime macrofágico" NO es polarización M1→M2.
+  ES un gradiente de activación global (M1+M2 markers ambos suben con
+  pseudotime). Marcadores M1: media r=+0.34. Marcadores M2: media r=+0.59.
+  Interpretación: macrófagos reclutados al tumor son predominantemente
+  M2-skewed y se vuelven más activados, no transitan entre estados de
+  polarización. Consistente con literatura reciente que cuestiona la
+  dicotomía M1/M2 estricta in vivo (Mantovani 2022).
+
+INFRAESTRUCTURA
+  Docker image: spacia:audited (4.4 GB) — para reproducibilidad de Spacia.
+    Uso: docker run --rm -v /data:/data spacia:audited <args>
+  Singularity recipe: tools/Spacia/singularity_build.def (no construido aún).
+
+CITACIÓN DE LA AUDITORÍA
+  Tag git recomendado al hacer push: v0.1-audit-2026-05-08
+
+
+=== 8. RIESGOS RESIDUALES (las 4 que un reviewer puede atacar) =====================
+
+R1. Título y posicionamiento — RESUELTO en esta sesión.
+    Antes: "...reveals... validated hubs in lung adenocarcinoma" (biology
+    paper claim con n=1, atacable).
+    Ahora: "Multi-method consensus analysis...framework with pilot
+    demonstration..." (methods-first, n=1 explícito).
+
+R2. SVG null comparison — NO RESUELTO.
+    Tu 99.7% SVG-consenso podría ser artefacto del panel selection bias
+    (panel diseñado para incluir markers tejido-restringidos). Sin un
+    análisis de panel control, no se puede calibrar el poder discriminativo.
+    Mitigación: caveat en Discussion ya añadido. Resolución completa
+    requiere ejecutar la comparación.
+
+R3. Benchmarking cuantitativo contra single-tool — NO RESUELTO.
+    Para Nat Methods, lo típico es: framework consenso vs cada método
+    individual sobre datos sintéticos con ground-truth. Lo nuestro es
+    una demostración, no un benchmark. Mitigación: deferred a follow-up
+    o a opción 1 de splatter.
+
+R4. Pipeline portability para TBDs cohort — NO RESUELTO.
+    PIPELINE_PORTABILITY_CHECKLIST.md tiene ~30 h de dev work pendiente.
+    P0 incluye: paths lifting, markers externalization, threshold
+    parameterization, scVI multi-sample integration, Spacia per-sample
+    meta-analysis. SIN ESTO, los datos TBDs no corren tal cual.
+
+
+=== 9. NOTAS OPERATIVAS — para retomar contexto rápido en próxima sesión ===========
+
+ARRANCAR UNA SESIÓN NUEVA
+  1. cd /home/mdiaz/Documents/Xenium_project/proyecto_demo_xenium
+  2. Leer la bitácora más reciente: ls -lt bitacora/ | head
+  3. Confirmar venues: Nat Comm + Nat Methods + Cell Reports Methods
+  4. Confirmar posicionamiento: case study + framework, NO biology paper
+  5. Confirmar dataset: 268,034 cells, 289 genes, n=1 patient
+
+PARA DEBUGGING DE REPRODUCIBILIDAD
+  - Si Spacia falla por env: usar Docker (spacia:audited).
+  - Si una figura no actualiza: revisar F_master_figure.py y los paths
+    en phase5_pseudotime_audited/ vs phase5_pseudotime_v2/ (renombrado).
+  - Si manuscript.tex no compila: revisar refs.bib (3 nuevas citas:
+    wolf2019paga, haghverdi2016dpt, mantovani2022macrophage).
+
+AL TERMINAR CADA SESIÓN
+  - Crear bitacora/YYYY-MM-DD.txt con el mismo formato.
+  - Commitear cambios al repo (cuando este se haya limpiado).
+  - Actualizar CLAUDE.md y SENDA_DORADA.md si hay cambios de fase.
+
+
+=== 10. CONSOLIDACIÓN DE FIGURAS (post-cierre, mismo día) ==========================
+
+Solicitud del usuario: pasar todas las figuras válidas a una sola carpeta y
+reconocerlas por nombre (no por subcarpeta). Archivar las superseded.
+
+ESTADO FINAL DE figures/
+  - Estructura PLANA (sin subcarpetas para activas).
+  - 39 archivos activos con prefijo de stage:
+      01_qc_*           (1 figura, 2 formatos)
+      02_annot_*        (8 figuras)
+      03_svg_*          (3 figuras)
+      05_dgea_*         (4 figuras)
+      06_ccc_*          (1 figura)
+      07_pseudotime_*   (6 figuras, incluye PAGA anotada)
+      08_spatial_*      (1 figura)
+      ms_main_fig*      (8 figuras del manuscrito principal)
+      ms_sup_fig*       (2 figuras suplementarias)
+      master_figure.{png,pdf}
+  - INDEX.md           — convención de nombres + listado completo
+  - figuras_desactualizadas/  (19 archivos en 8 subcarpetas con README explicativo)
+
+PAGA REGENERADA (07_pseudotime_paga_annotated.png)
+  La figura original sólo mostraba 11 nodos numerados sin contexto. La nueva
+  versión muestra:
+    Panel A: PAGA con nodos coloreados por % M2 (azul=M1 puro, rojo=M2 puro),
+             tamaño = # células, aristas con grosor = conectividad PAGA.
+    Panel B: Dotplot de markers M1 (CD86,CD80,CXCL9,CXCL10) y M2 (CD163,
+             MS4A4A,TREM2) por sub-cluster, ordenados por % M2.
+  Hallazgo visual: incluso el cluster L8 (45% M2 = el más M1-skewed) tiene
+  CD163 expresándose en ~80% de sus células. Confirma el "activation continuum
+  no polarization" reportado en §3.5.
+
+SCRIPTS ACTUALIZADOS PARA NUEVA ESTRUCTURA
+  - F_master_figure.py: paths actualizados (FIG_DIR / "03_svg_*", "ms_main_*",
+    "07_pseudotime_*", "02_annot_*"). Master figure regenerada con éxito.
+  - F5e_manuscript_fig5.py: OUT_RES → ms_main_fig5B_*
+  - Faudit_fig4b_corrected.py: OUT_RES → ms_main_fig4B_*
+  - Faudit_supS2_confusion.py: OUT_RES → ms_sup_figS2_*
+  - F5g_paga_annotated.py NUEVO — guardó como F5g_paga_annotated.png
+    (renombrada en move a 07_pseudotime_paga_annotated.png).
+
+ARCHIVO (figuras_desactualizadas/)
+  Subcarpetas con razón explícita:
+    paga_unannotated/                     (PAGA sin anotación)
+    phase5_pseudotime_OLD_tumor_to_multiend_BIASED/  (C1+C2)
+    phase_f_spacia_OLD_per_test_22of25/   (pre-Bonferroni)
+    ccc_liana_v2_pre_audit/               (anotación v2)
+    dgea_v2_pre_audit/                    (anotación v2)
+    celltypist_failed_runs/               (panel<2k genes → colapso 4-5 clases)
+    nichede_descartado/                   (panel<1k genes)
+    ccc_liana_phase2b_pre_v3/             (anotación v1, 7 broad types)
+
+NOTA OPERATIVA
+  Para identificar de qué stage viene una figura: leer el prefijo numérico
+  (01-08) o `ms_main_/ms_sup_/master_`. El INDEX.md tiene el listado completo.
+
+
+=== 11. PIPELINE PORTABILITY (P0) — sesión tarde 2026-05-08 ========================
+
+Antecedente: el §S1 del manuscrito (memo metodológico) quedó cerrado en EN+ES.
+Después se inició el pipeline port (P0 del PIPELINE_PORTABILITY_CHECKLIST.md);
+la terminal se cerró por error y se retomó en una sesión posterior. Esta
+sección registra el estado FINAL al cierre del día.
+
+P0 — COMPLETO
+--------------------------------------------------------------------------------
+
+B1 (path lifting)
+  Nuevos:
+    pipeline/scripts/utils/paths.py   — resuelve project_root/dataset_root/
+                                         results_root/sdata_path/spacia_tool_path
+                                         vía env vars (XENIUM_PROJECT_ROOT,
+                                         XENIUM_DATASET, SPACIA_PATH) o walk-up.
+    pipeline/scripts/utils/paths.R    — equivalente para scripts R.
+  Migrados (15 .py + 3 .R + 2 .sh): F0_reannotation_v3, F3_spacia_ccc_validation,
+    F3c, F5b, F5c (R), F5d, F5e, F5f, F5g, F5_pseudotime_slingshot (R),
+    F5_regenerate_figures (R), F6, F6b, Faudit_*, Fmanuscript_figures,
+    F_master_figure, F3b_run_all_spacia_jobs.sh, F3d_retry_rare_celltypes.sh.
+  Verificación: `grep -r "/home/mdiaz" pipeline/scripts/ pipeline/config/` → 0 matches.
+
+B2 (markers externalization)
+  Nuevos en pipeline/config/markers/:
+    lung_pilot.yaml   (CANÓNICO: matchea v3 results en sdata.zarr; 25 L2 markers)
+    lung_TBDs.yaml    (TEMPLATE: 28 L2 + AT2_dysfunctional + Myofibroblast,
+                        sin tumor markers, leiden_direct: {} disabled)
+    liver_TBDs.yaml   (TEMPLATE: 25 L2, hepatocitos zonales, HSC quiescent→
+                        activated, Kupffer, LSEC, portal_fibroblast)
+  Modificado:
+    F0_reannotation_v3.py — argparse con --markers (default: lung_pilot.yaml),
+      --sdata, --outdir; load_markers_config() carga markers + hierarchy_l1/l3 +
+      immune_granular_to_l2 + nonimmune_l2 + leiden_direct + annotation_params.
+  Smoke test: --help OK, parses 25 L2 markers desde lung_pilot.yaml,
+    score_threshold=0.3, leiden_direct {6,8,2}.
+
+B3 (threshold parameterization)
+  config_lung.yaml editado:
+    + qc.max_cell_area_um2: 1500
+    + analysis.f3_ccc.spacia_validation.mcmc_params: "50000,20000,100,2"
+      (corregido: era 5000 stale, ahora matchea audit-correct manuscript §S1.5)
+    + analysis.f3_ccc.spacia_validation.n_cells_subsample: 5000
+    + analysis.f3_ccc.spacia_validation.dist_cutoff_um: 30
+    + analysis.f3_ccc.spacia_validation.multiple_testing: bonferroni
+    + analysis.f3_ccc.liana.{method, n_perms, min_cells, expr_prop, fdr_method}
+    - analysis.f3_ccc.spacia_validation.spacia_repo (eliminado: hardcoded path)
+  F3_spacia_ccc_validation.py:
+    - removidos paths hardcoded a human_lung_cancer/results/...; usa
+      sdata_path() + results_root() de paths.py.
+    + load_spacia_params(config_path) carga del YAML.
+    + main() argparse: --config, --mcmc_params, --n_cells, --dist_cutoff, --top_n.
+  F0c_ccc_liana_granular_v2.py + F0b_dgea_granular_v2.py: ya tenían CLI args
+    --min_cells, --n_perms, --expr_prop (verificado, OK).
+
+B4 (NicheDE/hdWGCNA/SCENIC/CellTypist exclusions)
+  Documentado en manuscrito §S1.1 ("Methods discarded due to gene-panel
+  constraints"). No se requiere doc adicional.
+
+B5 (Spacia tool path)
+  paths.py::spacia_tool_path() resuelve por:
+    1. SPACIA_PATH env var (override explícito).
+    2. pipeline/external/Spacia/spacia.py (in-repo submodule path).
+  Para reproducibilidad multi-máquina: usar Docker image spacia:audited
+  (4.4 GB, ya construido, registrado en §S1.5 del manuscrito).
+
+CHECKLIST actualizado: PIPELINE_PORTABILITY_CHECKLIST.md§Summary y §B1-B5
+mostrando ✅ DONE 2026-05-08 con resoluciones explícitas.
+
+
+PENDIENTE — P1 (multi-sample integration, ~21 h dev)
+--------------------------------------------------------------------------------
+M1 — Multi-sample concat + scVI integration   (8 h)  ❌ blocking
+M2 — LIANA+ multi-sample (rank_aggregate sample_key)  (3 h)  🟡
+M3 — Spacia per-sample meta-analysis           (4 h)  🟡
+M4 — Pseudotime cohort handling                (6 h)  🟡
+
+Recomendación para ANTES de que llegue muestra 1: dedicar 2 semanas part-time
+a M1-M4 (P1). M1 es blocking; M2-M4 deseables pero post-recibir datos OK.
+
+
+COMANDOS DE USO POST-PORT (cheatsheet)
+--------------------------------------------------------------------------------
+# Default (lung pilot)
+python pipeline/scripts/analysis/F0_reannotation_v3.py
+
+# Adapt to TBDs lung
+XENIUM_DATASET=TBDs_lung_pilot \
+  python pipeline/scripts/analysis/F0_reannotation_v3.py \
+    --markers pipeline/config/markers/lung_TBDs.yaml
+
+# Spacia (override MCMC + Docker)
+SPACIA_PATH=/path/to/Spacia/spacia.py \
+  python pipeline/scripts/analysis/F3_spacia_ccc_validation.py \
+    --mcmc_params 20000,10000,50,2 --n_cells 1000
+
+# Shell scripts (auto-detect from script location)
+bash pipeline/scripts/analysis/F3b_run_all_spacia_jobs.sh
+SPACIA_PATH=/path/to/spacia.py bash F3d_retry_rare_celltypes.sh
+
+================================================================================
+FIN DE BITÁCORA — 2026-05-08
+Próxima sesión: M1 multi-sample integration con scVI antes de muestra 1 TBDs.
+================================================================================

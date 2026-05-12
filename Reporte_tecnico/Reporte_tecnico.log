@@ -1,0 +1,1502 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.22)  30 APR 2026 12:14
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Reporte_tecnico.tex
+(./Reporte_tecnico.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count187
+\c@section=\count188
+\c@subsection=\count189
+\c@subsubsection=\count190
+\c@paragraph=\count191
+\c@subparagraph=\count192
+\c@figure=\count193
+\c@table=\count194
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count195
+\U@D=\dimen141
+\l@unhyphenated=\language5
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count196
+
+
+! Package babel Error: Unknown option 'spanish'. Either you misspelled it
+(babel)                or the language definition file spanish.ldf
+(babel)                was not found.
+(babel)                There is a locale ini file for this language.
+(babel)                If itâ€™s the main language, try adding `provide=*'
+(babel)                to the babel package options.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4291 \ProcessOptions*
+                       
+Valid options are, among others: shorthands=, KeepShorthandsActive,
+activeacute, activegrave, noconfigs, safe=, main=, math=
+headfoot=, strings=, config=, hyphenmap=, or a language name.
+
+
+! Package babel Error: Unknown option 'es-tabla'. Either you misspelled it
+(babel)                or the language definition file es-tabla.ldf
+(babel)                was not found.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4291 \ProcessOptions*
+                       
+Valid options are, among others: shorthands=, KeepShorthandsActive,
+activeacute, activegrave, noconfigs, safe=, main=, math=
+headfoot=, strings=, config=, hyphenmap=, or a language name.
+
+Package babel Info: You haven't specified a language as a class or package
+(babel)             option. I'll load 'nil'. Reported on input line 4342.
+(/usr/share/texlive/texmf-dist/tex/generic/babel/nil.ldf
+Language: nil 2024/01/07 v24.1 Nil language
+\l@nil=\language6
+))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count197
+\Gm@cntv=\count198
+\c@Gm@tempcnt=\count199
+\Gm@bindingoffset=\dimen142
+\Gm@wd@mp=\dimen143
+\Gm@odd@mp=\dimen144
+\Gm@even@mp=\dimen145
+\Gm@layoutwidth=\dimen146
+\Gm@layoutheight=\dimen147
+\Gm@layouthoffset=\dimen148
+\Gm@layoutvoffset=\dimen149
+\Gm@dimlist=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen150
+\Gin@req@width=\dimen151
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen152
+\lightrulewidth=\dimen153
+\cmidrulewidth=\dimen154
+\belowrulesep=\dimen155
+\belowbottomsep=\dimen156
+\aboverulesep=\dimen157
+\abovetopsep=\dimen158
+\cmidrulesep=\dimen159
+\cmidrulekern=\dimen160
+\defaultaddspace=\dimen161
+\@cmidla=\count266
+\@cmidlb=\count267
+\@aboverulesep=\dimen162
+\@belowrulesep=\dimen163
+\@thisruleclass=\count268
+\@lastruleclass=\count269
+\@thisrulewidth=\dimen164
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip50
+\LTright=\skip51
+\LTpre=\skip52
+\LTpost=\skip53
+\LTchunksize=\count270
+\LTcapwidth=\dimen165
+\LT@head=\box51
+\LT@firsthead=\box52
+\LT@foot=\box53
+\LT@lastfoot=\box54
+\LT@gbox=\box55
+\LT@cols=\count271
+\LT@rows=\count272
+\c@LT@tables=\count273
+\c@LT@chunks=\count274
+\LT@p@ftn=\toks21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen166
+\ar@mcellbox=\box56
+\extrarowheight=\dimen167
+\NC@list=\toks22
+\extratabsurround=\skip54
+\backup@length=\skip55
+\ar@cellbox=\box57
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen168
+\TX@old@table=\dimen169
+\TX@old@col=\dimen170
+\TX@target=\dimen171
+\TX@delta=\dimen172
+\TX@cols=\count275
+\TX@ftn=\toks23
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip56
+\enit@outerparindent=\dimen173
+\enit@toks=\toks24
+\enit@inbox=\box58
+\enit@count@id=\count276
+\enitdp@description=\count277
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2023/10/27 v2.16 Sectioning titles
+\ttl@box=\box59
+\beforetitleunit=\skip57
+\aftertitleunit=\skip58
+\ttl@plus=\dimen174
+\ttl@minus=\dimen175
+\ttl@toksa=\toks25
+\titlewidth=\dimen176
+\titlewidthlast=\dimen177
+\titlewidthfirst=\dimen178
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip59
+\f@nch@O@elh=\skip60
+\f@nch@O@erh=\skip61
+\f@nch@O@olh=\skip62
+\f@nch@O@orh=\skip63
+\f@nch@O@elf=\skip64
+\f@nch@O@erf=\skip65
+\f@nch@O@olf=\skip66
+\f@nch@O@orf=\skip67
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count278
+)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count279
+)
+\@linkdim=\dimen179
+\Hy@linkcounter=\count280
+\Hy@pagecounter=\count281
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count282
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count283
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen180
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count284
+\Field@Width=\dimen181
+\Fld@charsize=\dimen182
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count285
+\c@Item=\count286
+\c@Hfootnote=\count287
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count288
+\c@bookmark@seq@number=\count289
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip68
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count290
+\lst@gtempboxa=\box60
+\lst@token=\toks26
+\lst@length=\count291
+\lst@currlwidth=\dimen183
+\lst@column=\count292
+\lst@pos=\count293
+\lst@lostspace=\dimen184
+\lst@width=\dimen185
+\lst@newlines=\count294
+\lst@lineno=\count295
+\lst@maxwidth=\dimen186
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count296
+\lst@skipnumbers=\count297
+\lst@framebox=\box61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen187
+\captionmargin=\dimen188
+\caption@leftmargin=\dimen189
+\caption@rightmargin=\dimen190
+\caption@width=\dimen191
+\caption@indent=\dimen192
+\caption@parindent=\dimen193
+\caption@hangindent=\dimen194
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count298
+\c@continuedfloat=\count299
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count300
+\l__pdf_internal_box=\box62
+)
+(./Reporte_tecnico.aux)
+\openout1 = `Reporte_tecnico.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(62.59596pt, 472.31595pt, 62.59596pt)
+* v-part:(T,H,B)=(62.59596pt, 719.85492pt, 62.59596pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=472.31595pt
+* \textheight=719.85492pt
+* \oddsidemargin=-9.67403pt
+* \evensidemargin=-9.67403pt
+* \topmargin=-46.67403pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count301
+\scratchdimen=\dimen195
+\scratchbox=\box63
+\nofMPsegments=\count302
+\nofMParguments=\count303
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count304
+\MPscratchDim=\dimen196
+\MPnumerator=\count305
+\makeMPintoPDFobject=\count306
+\everyMPtoPDFconversion=\toks28
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package hyperref Info: Link coloring ON on input line 64.
+
+(./Reporte_tecnico.out) (./Reporte_tecnico.out)
+\@outlinefile=\write3
+\openout3 = `Reporte_tecnico.out'.
+
+\c@lstlisting=\count307
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 79.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 79.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 79.
+
+Underfull \hbox (badness 1168) in paragraph at lines 89--90
+[]\T1/cmr/bx/n/10.95 Resumen. \T1/cmr/m/n/10.95 Este documento es el control té
+cnico completo del pipeline de
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 90.
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.97 \rowcolor
+              {lightgray}\textbf{Dataset} & Human lung cancer, Xenium v1, pa...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Reporte_tecnico.toc
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
+1.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+))
+\tf@toc=\write4
+\openout4 = `Reporte_tecnico.toc'.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[2]
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.121 \rowcolor
+               {lightgray}\textbf{Fase} & \textbf{Familia} & \textbf{Herrami...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (43.66348pt too wide) in paragraph at lines 121--121
+[]|\T1/cmr/bx/n/10.95 lightgrayFase| 
+ []
+
+
+! LaTeX Error: Unicode character âœ“ (U+2713)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 ...idada) & \textcolor{mgreen}{âœ“ COMPLETO}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+! LaTeX Error: Unicode character âœ“ (U+2713)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.125 ...sensus & \textcolor{mgreen}{âœ“ COMPLETO}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+! LaTeX Error: Unicode character âœ“ (U+2713)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.127 ...an's I & \textcolor{mgreen}{âœ“ COMPLETO}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+! LaTeX Error: Unicode character âœ— (U+2717)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.129 ...24) & \textcolor{morange}{âœ— DESCARTADO}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+[]|[]
+ []
+
+
+Overfull \hbox (5.66064pt too wide) in paragraph at lines 129--130
+\T1/cmr/m/n/10.95 DESCARTADO[]| 
+ []
+
+
+! LaTeX Error: Unicode character âœ“ (U+2713)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.131 ...extcolor{mgreen}{âœ“ COMPLETO 2026-04-30}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+! LaTeX Error: Unicode character âœ“ (U+2713)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.133 ...extcolor{mgreen}{âœ“ COMPLETO 2026-04-30}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--135
+[]|\T1/cmr/m/n/10.95 F6 Annotation x-val
+ []
+
+
+Underfull \hbox (badness 2384) in paragraph at lines 135--135
+[]|\T1/cmr/m/n/10.95 CellTypist 5 modelos + validación
+ []
+
+
+! LaTeX Error: Unicode character âœ“ (U+2713)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.135 ...extcolor{mgreen}{âœ“ COMPLETO 2026-04-29}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+! LaTeX Error: Unicode character âœ— (U+2717)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137 ...C~~ & \textcolor{morange}{âœ— DESCARTADO}
+                                                   \\
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
+[]|[]
+ []
+
+
+Overfull \hbox (5.66064pt too wide) in paragraph at lines 137--138
+\T1/cmr/m/n/10.95 DESCARTADO[]| 
+ []
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.165 \rowcolor
+               {lightgray}\textbf{ComparaciÃ³n} & \textbf{ARI v2} & \textbf{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[3]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[4]
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.195 \end{tabularx}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.195 \end{tabularx}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.195 \end{tabularx}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (155.59221pt too wide) in paragraph at lines 195--195
+[]|\T1/cmtt/m/n/10 /home/mdiaz/Documents/Xenium_project/proyecto_demo_xenium/hu
+man_lung_cancer/results/sdata.zarr| 
+ []
+
+
+Overfull \hbox (276.31273pt too wide) in paragraph at lines 195--195
+[]|\T1/cmtt/m/n/10 /home/mdiaz/Documents/Xenium_project/proyecto_demo_xenium/hu
+man_lung_cancer/results/sdata_DESACTUALIZADO_NO_USAR.zarr| 
+ []
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 201.
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.215 \rowcolor
+               {lightgray}\textbf{Componente} & \textbf{Clave} & \textbf{Con...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (18.09636pt too wide) in paragraph at lines 215--215
+[]|\T1/cmr/bx/n/10.95 lightgrayComponente| 
+ []
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 217.
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--219
+[]|\T1/cmtt/m/n/10.95 he_image\T1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--221
+[]|\T1/cmtt/m/n/10.95 cell_boundaries\T1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--221
+\T1/cmtt/m/n/10.95 cell_circles\T1/cmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 4673) in paragraph at lines 223--224
+[]|\T1/cmr/m/n/10.95 Coordenadas espaciales de cada
+ []
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.231 \rowcolor
+               {lightgray}\textbf{Columna} & \textbf{CategorÃ­as} & \textbf{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+[]|\T1/cmr/m/n/10.95 Broad: Epithelial_alveolar/airway/general,
+ []
+
+
+Underfull \hbox (badness 3713) in paragraph at lines 233--234
+\T1/cmr/m/n/10.95 Stromal, T_cell, Macrophage, Endothelial,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
+[]|\T1/cmr/m/n/10.95 Estados: Antigen_presenting,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
+\T1/cmr/m/n/10.95 Cytotoxic_effector, Exhaustion,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
+\T1/cmr/m/n/10.95 Immune_regulatory, Pro_inflammatory,
+ []
+
+
+Underfull \hbox (badness 5970) in paragraph at lines 243--244
+[]|\T1/cmr/m/n/10.95 Columnas v3 originales (conservadas para
+ []
+
+
+Overfull \hbox (50.7642pt too wide) in alignment at lines 229--253
+ [] [] [] 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[5]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[6]
+Overfull \hbox (7.71278pt too wide) in paragraph at lines 273--274
+\T1/cmr/bx/n/10.95 Fuente: \T1/cmtt/m/n/10 /home/mdiaz/Documents/Xenium_project
+/my_xenium_panel_markers/Propuesta panel Pulmón
+ []
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.286 \rowcolor
+               {lightgray}\textbf{Tipo L2} & \textbf{Marcadores usados} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 1584) in paragraph at lines 297--298
+[]|\T1/cmr/m/n/10.95 CD68, CD86, TNF, IL1B, NOS2, CXCL9,
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 311--312
+[]|\T1/cmr/m/n/10.95 EPCAM, KRT8, KRT18, MUC1, TSPAN8,
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[7]
+! Undefined control sequence.
+l.321 $$ \text
+              {score}_{T_i}(c) = \frac{1}{|G_i|}\sum_{g\in G_i} x_{c,g} - \f...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.323 \item AsignaciÃ³n: $L2(c) = \arg\max_i \text
+                                                  {score}_{T_i}(c)$ si $\max...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \text 
+                      
+l.324 \item Confianza: $\text
+                             {conf}(c) = \text{score}_{(1)} - \text{score}_{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.324 \item Confianza: $\text{conf}(c) = \text
+                                              {score}_{(1)} - \text{score}_{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.324 ...ext{conf}(c) = \text{score}_{(1)} - \text
+                                                  {score}_{(2)}$ \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.335 \rowcolor
+               {lightgray}\textbf{Tipo L2} & \textbf{N cÃ©lulas} & \textbf{\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[8]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[9]
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.378 \rowcolor
+               {lightgray}\textbf{Archivo} & \textbf{Contenido} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
+[]|\T1/cmr/m/n/10.95 Por célula: L2_v3, L1_v3,
+ []
+
+
+Underfull \hbox (badness 3514) in paragraph at lines 383--384
+[]|\T1/cmr/m/n/10.95 Resumen + modelos de referencia
+ []
+
+
+Overfull \hbox (0.23264pt too wide) in paragraph at lines 388--389
+\T1/cmr/bx/n/10.95 Directorio: \T1/cmtt/m/n/10 /home/mdiaz/.../human_lung_cance
+r/results/02_biology/F6_celltypist_validation/ 
+ []
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.392 \rowcolor
+               {lightgray}\textbf{Archivo} & \textbf{Contenido} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+[]|\T1/cmr/m/n/10.95 ARI/NMI: L2 vs Leiden, vs
+ []
+
+
+Underfull \hbox (badness 2856) in paragraph at lines 396--397
+[]|\T1/cmr/m/n/10.95 L2 vs subclustering inmune (tabla
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[10]
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.481 \rowcolor
+               {lightgray}\textbf{Sender} & \textbf{Receiver} & \textbf{Liga...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (9.74681pt too wide) in paragraph at lines 483--483
+[]|\T1/cmr/m/n/10.95 Tumor_resting| 
+ []
+
+
+Overfull \hbox (9.74681pt too wide) in paragraph at lines 487--487
+[]|\T1/cmr/m/n/10.95 Tumor_resting| 
+ []
+
+
+Overfull \hbox (9.74681pt too wide) in paragraph at lines 489--489
+[]|\T1/cmr/m/n/10.95 Tumor_resting| 
+ []
+
+
+Overfull \hbox (25.87317pt too wide) in paragraph at lines 491--491
+[]|\T1/cmr/m/n/10.95 Epithelial_general| 
+ []
+
+
+Overfull \hbox (47.94728pt too wide) in paragraph at lines 493--493
+[]|\T1/cmr/m/n/10.95 Endothelial_lymphatic| 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[11]
+Overfull \hbox (3.89404pt too wide) in paragraph at lines 504--505
+[]\T1/cmr/bx/n/10.95 LTF $\OMS/cmsy/m/n/10.95 !$ \T1/cmr/bx/n/10.95 AGER: \T1/c
+mr/m/n/10.95 Tumor_resting y Ciliated $\OMS/cmsy/m/n/10.95 !$ \T1/cmr/m/n/10.95
+ AT1. Señalización tumor$\OMS/cmsy/m/n/10.95 !$\T1/cmr/m/n/10.95 epitelio alveo
+lar (invasión
+ []
+
+
+Overfull \hbox (61.82405pt too wide) in paragraph at lines 506--507
+[]\T1/cmr/bx/n/10.95 CDH1 $\OMS/cmsy/m/n/10.95 !$ \T1/cmr/bx/n/10.95 EGFR: \T1/
+cmr/m/n/10.95 Epithelial_general como sender hub $\OMS/cmsy/m/n/10.95 !$ \T1/cm
+r/m/n/10.95 AT1, Ciliated, Plasmablast, Endothelial_lymphatic.
+ []
+
+
+Overfull \hbox (76.9354pt too wide) in paragraph at lines 516--517
+[]\T1/cmr/bx/n/10.95 Scripts: \T1/cmtt/m/n/10.95 F3_spacia_ccc_validation.py\T1
+/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 F3b_run_all_spacia_jobs.sh\T1/cmr/m/n/10.95
+ , \T1/cmtt/m/n/10.95 F3c_aggregate_spacia_results.py 
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[12]
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.539 \rowcolor
+               {lightgray}\textbf{Script} & \textbf{Entorno} & \textbf{Funci...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 541--541
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
+[]|\T1/cmr/bx/n/10.95 (CANÓNICO)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
+\T1/cmr/m/n/10.95 Anotación híbrida:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
+\T1/cmr/m/n/10.95 immune_granular +
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 543--543
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
+[]|\T1/cmr/m/n/10.95 CellTypist 5 modelos
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 543--544
+\T1/cmr/m/n/10.95 (documentación, no usar
+ []
+
+
+Overfull \hbox (24.41682pt too wide) in paragraph at lines 545--545
+[]|\T1/cmtt/m/n/10.95 F6b_internal_annotation_validation.py| 
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 545--545
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--546
+[]|\T1/cmr/m/n/10.95 ARI/NMI interno:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--546
+\T1/cmr/m/n/10.95 L2 vs Leiden vs
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 547--547
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 547--548
+[]|\T1/cmr/m/n/10.95 DGEA Wilcoxon sobre
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 549--549
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 2662) in paragraph at lines 549--550
+[]|\T1/cmr/m/n/10.95 LIANA+ rank_aggregate
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 551--551
+[]|\T1/cmtt/m/n/10.95 F1_export_for_banksy.py +
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 553--553
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 553--554
+[]|\T1/cmr/m/n/10.95 Novae multi-resolución
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 555--555
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 557--557
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 557--558
+[]|\T1/cmr/m/n/10.95 Foundation model
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 559--559
+[]|\T1/cmtt/m/n/10.95 F2_export_for_nnsvg.py +
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 561--561
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 8132) in paragraph at lines 561--562
+[]|\T1/cmr/m/n/10.95 Hotspot SVG en 268k
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 563--563
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--564
+[]|\T1/cmr/m/n/10.95 Integración 3 métodos
+ []
+
+
+Overfull \hbox (25.91672pt too wide) in paragraph at lines 565--565
+[]|\T1/cmr/m/n/10.95 xenium_R_analysis| 
+ []
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 565--566
+[]|\T1/cmr/m/n/10.95 Slingshot + tradeSeq +
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 565--566
+\T1/cmr/m/n/10.95 GAM (8 linajes, Novae
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 567--568
+[]|\T1/cmr/m/n/10.95 Pipeline Spacia Bayesian
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 567--568
+\T1/cmr/m/n/10.95 MIL (30 interacciones
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 571--571
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 571--572
+[]|\T1/cmr/m/n/10.95 Agrega resultados Spacia
+ []
+
+
+Overfull \hbox (9.31822pt too wide) in paragraph at lines 573--573
+[]|\T1/cmr/m/n/10.95 xenium_pipeline| 
+ []
+
+
+Underfull \hbox (badness 1502) in paragraph at lines 573--574
+[]|\T1/cmr/m/n/10.95 Master Figure 5 paneles
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[13] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[14]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 599.
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.603 \rowcolor
+               {lightgray}\textbf{Herramienta} & \textbf{VersiÃ³n} & \textbf...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.620 \rowcolor
+               {lightgray}\textbf{Herramienta} & \textbf{VersiÃ³n} & \textbf...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[15] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2023/02/27 1.9 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2023/02/27 1.9 listings language file
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[16]
+Overfull \hbox (11.18907pt too wide) in paragraph at lines 698--699
+[]\T1/cmr/bx/n/10.95 Estroma + vasculatura: \T1/cmr/m/n/10.95 Stromal (Smooth_m
+uscle + Pericyte + Fibroblast) = 13.5%, Endothelial
+ []
+
+
+Overfull \hbox (9.56288pt too wide) in paragraph at lines 699--700
+[]\T1/cmr/bx/n/10.95 Compartimento adaptativo activo: \T1/cmr/m/n/10.95 CD4_T_h
+elper (7.4%) > Treg (4.2%) > CD8_T_cytotoxic
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[17]
+Overfull \hbox (12.29887pt too wide) in paragraph at lines 711--712
+\T1/cmr/bx/n/10.95 El pipeline multi-herramienta está COMPLETO. \T1/cmr/m/n/10.
+95 Todas las fases planificadas han sido ejecutadas
+ []
+
+
+Overfull \hbox (5.26605pt too wide) in paragraph at lines 715--716
+[]\T1/cmr/bx/n/10.95 Descartadas justificadamente: \T1/cmr/m/n/10.95 D (NicheDE
+, 289 genes insuficientes), F7 (hdWGCNA/SCENIC,
+ []
+
+! Undefined control sequence.
+<recently read> \rowcolor 
+                          
+l.723 \rowcolor
+               {lightgray}\textbf{MÃ©trica} & \textbf{Valor} \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.11996pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.11996pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.11996pt}.
+
+[18] (./Reporte_tecnico.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+ ***********
+
+
+Package rerunfilecheck Warning: File `Reporte_tecnico.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Reporte_tecnico.out':
+(rerunfilecheck)             Before: 86EFAD90AF120C2C20092660DFF71E56;8763
+(rerunfilecheck)             After:  39D89C851FC8FE029E947725EEB6D158;9665.
+ ) 
+Here is how much of TeX's memory you used:
+ 15750 strings out of 476182
+ 242165 string characters out of 5795595
+ 2229975 words of memory out of 5000000
+ 37452 multiletter control sequences out of 15000+600000
+ 571604 words of font info for 65 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 75i,13n,79p,688b,1821s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600
+pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1200.60
+0pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.6
+00pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.
+600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000
+.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti109
+5.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt10
+95.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1
+440.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm
+1000.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcr
+m1095.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
+rm1095.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+cbx1095.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecrm1200.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecbx1200.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecrm1440.600pk> </home/mdiaz/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/
+ec/ecbx2488.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Reporte_tecnico.pdf (18 pages, 326377 bytes).
+PDF statistics:
+ 1145 PDF objects out of 1200 (max. 8388607)
+ 441 compressed objects within 5 object streams
+ 123 named destinations out of 1000 (max. 500000)
+ 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+

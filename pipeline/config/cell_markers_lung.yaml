@@ -1,0 +1,254 @@
+# Cell Type Marker Hierarchy — Lung Cancer Xenium (289-gene panel)
+# ================================================================
+# All markers verified PRESENT in the actual sdata.zarr panel (2026-04-28).
+# Markers absent from the panel are commented out for transparency.
+#
+# Hierarchy levels:
+#   L1 — Broad types (existing 7; preserved for backwards compat with Phase 1A/2B)
+#   L2 — Granular types (~17 expected); requires ≥2 markers + min mean expression
+#   L3 — Functional states (cytotoxic, exhausted, proliferating, etc.)
+#
+# Scoring strategy: scanpy.tl.score_genes per signature; cells assigned to
+# argmax with confidence threshold; ambiguity flagged as "Mixed".
+
+panel_meta:
+  name: "Xenium INMUNO panel (lung pilot)"
+  n_genes_total: 289
+  source: "my_xenium_panel_markers/Propuesta panel Pulmón 2025.xlsx (relative to repo root)"
+  note: "ADD-ON lung-specific genes (SFTPC, KRT5, KRT17, SCGB1A1, MMP7, CTHRC1, etc.) NOT in 289-gene immuno panel; AT2/Club/Aberrant_Basaloid annotation NOT feasible."
+  status: "SUPERSEDED — see pipeline/config/markers/lung_pilot.yaml for the canonical config used by F0_reannotation_v3.py"
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  L1 — Broad types (existing, retained)
+# ─────────────────────────────────────────────────────────────────────────────
+level_1:
+  Epithelial:
+    markers: [EPCAM, KRT19]
+    description: "Pan-epithelial cells (incl. AT1, ciliated, tumor)"
+  T_cell:
+    markers: [CD3D, CD3E, CD2]
+    description: "All T lymphocytes"
+  B_cell:
+    markers: [MS4A1, CD79A, CD19]
+    description: "B lymphocytes (any state)"
+  NK_cell:
+    markers: [CD247, GNLY]
+    description: "Natural killer cells"
+  Macrophage:
+    markers: [CD68, CD163, AIF1]
+    description: "Tissue macrophages and monocytes"
+  Endothelial:
+    markers: [PLVAP, VWF]
+    description: "All endothelial cells"
+  Tumor:
+    markers: [EPCAM, MKI67, ANPEP]
+    description: "Tumor cells (proliferating, malignant phenotype)"
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  L2 — Granular types (requires ≥2 markers present with positive expression)
+# ─────────────────────────────────────────────────────────────────────────────
+level_2:
+
+  # ─── Epithelial subtypes ──────────────────────────────────────────────────
+  AT1:
+    parent: Epithelial
+    markers: [AGER, PDPN]
+    description: "Alveolar Type I (gas exchange)"
+    note: "Limited markers (CAVIN1, HOPX absent); use PDPN to distinguish from lymphatic"
+
+  Ciliated:
+    parent: Epithelial
+    markers: [FOXJ1, AGR3]
+    description: "Ciliated airway epithelial cells"
+    note: "Strong canonical markers"
+
+  Tumor_proliferating:
+    parent: Tumor
+    markers: [EPCAM, MKI67, CDK1, CENPF]
+    description: "Actively proliferating tumor cells (S/G2/M phase)"
+
+  Tumor_resting:
+    parent: Tumor
+    markers: [EPCAM, ANPEP]
+    negative_markers: [MKI67, CDK1]
+    description: "Tumor cells not in active cycle"
+
+  # AT2: NOT FEASIBLE (SFTPC, SFTPA1, SFTPB, ABCA3 all absent; only ETV5)
+  # Club: NOT FEASIBLE (SCGB1A1, SCGB3A2, CYP2F2 all absent)
+  # Aberrant_Basaloid_KRT5_KRT17: NOT FEASIBLE (KRT5, KRT17, MMP7, EPHB2 absent; only TP63)
+
+  # ─── T cell subtypes ──────────────────────────────────────────────────────
+  CD8_effector:
+    parent: T_cell
+    markers: [CD8A, CD8B, GZMA, GZMB]
+    description: "Cytotoxic CD8 T cells (canonical effector)"
+    note: "PRF1, GNLY, GZMH absent from panel"
+
+  CD8_exhausted:
+    parent: T_cell
+    markers: [CD8A, GZMK, LAG3, PDCD1]
+    description: "Exhausted/dysfunctional CD8 (TIM-3+, PD1+, LAG3+)"
+    note: "TIGIT absent; GZMK is hallmark of exhausted state"
+
+  CD4_helper:
+    parent: T_cell
+    markers: [CD4, IL7R, CD3D]
+    description: "CD4 helper T cells"
+
+  Treg:
+    parent: T_cell
+    markers: [FOXP3, CTLA4, TNFRSF18, CD4]
+    description: "Regulatory T cells"
+    note: "IL2RA absent; canonical FOXP3+ identity"
+
+  # ─── B cell subtypes ──────────────────────────────────────────────────────
+  B_naive:
+    parent: B_cell
+    markers: [MS4A1, CD79A, BANK1, TCL1A]
+    description: "Naive B cells"
+    note: "CD79B, IGHD absent"
+
+  B_memory:
+    parent: B_cell
+    markers: [MS4A1, CD27]
+    description: "Memory B cells (CD27+)"
+
+  Plasma:
+    parent: B_cell
+    markers: [MZB1, CD38, TNFRSF17]
+    negative_markers: [MS4A1]
+    description: "Plasma cells / antibody-secreting cells"
+
+  # ─── Myeloid subtypes ─────────────────────────────────────────────────────
+  Macrophage_M1:
+    parent: Macrophage
+    markers: [CD68, CD86, CXCL10]
+    description: "M1 pro-inflammatory macrophages (classical activation)"
+
+  Macrophage_M2:
+    parent: Macrophage
+    markers: [CD163, MARCO, CD68]
+    description: "M2 anti-inflammatory macrophages (tumor-associated)"
+
+  Monocyte_classical:
+    parent: Macrophage
+    markers: [CD14, CD68]
+    negative_markers: [FCGR3A]
+    description: "Classical CD14+ monocytes"
+
+  Monocyte_non_classical:
+    parent: Macrophage
+    markers: [FCGR3A, CD68]
+    description: "Non-classical CD16+ patrolling monocytes"
+
+  cDC2:
+    parent: Macrophage
+    markers: [CD1A, CD1C, FCER1A, CLEC10A]
+    description: "Conventional dendritic cells type 2"
+
+  pDC:
+    parent: Macrophage
+    markers: [LILRA4]
+    description: "Plasmacytoid dendritic cells"
+    note: "Single marker; weak resolution"
+
+  DC_mature:
+    parent: Macrophage
+    markers: [CCR7, CD86]
+    description: "Mature DCs migrating to LN"
+
+  # cDC1: NOT RELIABLE (BATF3, CLEC9A, XCR1 absent; only IRF8 alone)
+
+  # ─── NK ───────────────────────────────────────────────────────────────────
+  NK_cytotoxic:
+    parent: NK_cell
+    markers: [CD247, GZMA, GZMB]
+    negative_markers: [CD3D, CD3E]
+    description: "Cytotoxic NK cells (no T cell receptor)"
+
+  # ─── Endothelial subtypes ─────────────────────────────────────────────────
+  Endothelial_blood:
+    parent: Endothelial
+    markers: [PLVAP, VWF]
+    description: "Blood vessel endothelial (capillary, arterial, venous)"
+
+  Endothelial_lymphatic:
+    parent: Endothelial
+    markers: [LYVE1, PROX1, PDPN]
+    description: "Lymphatic endothelial cells"
+    note: "Critical for tumor lymphatic drainage analysis"
+
+  # ─── Stromal / mural ──────────────────────────────────────────────────────
+  Pericyte:
+    parent: Stromal       # NOTE: parent does not exist at L1, use 'Endothelial' adjacent
+    markers: [RGS5, PDGFRB, CSPG4]
+    description: "Pericytes (vascular mural cells)"
+
+  Smooth_muscle:
+    parent: Stromal
+    markers: [MYH11]
+    description: "Smooth muscle cells"
+    note: "Weak (only 1 marker; ACTA2/TAGLN absent from panel)"
+
+  Fibroblast_general:
+    parent: Stromal
+    markers: [PDGFRA]
+    description: "Generic fibroblasts"
+    note: "Weak (DCN, COL1A1, COL3A1 absent); cannot subtype myofibroblasts"
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  L3 — Functional / proliferative / activation states (orthogonal to L2)
+# ─────────────────────────────────────────────────────────────────────────────
+level_3:
+
+  Proliferating:
+    markers: [MKI67, CDK1, CENPF, TOP2A]
+    description: "Cells in S/G2/M phase (any cell type)"
+
+  Cytotoxic_effector:
+    markers: [GZMA, GZMB, PRF1]
+    available_markers: [GZMA, GZMB]   # PRF1 absent
+    description: "Functional cytotoxic state (any T/NK)"
+
+  Exhaustion:
+    markers: [PDCD1, LAG3, TIGIT, HAVCR2, EOMES]
+    available_markers: [PDCD1, LAG3]
+    description: "T cell exhaustion checkpoint (TIGIT, HAVCR2, EOMES absent)"
+
+  Interferon_response:
+    markers: [CXCL9, CXCL10, CXCL11, ISG15]
+    available_markers: [CXCL9, CXCL10, CXCL11]   # ISG15 absent
+    description: "Interferon-stimulated genes (anti-tumor)"
+
+  Antigen_presentation:
+    markers: [HLA-DRA, HLA-DRB1, CD74, CD80, CD86]
+    available_markers: [CD74, CD80, CD86]
+    description: "MHC II + costimulation"
+
+  TLS_signature:                     # F5b — Tertiary Lymphoid Structures
+    markers: [CCL19, CCL21, CXCL13, MS4A1, CD3D, CCR7]
+    description: "TLS = aggregates of B + T + DC + lymphatic chemokines"
+    note: "Used as F5b — TLS detection module"
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Annotation pipeline parameters
+# ─────────────────────────────────────────────────────────────────────────────
+annotation_params:
+  scoring_method: scanpy_score_genes      # sc.tl.score_genes
+  ctrl_size: 50                            # control gene set per signature
+  use_raw: false
+  z_score_threshold: 1.0                   # min z-score to assign
+  ambiguity_threshold: 0.3                 # if top1 - top2 < 0.3, mark as Mixed_<top1>_<top2>
+  min_cells_per_type: 50                   # discard categories below this count
+
+  # Hierarchical resolution rules
+  hierarchy:
+    - level: L1
+      reuse_existing: true                  # keep current `cell_type` column
+    - level: L2
+      depends_on: L1                        # L2 only assigned within compatible L1
+      output_column: cell_type_L2
+    - level: L3
+      depends_on: L2
+      output_column: cell_type_L3_state
+      multilabel: true                      # cells can have multiple states

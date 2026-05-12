@@ -1,0 +1,166 @@
+# TBDs liver fibrosis cohort — markers and annotation hierarchy
+# ==============================================================
+# TEMPLATE for the incoming TBDs cohort (liver subset).
+# Xenium 439-gene panel (same panel as lung; shared 389 + 50 add-on).
+#
+# IMPORTANT: marker lists below must be VERIFIED against the actual panel
+# manifest when received. Liver-specific genes (e.g. ALB, HNF4A) may not
+# all be present in an immune+fibrosis-focused panel.
+#
+# No tumor markers — TBDs is fibrotic, not malignant.
+
+panel:
+  name: "Xenium TBDs panel (liver fibrosis cohort) — 439 genes"
+  n_genes: 439
+  notes: |
+    Verify the following key axes are present in the manifest:
+      Fibrotic: COL1A1, COL3A1, COL1A2, ACTA2, FAP, PDGFRB
+      Hepatic stellate: LRAT, RBP1, DES, GFAP (resting); ACTA2, COL1A1 (activated)
+      Hepatocyte zonation: CYP3A4, CYP1A2 (pericentral), HAL, GLS2 (periportal)
+      Cholangiocyte: KRT19, KRT7, EPCAM, CFTR, SOX9
+      LSEC: STAB2, CLEC4G, CLEC4M, FCGR2B
+      Kupffer: CD68, MARCO, CD163, VSIG4
+
+# ─── L2 markers (per-cell sc.tl.score_genes) ────────────────────────────────
+markers:
+  # Hepatocytes — zonal
+  Hepatocyte_pericentral: [CYP3A4, CYP1A2, GLUL, OAT]
+  Hepatocyte_periportal:  [HAL, GLS2, ARG1, PCK1]
+  Hepatocyte_general:     [ALB, HNF4A, TTR, APOA1]
+
+  # Cholangiocytes
+  Cholangiocyte:          [KRT19, KRT7, EPCAM, SOX9]
+
+  # Hepatic stellate
+  HSC_quiescent:          [LRAT, RBP1, DES]
+  HSC_activated:          [ACTA2, COL1A1, COL3A1, FAP]    # canonical fibrotic activation
+
+  # Endothelial
+  LSEC:                   [STAB2, CLEC4G, CLEC4M, FCGR2B]    # liver sinusoidal endothelium
+  Endothelial_portal:     [PECAM1, CDH5, GJA5, BMX]          # arterial/venous portal
+  Endothelial_lymphatic:  [PROX1, LYVE1, PDPN]
+
+  # Stromal — non-stellate
+  Portal_fibroblast:      [PDGFRA, COL1A2, ELN]
+  Smooth_muscle:          [ACTA2, MYH11, TAGLN, CNN1]
+  Pericyte:               [RGS5, PDGFRB, NOTCH3, MCAM]
+
+  # Immune — T cells
+  CD4_T_helper:           [CD4, IL7R, CD3D, CD3E]
+  CD8_T_cytotoxic:        [CD8A, CD8B, GZMB, PRF1]
+  Treg:                   [FOXP3, IL2RA, CTLA4, IKZF2]
+
+  # Immune — B / plasma
+  B_cell:                 [MS4A1, CD79A, CD19, BANK1]
+  Plasma:                 [IGHG1, IGKC, MZB1, SDC1]
+
+  # Immune — NK
+  NK_cytotoxic:           [GNLY, NKG7, KLRD1, NCR1]
+
+  # Immune — myeloid
+  Kupffer:                [MARCO, VSIG4, CD163, CD68]        # liver-resident macrophage
+  Macrophage_M1:          [CD68, IL1B, TNF, CXCL10]
+  Macrophage_M2:          [CD68, MRC1, CD163, TGFB1]
+  Monocyte_classical:     [CD14, LYZ, S100A8, FCN1]
+  cDC1:                   [CLEC9A, XCR1, CADM1, IRF8]
+  cDC2:                   [CD1C, FCER1A, CLEC10A, IRF4]
+  pDC:                    [IL3RA, CLEC4C, TCF4, LILRA4]
+
+# ─── L2 → L1 (broad type) ───────────────────────────────────────────────────
+hierarchy_l1:
+  Hepatocyte_pericentral: Hepatocyte
+  Hepatocyte_periportal: Hepatocyte
+  Hepatocyte_general: Hepatocyte
+  Cholangiocyte: Cholangiocyte
+  HSC_quiescent: Hepatic_stellate
+  HSC_activated: Hepatic_stellate_activated
+  LSEC: Endothelial
+  Endothelial_portal: Endothelial
+  Endothelial_lymphatic: Endothelial
+  Portal_fibroblast: Stromal
+  Smooth_muscle: Stromal
+  Pericyte: Stromal
+  CD4_T_helper: T_cell
+  CD8_T_cytotoxic: T_cell
+  Treg: T_cell
+  B_cell: B_cell
+  Plasma: Plasma_cell
+  NK_cytotoxic: NK_cell
+  Kupffer: Macrophage
+  Macrophage_M1: Macrophage
+  Macrophage_M2: Macrophage
+  Monocyte_classical: Monocyte
+  cDC1: Dendritic_cell
+  cDC2: Dendritic_cell
+  pDC: Dendritic_cell
+  Unassigned: Unassigned
+
+# ─── L2 → L3 (functional / activation state) ────────────────────────────────
+hierarchy_l3:
+  Hepatocyte_pericentral: Steady_state
+  Hepatocyte_periportal: Steady_state
+  Hepatocyte_general: Steady_state
+  Cholangiocyte: Steady_state
+  HSC_quiescent: Steady_state
+  HSC_activated: Pro_fibrotic                  # disease-associated
+  LSEC: Steady_state
+  Endothelial_portal: Steady_state
+  Endothelial_lymphatic: Steady_state
+  Portal_fibroblast: Steady_state
+  Smooth_muscle: Steady_state
+  Pericyte: Steady_state
+  CD4_T_helper: Antigen_presenting
+  CD8_T_cytotoxic: Cytotoxic_effector
+  Treg: Immune_regulatory
+  B_cell: Steady_state
+  Plasma: Steady_state
+  NK_cytotoxic: Cytotoxic_effector
+  Kupffer: Steady_state
+  Macrophage_M1: Pro_inflammatory
+  Macrophage_M2: Immune_regulatory
+  Monocyte_classical: Pro_inflammatory
+  cDC1: Antigen_presenting
+  cDC2: Antigen_presenting
+  pDC: Antigen_presenting
+  Unassigned: Steady_state
+
+# ─── immune_granular column → L2 candidates (sub-type by score) ─────────────
+immune_granular_to_l2:
+  CD4_T_cell:     [CD4_T_helper, Treg]
+  CD8_T_cell:     [CD8_T_cytotoxic]
+  B_cell:         [B_cell]
+  Kupffer:        [Kupffer]
+  M1_Macrophage:  [Macrophage_M1]
+  M2_Macrophage:  [Macrophage_M2]
+  Monocyte:       [Monocyte_classical]
+  Dendritic_cell: [cDC1, cDC2, pDC]
+  NK_cell:        [NK_cytotoxic]
+  Plasma_cell:    [Plasma]
+  Treg:           [Treg, CD4_T_helper]
+
+# ─── L2 candidates for per-cell scoring of non-immune cells ─────────────────
+nonimmune_l2:
+  - Hepatocyte_pericentral
+  - Hepatocyte_periportal
+  - Hepatocyte_general
+  - Cholangiocyte
+  - HSC_quiescent
+  - HSC_activated
+  - LSEC
+  - Endothelial_portal
+  - Endothelial_lymphatic
+  - Portal_fibroblast
+  - Smooth_muscle
+  - Pericyte
+
+# ─── Pure Leiden clusters: DISABLED for TBDs liver ──────────────────────────
+leiden_direct: {}
+
+# ─── Annotation parameters ─────────────────────────────────────────────────
+annotation_params:
+  immune_granular_col: cell_type_immune_granular
+  leiden_col: leiden
+  use_leiden_direct: false
+  score_threshold: 0.3
+  unassigned_label: Unassigned
+  min_markers_per_signature: 2

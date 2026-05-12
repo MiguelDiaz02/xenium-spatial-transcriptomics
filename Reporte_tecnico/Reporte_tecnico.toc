@@ -1,0 +1,44 @@
+\babel@toc {nil}{}\relax 
+\contentsline {section}{\numberline {1}Estado General del Pipeline}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Mapa de fases}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Decisiones críticas (descartes justificados)}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Anotación granular v3 — estrategia híbrida (2026-04-29)}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Datos: Formatos, Rutas y Acceso}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Objeto principal: SpatialData (Zarr)}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Cómo cargar el objeto}{5}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}Estructura interna del SpatialData}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Columnas de anotación (post-v3)}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Layers, OBSM, UNS}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Anotación Celular Granular (v3 — híbrida validada)}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Marcadores del panel INP-Pulmón 2025}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Diccionario de scoring (extracto)}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Algoritmo de asignación}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Distribución de tipos celulares (v3)}{8}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}L1 (14 categorías)}{8}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}L2 (26 tipos — distribución completa v3)}{8}{subsubsection.3.4.2}%
+\contentsline {section}{\numberline {4}Resultados Generados (rutas absolutas)}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Anotación v3 (canónica)}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Validación de anotación (F6)}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}DGEA L2 v3 (Wilcoxon 1 vs Rest)}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}CCC LIANA+ L2 v3 (rank\_aggregate)}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Phase B (dominios espaciales)}{11}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Phase C (SVG consensus)}{11}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Phase E (Spatial Pseudotime)}{11}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Phase F (CCC Validation --- LIANA+ × Spacia)}{11}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Master Figure (5 paneles integrados)}{12}{subsection.4.9}%
+\contentsline {section}{\numberline {5}Scripts del Pipeline}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Scripts activos (válidos post-v3)}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Pipeline Snakemake}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Comando de ejecución}{14}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Herramientas Instaladas}{15}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Entorno \texttt {xenium\_pipeline} (Python)}{15}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Entorno \texttt {xenium\_R\_analysis} (R)}{15}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Entorno \texttt {spacia} (Python 3.8 + R)}{15}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Cómo Cargar y Explorar los Datos}{16}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Inspección rápida (Python)}{16}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Cargar resultados generados}{16}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Acceso desde R (vía SpatialExperiment)}{16}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Interpretación Biológica (resumen)}{17}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Microambiente tumoral pulmonar revelado}{17}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Implicación terapéutica}{17}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Estado Final del Pipeline (2026-04-30)}{18}{section.9}%

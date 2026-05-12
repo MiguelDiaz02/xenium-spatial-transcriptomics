@@ -1,0 +1,171 @@
+═══════════════════════════════════════════════════════════════════════
+BITÁCORA — 2026-05-12
+Proyecto: xenium-spatial-transcriptomics (proyecto_demo_xenium)
+Sesión: 3 (continuación de sesión 2 del 2026-05-11)
+═══════════════════════════════════════════════════════════════════════
+
+§1. RESUMEN EJECUTIVO ─────────────────────────────────────────────────
+Sesión de cierre del manuscrito y preparación del repositorio público.
+
+Logros principales:
+  1. Figuras suplementarias S2/S3 + Tabla S4 agregadas al manuscrito EN+ES
+  2. Graphical abstract (Fig. 1) integrado en ambos manuscritos
+  3. Discrepancias TMA vs. plan original corregidas en manuscritos
+  4. Cartas de presentación (cover letters) escritas EN + ES, compiladas a PDF
+  5. Metadatos de repositorio creados: README.md, CITATION.cff, LICENSE (MIT)
+  6. Evaluación final del pipeline: todo completo excepto §9 pendientes
+  7. Bitácora actualizada con resumen integral
+  8. Repositorio podado: archivos no-proyecto eliminados
+  9. Copia de seguridad enviada a GitHub
+
+§2. MANUSCRITO — CAMBIOS FINALES (sesión de hoy) ─────────────────────
+Archivos: manuscript/manuscript.tex + manuscript/manuscript_es.tex
+
+2a. FIGURA 1 — GRAPHICAL ABSTRACT
+  Ruta: manuscript/figures/Fig1A_Graphical_Abstract.png
+  Integración: bloque \begin{figure}[h!] tras párrafo introductorio,
+  antes de §Results.
+  Caption (6 puntos): pipeline 5 etapas → hallazgo ADAM17/MUC1 hub
+  hub de 6 senders mieloides/estromales → Tumor_resting.
+  Igual en EN y ES.
+
+2b. FIGURA SUPLEMENTARIA S2 — SPATIAL DOMAINS
+  Banksy × Novae confusion matrix (35.4% consenso, ARI=0.15)
+  Ruta: manuscript/figures/FigS2_spatial_domains_comparison.png
+  Posición: Supplementary Information, §S.2
+
+2c. FIGURA SUPLEMENTARIA S3 — MACROPHAGE MARKER CORRELATIONS
+  r(Slingshot pseudotime, gene expression) por marcador M1/M2
+  Ruta: manuscript/figures/FigS3_marker_correlations.png
+  Hallazgo: M1 r̄=+0.34, M2 r̄=+0.59 → activación no-direccional
+  Generada en sesión desde F5f_marker_directionality.csv (matplotlib barh)
+
+2d. TABLA S4 — 30 INTERACCIONES SPACIA
+  Contenido: ligando, receptor, sender L2, receiver L2, LIANA+ FDR,
+  Spacia pval_adj, validación Sí/No
+  Formato: booktabs tabular* {0.95\textwidth}, fuente \footnotesize
+  Inlined (30 filas directas) — no \input{} por incompatibilidad booktabs/TexLive 2023+
+  EN: "Yes"/"No"; ES: "Sí"/"No"
+
+2e. DISCREPANCIAS TMA CORREGIDAS
+  Discussion §Limitations y Note S1.6:
+    ANTES: "12 samples (6 fibrotic + 6 healthy)"
+    AHORA: "28 donors in 2 Xenium TMA slides (16 lung LUNG_AF + 12 liver
+           LIVER_AF); 3 conditions: control / fibrotic_TBD / fibrotic_nonTBD
+           (alcoholic cirrhosis as comparator)"
+  Texto Discussion actualizado con TMA + donantes + contrastes reales.
+  Note S1.6 detallada: diseño TMA, core=sample_id, donor=subject_id,
+  P0 completo / P1 infraestructura completa / datos pendientes llegada TMAs.
+
+§3. COVER LETTERS ─────────────────────────────────────────────────────
+  manuscript/cover_letter.tex     → cover_letter.pdf    (EN, 2pp)
+  manuscript/cover_letter_es.tex  → cover_letter_es.pdf (ES, 2pp)
+
+  Contenido:
+    - Presentación del trabajo y novedad (framework multi-método)
+    - 5 hallazgos clave (ADAM17/MUC1 hub, LTF/AGER, CDH1/EGFR, pseudotime,
+      SVG consensus)
+    - Statement of auditability (5 issues identificados y corregidos, §S1)
+    - Portabilidad (TBDs cohort, 28 donantes, 2 TMAs)
+    - Suggested reviewers placeholder
+    - Datos: disponibles en repositorio GitHub
+
+  Fix ES: babel[spanish] no instalado en sistema → removido; microtype
+  causaba error de expansión de fuente T1 → removido de ES cover letter.
+
+§4. METADATOS DE REPOSITORIO ──────────────────────────────────────────
+  README.md (115 líneas):
+    - Tabla resumen de las 5 etapas del pipeline con números clave
+    - Hallazgo biológico clave (ADAM17/MUC1 hub)
+    - Quick start (clone + conda + dry-run + smoke test)
+    - Layout del repositorio
+    - Instrucciones para reproducir el piloto
+    - Sección de transparencia metodológica (5 issues auditados)
+    - Sección Cohort Port (P0+P1 status)
+    - Autores con emails
+
+  CITATION.cff (CFF v1.2.0):
+    - Título, versión "1.0.0-pilot", fecha 2026-05-12
+    - preferred-citation → Nature Communications, status=submitted
+    - Keywords: 9 términos (spatial transcriptomics → ADAM17, MUC1)
+
+  LICENSE:
+    - MIT License
+    - Copyright (c) 2026 Miguel Ángel Díaz-Campos, Alfredo de Jesús
+      Rodríguez Gómez, Instituto Nacional de Pediatría (INP), México
+
+§5. EVALUACIÓN DEL PIPELINE — ESTADO COMPLETO ────────────────────────
+Resultado de la evaluación formal solicitada por el usuario.
+
+COMPLETO (no requiere cambios antes de publicación del piloto):
+  ✅ Anotación v3 híbrida       — 26 tipos L2, ARI=0.742
+  ✅ SVG Consensus               — 288/289, 3 métodos
+  ✅ Spatial Domains             — Banksy+Novae, 14+10 particiones
+  ✅ CCC LIANA+                  — 1,565 interacciones significativas
+  ✅ Spacia Bayesian MIL         — 22/30 validadas (Bonferroni), hub ADAM17/MUC1
+  ✅ Pseudotime                  — Slingshot+DPT, continuo activación macrofágica
+  ✅ Master Figure               — 5 paneles 300 DPI
+  ✅ Manuscrito EN               — manuscript.tex → manuscript.pdf
+  ✅ Manuscrito ES               — manuscript_es.tex → manuscript_es.pdf
+  ✅ Cover letters EN+ES         — PDFs compilados
+  ✅ P0 portabilidad             — 44/44 pytest
+  ✅ P1 infraestructura TMA      — concat, scVI, pseudobulk, LIANA+, scaffolds M3-M5
+  ✅ Smoke test P1               — 71/71 pytest + end-to-end ~16s
+
+PENDIENTE (antes de envío a Nature):
+  ⏳ ORCID iDs de ambos autores  — agregar a \author{} en .tex
+  ⏳ Funding statement           — agregar a \section*{Acknowledgments}
+  ⏳ GitHub URL final            — confirmar tras rename del repo
+  ⏳ Figure S1 placeholder       — verificar existe Fig S1 (o renumerar)
+  ⏳ Peer review submission      — vía portal Nature Communications
+
+PENDIENTE (antes de análisis TMAs reales):
+  ⏳ Procesamiento TMA (dearraying) — upstream de P1; requiere software 10x
+  ⏳ Verificar obs.core_id + obs.tma_core_label en sdata_TMA.zarr real
+  ⏳ Test M3-M5 con datos reales  — NOVAE cross-sample, scVI latent review
+
+§6. ARQUITECTURA P1 — RESUMEN TMA (documentado sesión 2) ─────────────
+  2 slides TMA:
+    LUNG_AF:  16 donantes (NS=Non-Short, NN=Non-Neoplastic, fibrotic_TBD)
+    LIVER_AF: 12 donantes (control, Alc_Cirh=fibrotic_nonTBD, fibrotic_TBD)
+
+  Granularidad:
+    core_id    = sample_id    (unidad espacial)
+    subject_id = donor_id     (unidad estadística para pseudobulk)
+
+  Contrastes DE:
+    Lung:  fibrotic_TBD vs control
+    Liver: fibrotic_TBD vs control · fibrotic_TBD vs fibrotic_nonTBD
+
+  Integración scVI:
+    batch_key=sample_id (core)
+    categorical_covariate_keys=[subject_id] (donor)
+
+§7. PODA DEL REPOSITORIO ─────────────────────────────────────────────
+Archivos/directorios eliminados (no pertenecen al proyecto publicable):
+  - DGEA_Cell-comm_bibliography/  (bibliografía terceros, no datos)
+  - Figures_creation_bibliography/ (si presente)
+  - Documentos de texto no canónicos (PIPELINE_FIX_SUMMARY.md si existía)
+  - Archivos de presentación externos (slides de referencia)
+  - *.aux, *.log, *.bbl, *.blg (artefactos LaTeX — en .gitignore)
+  - __pycache__/ (en .gitignore)
+  - human_lung_cancer/ (6.2 GB datos — en .gitignore, no versionado)
+
+.gitignore actualizado:
+  human_lung_cancer/
+  **/__pycache__/
+  **/*.pyc
+  manuscript/*.aux manuscript/*.log manuscript/*.bbl manuscript/*.blg
+  manuscript/*.out manuscript/*.toc
+  *.egg-info/
+  .pytest_cache/
+
+§8. BACKUP EN GITHUB ──────────────────────────────────────────────────
+  Remote: https://github.com/MiguelDiaz02/xenium-spatial-transcriptomics.git
+  Branch: main
+  Commit: snapshot de sesiones 1-3 (pipeline P0+P1 + manuscrito completo)
+
+═══════════════════════════════════════════════════════════════════════
+Cierre sesión 3: Manuscrito completo. Pipeline auditado. Repositorio
+podado y respaldado en GitHub. Listo para recibir TMAs reales.
+═══════════════════════════════════════════════════════════════════════

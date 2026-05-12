@@ -1,0 +1,54 @@
+name: xenium_R_analysis
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # ─── R core (let conda pick a compatible version, BiocConductor 3.20+ provides newer R) ─
+  - r-base
+  - bioconductor-biocgenerics
+  - bioconductor-biocparallel
+
+  # ─── Spatial transcriptomics R tools ────────────────────────────────────────
+  - bioconductor-banksy           # F1 — spatial domains (Singhal 2024 Nat Genet)
+  - bioconductor-nnsvg            # F2 — scalable SVG (Weber 2023 Nat Commun)
+  - bioconductor-spatialexperiment
+  - bioconductor-singlecellexperiment
+
+  # ─── Trajectory / pseudotime ────────────────────────────────────────────────
+  - bioconductor-slingshot        # F5 — trajectory (Street 2018 BMC Genomics)
+  - bioconductor-tradeseq         # F5 — GAM along pseudotime (Van den Berge 2020 Nat Commun)
+
+  # ─── Annotation cross-validation ────────────────────────────────────────────
+  - bioconductor-singler          # F6 — reference-based annotation
+  - bioconductor-celldex          # F6 — references (HCA Lung Sikkema 2023, etc.)
+
+  # ─── Niche-DE installed via devtools::install_github ────────────────────────
+  - r-devtools                    # for kaishumason/nicheDE
+
+  # ─── Common R utilities ─────────────────────────────────────────────────────
+  - r-tidyverse
+  - r-ggplot2
+  - r-readr
+  - r-data.table
+  - r-matrix
+  - r-jsonlite
+  - r-yaml
+
+  # ─── Python interop ─────────────────────────────────────────────────────────
+  - python>=3.10
+  - rpy2
+  - anndata2ri
+  - jupyterlab
+  - r-irkernel
+
+  # ─── Python deps for I/O ────────────────────────────────────────────────────
+  - anndata
+  - scanpy
+  - pandas
+  - numpy
+  - scipy
+  - h5py
+  - pip
+  - pip:
+    - spatialdata>=0.2.2
