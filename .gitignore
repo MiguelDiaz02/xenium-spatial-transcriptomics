@@ -33,24 +33,19 @@ Thumbs.db
 human_lung_cancer/results/logs/pipeline_*.log
 human_lung_cancer/results/logs/pipeline_stats_*.json
 
-# ─── LaTeX build artifacts ────────────────────────────────────────────────────
-manuscript/*.aux
-manuscript/*.log
-manuscript/*.bbl
-manuscript/*.blg
-manuscript/*.out
-manuscript/*.toc
-manuscript/*.fls
-manuscript/*.fdb_latexmk
-manuscript/*.synctex.gz
-
-# ─── Non-project bibliographies and external reference material ───────────────
+# ─── Internal / personal files (not for public repo) ─────────────────────────
+bitacora/
+SENDA_DORADA.md
+AUDIT_REPORT.md
+CLAUDE.md
+WEEK3_FILE_LOCATIONS*.txt
+docs/superpowers/
 DGEA_Cell-comm_bibliography/
 Figures_creation_bibliography/
 slides_visual_references/
-
-# ─── Internal planning docs (keep locally, not for repo) ─────────────────────
-docs/superpowers/
-
-# ─── Large PowerPoint/presentation files ─────────────────────────────────────
 *.pptx
+
+# ─── Manuscript source (separate repo/submission; not needed for replication) ─
+manuscript/
+Reporte_tecnico/
+LaTex_Nature_template/
